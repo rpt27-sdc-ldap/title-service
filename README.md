@@ -1,13 +1,11 @@
-# Project Name
+# FEC huang-pei-mei audible - title and images service
 
-> Project description
+> this is the fullstack service for the image and title displayed at the top of the page
+this service also handles the top bar that slides in on scroll down containing the
+title and subscription information
 
 ## Related Projects
 
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
 
 ## Table of Contents
 
