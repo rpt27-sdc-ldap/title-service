@@ -36,9 +36,6 @@ const Book = sequelize.define('Book', {
   audioSampleUrl: {
     type: DataTypes.STRING
   },
-  backgroundColor: {
-    type: DataTypes.STRING(7)
-  },
   length: {
     type: DataTypes.STRING(10)
   },
@@ -49,7 +46,7 @@ const Book = sequelize.define('Book', {
 
 const Category = sequelize.define('Category', {
   name: {
-    type: DataTypes.STRING
+    type: DataTypes.STRING,
   }
 });
 
@@ -63,7 +60,7 @@ const Book_Category = sequelize.define('Book_Category', {
     type: DataTypes.INTEGER(11),
     primaryKey: false,
     unique: true,
-    refrences: {
+    references: {
       model: Book,
       key: 'id',
     },
@@ -74,7 +71,7 @@ const Book_Category = sequelize.define('Book_Category', {
     type: DataTypes.INTEGER(11),
     primaryKey: false,
     unique: true,
-    refrences: {
+    references: {
       model: Category,
       key: 'id',
     },
@@ -102,26 +99,10 @@ Category.belongsToMany(Book, {
 sequelize.sync({ force: true })
   .then(() => {
     console.log('table creation succesful');
-    return Book.create({
-      title: data[0].title,
-      subtitle: data[0].subtitle,
-      author: data[0].author,
-      narrator: data[0].narrator,
-      imageUrl: data[0].imageUrl,
-      audioSampleUrl: data[0].audioSampleUrl,
-      length: data[0].length,
-      version: data[0].version,
-      categories: [
-        {name: 'one'},
-        {name: 'two'}
-      ]
-    },
-    {
-    include: 'categories'
-    })
+    return Book.bulkCreate(data, {include: 'categories', upsert: true});
   })
-  .then (response => {
-    console.log('success: ', response);
+  .then ((result) => {
+    console.log('database seeded successfully');
     return sequelize.close();
   })
   .catch((err) => {

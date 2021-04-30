@@ -12,5 +12,340 @@
       { "name": "Biographies & Memoirs" },
       { "name": "Politics & Activism" }
     ]
+  },
+  {
+    "title": "My Own Words",
+    "subtitle": "",
+    "author": "Ruth Bader Ginsburg, Mary Hartnett, Wendy W. Williams",
+    "narrator": "Linda Lavin",
+    "imageUrl": "https://hr-rpt-audible.s3-us-west-1.amazonaws.com/002-my-own-words.jpg",
+    "audioSampleUrl": "https://hr-rpt-audible.s3-us-west-1.amazonaws.com/002-my-own-words.mp3",
+    "length": "13:16",
+    "version": "Unabridged Audiobook",
+    "categories": [
+      { "name": "Biographies & Memoirs" },
+      { "name": "Politics & Activism" }
+    ]
+  },
+  {
+    "title": "Dune",
+    "subtitle": "",
+    "author": "Frank Herbert",
+    "narrator": "Scott Brick, Orlagh Cassidy, Euan Morton, Simon Vance, Ilyana Kadushin",
+    "imageUrl": "https://hr-rpt-audible.s3-us-west-1.amazonaws.com/003-dune.jpg",
+    "audioSampleUrl": "https://hr-rpt-audible.s3-us-west-1.amazonaws.com/003-dune.mp3",
+    "length": "21:02",
+    "version": "Unabridged Audiobook",
+    "categories": [
+      { "name": "Science Fiction & Fantasy" },
+      { "name": "Science Fiction" }
+    ]
+  },
+  {
+    "title": "The Hitchhiker's Guide to the Galaxy",
+    "subtitle": "",
+    "author": "Douglas Adams",
+    "narrator": "Stephen Fry",
+    "imageUrl": "https://hr-rpt-audible.s3-us-west-1.amazonaws.com/004-hitchhikers-guide.jpg",
+    "audioSampleUrl": "https://hr-rpt-audible.s3-us-west-1.amazonaws.com/004-hitchhikers-guide.mp3",
+    "length": "5:51",
+    "version": "Unabridged Audiobook",
+    "categories": [
+      { "name": "Literature & Fiction" },
+      { "name": "Humor & Satire" }
+    ]
+  },
+  {
+    "title": "Ready Player One",
+    "subtitle": "",
+    "author": "Ernest Cline",
+    "narrator": "Wil Wheaton",
+    "imageUrl": "https://hr-rpt-audible.s3-us-west-1.amazonaws.com/005-ready-player-one.jpg",
+    "audioSampleUrl": "https://hr-rpt-audible.s3-us-west-1.amazonaws.com/005-ready-player-one.mp3",
+    "length": "15:40",
+    "version": "Unabridged Audiobook",
+    "categories": [
+      { "name": "Science Fiction & Fantasy" },
+      { "name": "Science Fiction" }
+    ]
+  },
+  {
+    "title": "The Great Gatsby",
+    "subtitle": "",
+    "author": "F. Scott Fitzgerald",
+    "narrator": "Jake Gyllenhaal",
+    "imageUrl": "https://hr-rpt-audible.s3-us-west-1.amazonaws.com/006-great-gatsby.jpg",
+    "audioSampleUrl": "https://hr-rpt-audible.s3-us-west-1.amazonaws.com/006-great-gatsby.mp3",
+    "length": "4:49",
+    "version": "Unabridged Audiobook",
+    "categories": [
+      { "name": "Literature & Fiction" },
+      { "name": "Classics" }
+    ]
+  },
+  {
+    "title": "To Kill a Mockingbird",
+    "subtitle": "",
+    "author": "Harper Lee",
+    "narrator": "Sissy Spacek",
+    "imageUrl": "https://hr-rpt-audible.s3-us-west-1.amazonaws.com/007-to-kill-mockingbird.jpg",
+    "audioSampleUrl": "https://hr-rpt-audible.s3-us-west-1.amazonaws.com/007-to-kill-mockingbird.mp3",
+    "length": "12:17",
+    "version": "Unabridged Audiobook",
+    "categories": [
+      { "name": "Literature & Fiction" },
+      { "name": "Classics" }
+    ]
+  },
+  {
+    "title": "Bossypants",
+    "subtitle": "",
+    "author": "Tina Fey",
+    "narrator": "Tina Fey",
+    "imageUrl": "https://hr-rpt-audible.s3-us-west-1.amazonaws.com/008-bossypants.jpg",
+    "audioSampleUrl": "https://hr-rpt-audible.s3-us-west-1.amazonaws.com/008-bossypants.mp3",
+    "length": "5:32",
+    "version": "Unabridged Audiobook",
+    "categories": [
+      { "name": "Arts & Entertainment" },
+      { "name": "Entertainment & Performing Arts" }
+    ]
+  },
+  {
+    "title": "Harry Potter and the Sorcerer's Stone",
+    "subtitle": "",
+    "author": "J.K. Rowling",
+    "narrator": "Jim Dale",
+    "imageUrl": "https://hr-rpt-audible.s3-us-west-1.amazonaws.com/009-harry-potter.jpg",
+    "audioSampleUrl": "https://hr-rpt-audible.s3-us-west-1.amazonaws.com/009-harry-potter.mp3",
+    "length": "8:18",
+    "version": "Unabridged Audiobook",
+    "categories": [
+      { "name": "Children's Audiobooks" },
+      { "name": "Literature & Fiction" }
+    ]
+  },
+  {
+    "title": "The Fellowship of the Ring",
+    "subtitle": "Book One in The Lord of the Rings Trilogy",
+    "author": "J. R. R. Tolkien",
+    "narrator": "Rob Inglis",
+    "imageUrl": "https://hr-rpt-audible.s3-us-west-1.amazonaws.com/010-fellowship-ring.jpg",
+    "audioSampleUrl": "https://hr-rpt-audible.s3-us-west-1.amazonaws.com/010-fellowship-ring.mp3",
+    "length": "19:07",
+    "version": "Unabridged Audiobook",
+    "categories": [
+      { "name": "Literature & Fiction" },
+      { "name": "Classics" }
+    ]
+  },
+  {
+    "title": "The Untethered Soul",
+    "subtitle": "The Journey Beyond Yourself",
+    "author": "Michael A. Singer",
+    "narrator": "Peter Berkrot",
+    "imageUrl": "https://hr-rpt-audible.s3-us-west-1.amazonaws.com/011-untethered-soul.jpg",
+    "audioSampleUrl": "https://hr-rpt-audible.s3-us-west-1.amazonaws.com/011-untethered-soul.mp3",
+    "length": "6:11",
+    "version": "Unabridged Audiobook",
+    "categories": [
+      { "name": "Health & Wellness" },
+      { "name": "Psychology & Mental Health" }
+    ]
+  },
+  {
+    "title": "Sooley",
+    "subtitle": "A Novel",
+    "author": "John Grisham",
+    "narrator": "Dion Graham",
+    "imageUrl": "https://hr-rpt-audible.s3-us-west-1.amazonaws.com/012-sooley",
+    "audioSampleUrl": "https://hr-rpt-audible.s3-us-west-1.amazonaws.com/012-sooley.mp3",
+    "length": "10:27",
+    "version": "Unabridged Audiobook",
+    "categories": [
+      { "name": "Literature & Fiction" },
+      { "name": "Action & Adventure" }
+    ]
+  },
+  {
+    "title": "The Da Vinci Code",
+    "subtitle": "A Novel",
+    "author": "Dan Brown",
+    "narrator": "Paul Michael",
+    "imageUrl": "https://hr-rpt-audible.s3-us-west-1.amazonaws.com/013-davinci-code",
+    "audioSampleUrl": "https://hr-rpt-audible.s3-us-west-1.amazonaws.com/013-davinci-code.mp3",
+    "length": "16:59",
+    "version": "Unabridged Audiobook",
+    "categories": [
+      { "name": "Thriller & Suspense" },
+      { "name": "Mystery" }
+    ]
+  },
+  {
+    "title": "Astrophysics for People in a Hurry",
+    "subtitle": "",
+    "author": "Neil deGrasse Tyson",
+    "narrator": "Neil deGrasse Tyson",
+    "imageUrl": "https://hr-rpt-audible.s3-us-west-1.amazonaws.com/014-astrophysics.jpg",
+    "audioSampleUrl": "https://hr-rpt-audible.s3-us-west-1.amazonaws.com/014-astrophysics.mp3",
+    "length": "3:41",
+    "version": "Unabridged Audiobook",
+    "categories": [
+      { "name": "Science & Engineering" },
+      { "name": "Science" }
+    ]
+  },
+  {
+    "title": "Javascript",
+    "subtitle": "The Ultimate Guide to Learn Javascript Step by Step",
+    "author": "Andy Richmond",
+    "narrator": "Gene Backlin",
+    "imageUrl": "https://hr-rpt-audible.s3-us-west-1.amazonaws.com/015-javascript.jpg",
+    "audioSampleUrl": "https://hr-rpt-audible.s3-us-west-1.amazonaws.com/015-javascript.mp3",
+    "length": "4:32",
+    "version": "Unabridged Audiobook",
+    "categories": [
+      { "name": "Computers & Technology" }
+    ]
+  },
+  {
+    "title": "The Stand",
+    "subtitle": "",
+    "author": "Stephen King",
+    "narrator": "Grover Gardner",
+    "imageUrl": "https://hr-rpt-audible.s3-us-west-1.amazonaws.com/016-stand.jpg",
+    "audioSampleUrl": "https://hr-rpt-audible.s3-us-west-1.amazonaws.com/016-stand.mp3",
+    "length": "47:47",
+    "version": "Unabridged Audiobook",
+    "categories": [
+      { "name": "Literature & Fiction" },
+      { "name": "Horror" }
+    ]
+  },
+  {
+    "title": "The Shining",
+    "subtitle": "",
+    "author": "Stephen King",
+    "narrator": "Campbell Scott",
+    "imageUrl": "https://hr-rpt-audible.s3-us-west-1.amazonaws.com/017-shining.jpg",
+    "audioSampleUrl": "https://hr-rpt-audible.s3-us-west-1.amazonaws.com/017-shining.mp3",
+    "length": "15:50",
+    "version": "Unabridged Audiobook",
+    "categories": [
+      { "name": "Literature & Fiction" },
+      { "name": "Horror" }
+    ]
+  },
+  {
+    "title": "Misery",
+    "subtitle": "",
+    "author": "Stephen King",
+    "narrator": "Lindsay Crouse",
+    "imageUrl": "https://hr-rpt-audible.s3-us-west-1.amazonaws.com/018-misery.jpg",
+    "audioSampleUrl": "https://hr-rpt-audible.s3-us-west-1.amazonaws.com/018-misery.mp3",
+    "length": "12:21",
+    "version": "Unabridged Audiobook",
+    "categories": [
+      { "name": "Literature & Fiction" },
+      { "name": "Genre Fiction" }
+    ]
+  },
+  {
+    "title": "Milkweed",
+    "subtitle": "",
+    "author": "Jerry Spinelli",
+    "narrator": "Ron Rifkin",
+    "imageUrl": "https://hr-rpt-audible.s3-us-west-1.amazonaws.com/019-milkweed.jpg",
+    "audioSampleUrl": "https://hr-rpt-audible.s3-us-west-1.amazonaws.com/019-milkweed.mp3",
+    "length": "5:16",
+    "version": "Unabridged Audiobook",
+    "categories": [
+      { "name": "Children's Audiobooks" },
+      { "name": "Literature & Fiction" }
+    ]
+  },
+  {
+    "title": "Maniac Magee",
+    "subtitle": "",
+    "author": "Jerry Spinelli",
+    "narrator": "Ashale Siyoum",
+    "imageUrl": "https://hr-rpt-audible.s3-us-west-1.amazonaws.com/020-maniac-magee.jpg",
+    "audioSampleUrl": "https://hr-rpt-audible.s3-us-west-1.amazonaws.com/020-maniac-magee.mp3",
+    "length": "4:20",
+    "version": "Unabridged Audiobook",
+    "categories": [
+      { "name": "Children's Audiobooks" },
+      { "name": "Literature & Fiction" }
+    ]
+  },
+  {
+    "title": "Night",
+    "subtitle": "",
+    "author": "Elie Wiesel",
+    "narrator": "Jacob Metevia",
+    "imageUrl": "https://hr-rpt-audible.s3-us-west-1.amazonaws.com/021-night.jpg",
+    "audioSampleUrl": "https://hr-rpt-audible.s3-us-west-1.amazonaws.com/021-night.mp3",
+    "length": "4:17",
+    "version": "Unabridged Audiobook",
+    "categories": [
+      { "name": "History" },
+      { "name": "Military" }
+    ]
+  },
+  {
+    "title": "Unwinding Anxiety",
+    "subtitle": "New Science Shows How to Break the Cycles of Worry and Fear to Heal Your Mind",
+    "author": "Judson Brewer",
+    "narrator": "Colton Medlin",
+    "imageUrl": "https://hr-rpt-audible.s3-us-west-1.amazonaws.com/022-unwinding-anxiety.jpg",
+    "audioSampleUrl": "https://hr-rpt-audible.s3-us-west-1.amazonaws.com/022-unwinding-anxiety.mp3",
+    "length": "7:20",
+    "version": "Unabridged Audiobook",
+    "categories": [
+      { "name": "Health & Wellness" },
+      { "name": "Psychology & Mental Health" }
+    ]
+  },
+  {
+    "title": "The Devil's Hand",
+    "subtitle": "A Thriller",
+    "author": "Jack Carr",
+    "narrator": "Mackenzie Kynoch",
+    "imageUrl": "https://hr-rpt-audible.s3-us-west-1.amazonaws.com/023-devils-hand.jpg",
+    "audioSampleUrl": "https://hr-rpt-audible.s3-us-west-1.amazonaws.com/023-devils-hand.mp3",
+    "length": "14:37",
+    "version": "Unabridged Audiobook",
+    "categories": [
+      { "name": "Mystery, Thriller & Suspense" },
+      { "name": "Thriller & Suspense" }
+    ]
+  },
+  {
+    "title": "Casino",
+    "subtitle": "Love and Honor in Las Vegas",
+    "author": "Nicholas Pileggi",
+    "narrator": "Ron Leibman, Fred Neumann, Ken Weitzman",
+    "imageUrl": "https://hr-rpt-audible.s3-us-west-1.amazonaws.com/024-casino.jpg",
+    "audioSampleUrl": "https://hr-rpt-audible.s3-us-west-1.amazonaws.com/024-casino.mp3",
+    "length": "2:51",
+    "version": "Abridged Audiobook",
+    "categories": [
+      { "name": "Biographies & Memoirs" },
+      { "name": "True Crime" }
+    ]
+  },
+  {
+    "title": "The Wolf of Wall Street",
+    "subtitle": "",
+    "author": "Jordan Belfort",
+    "narrator": "Bobby Cannavale",
+    "imageUrl": "https://hr-rpt-audible.s3-us-west-1.amazonaws.com/025-wolf-wallstreet.jpg",
+    "audioSampleUrl": "https://hr-rpt-audible.s3-us-west-1.amazonaws.com/025-wolf-wallstreet.mp3",
+    "length": "4:57",
+    "version": "Abridged Audiobook",
+    "categories": [
+      { "name": "Biographies & Memoirs" },
+      { "name": "Professionals & Academics" }
+    ]
   }
 ]
