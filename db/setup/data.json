@@ -347,5 +347,75 @@
       { "name": "Biographies & Memoirs" },
       { "name": "Professionals & Academics" }
     ]
+  },
+  {
+    "title": "The Way of Kings",
+    "subtitle": "The Stormlight Archive, Book 1",
+    "author": "Brandon Sanderson",
+    "narrator": "Kate Reading, Michael Kramer",
+    "imageUrl": "https://hr-rpt-audible.s3-us-west-1.amazonaws.com/026-way-kings.jpg",
+    "audioSampleUrl": "https://hr-rpt-audible.s3-us-west-1.amazonaws.com/026-way-kings.mp3",
+    "length": "45:30",
+    "version": "Unabridged Audiobook",
+    "categories": [
+      { "name": "Science Fiction & Fantasy" },
+      { "name": "Fantasy" }
+    ]
+  },
+  {
+    "title": "The Goldfinch",
+    "subtitle": "",
+    "author": "Donna Tartt",
+    "narrator": "David Pittu",
+    "imageUrl": "https://hr-rpt-audible.s3-us-west-1.amazonaws.com/027-goldfinch.jpg",
+    "audioSampleUrl": "https://hr-rpt-audible.s3-us-west-1.amazonaws.com/027-goldfinch.mp3",
+    "length": "32:24",
+    "version": "Unabridged Audiobook",
+    "categories": [
+      { "name": "Literature & Fiction" },
+      { "name": "Genre Fiction" }
+    ]
+  },
+  {
+    "title": "A Walk in the Woods",
+    "subtitle": "Rediscovering America on the Appalachian Trail",
+    "author": "Bill Bryson",
+    "narrator": "Rob McQuay",
+    "imageUrl": "https://hr-rpt-audible.s3-us-west-1.amazonaws.com/028-walk-woods.jpg",
+    "audioSampleUrl": "https://hr-rpt-audible.s3-us-west-1.amazonaws.com/028-walk-woods.mp3",
+    "length": "9:44",
+    "version": "Unabridged Audiobook",
+    "categories": [
+      { "name": "Science & Engineering" },
+      { "name": "Science" }
+    ]
+  },
+  {
+    "title": "Born a Crime",
+    "subtitle": "Stories from a South African Childhood",
+    "author": "Trevor Noah",
+    "narrator": "Trevor Noah",
+    "imageUrl": "https://hr-rpt-audible.s3-us-west-1.amazonaws.com/029-born-crime.jpg",
+    "audioSampleUrl": "https://hr-rpt-audible.s3-us-west-1.amazonaws.com/029-born-crime.mp3",
+    "length": "8:44",
+    "version": "Unabridged Audiobook",
+    "categories": [
+      { "name": "Arts & Entertainment" },
+      { "name": "Entertainment & Performing Arts" }
+    ]
+  },
+  {
+    "title": "The Princess Diarist",
+    "subtitle": "",
+    "author": "Carrie Fisher",
+    "narrator": "Carrie Fisher, Billie Lourd",
+    "imageUrl": "https://hr-rpt-audible.s3-us-west-1.amazonaws.com/030-princess-diarist.jpg",
+    "audioSampleUrl": "https://hr-rpt-audible.s3-us-west-1.amazonaws.com/030-princess-diarist.mp3",
+    "length": "5:10",
+    "version": "Unabridged Audiobook",
+    "categories": [
+      { "name": "Biographies & Memoirs" },
+      { "name": "Entertainment & Celebrities" }
+    ]
   }
 ]
