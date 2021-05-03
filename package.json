@@ -6,7 +6,7 @@
   "scripts": {
     "react-dev": "webpack --mode development --watch",
     "react-prod": "webpack --mode production",
-    "server-prod": "nodemon ./server/index.js",
+    "server-dev": "nodemon ./server/index.js",
     "seed-db": "node ./db/setup/seed.js"
   },
   "repository": {
@@ -26,6 +26,7 @@
     "babel-loader": "^8.2.2",
     "css-loader": "^5.2.4",
     "node-sass": "^5.0.0",
+    "nodemon": "^2.0.7",
     "sass-loader": "^11.0.1",
     "style-loader": "^2.0.0",
     "webpack": "^5.35.1",
