@@ -46,6 +46,7 @@ const Book = sequelize.define('Book', {
 const Category = sequelize.define('Category', {
   name: {
     type: DataTypes.STRING,
+    unique: true
   }
 });
 

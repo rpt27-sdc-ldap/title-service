@@ -1,4 +1,4 @@
-const { Sequelize } = require('sequelize');
+// const { Sequelize } = require('sequelize');
 const data = require('./data.json');
 const db = require('../db.js');
 

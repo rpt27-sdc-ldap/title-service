@@ -1,10 +1,11 @@
 const express  = require('express');
 const app = express();
-const port = 1001;
+const port = 2002;
 
 const Book = require('../db/models/book.js');
 
 app.use(express.static('public'));
+app.use(express.json());
 
 app.get('/api/book/:id', (req, res) => {
   Book.getById(req.params.id)
@@ -16,6 +17,19 @@ app.get('/api/book/:id', (req, res) => {
       console.log('db err: ', err);
       res.send(err);
     });
+});
+
+app.get('/api/books', (req, res) => {
+  const ids = req.body.ids
+  Book.getByIds(ids)
+    .then((result) => {
+      res.send(result);
+    })
+    .catch((err) => {
+      res.status(500);
+      console.log('db err: ', err);
+      res.send(err);
+    })
 });
 
 app.listen(port, () => {
