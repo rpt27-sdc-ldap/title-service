@@ -20,8 +20,7 @@ app.get('/api/book/:id', (req, res) => {
 });
 
 app.get('/api/books', (req, res) => {
-  const ids = req.body.ids
-  Book.getByIds(ids)
+  Book.getByIds(req.body.ids)
     .then((result) => {
       res.send(result);
     })
