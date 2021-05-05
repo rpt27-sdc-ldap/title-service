@@ -32,6 +32,19 @@ app.get('/api/books', (req, res) => {
     })
 });
 
+app.get('/api/book/:id/related', (req, res) => {
+  Book.getRelatedById(req.params.id)
+    .then((result) => {
+      res.send(result);
+    })
+    .catch((err) => {
+      res.status(500);
+      console.log('db err: ', err);
+      res.send(err);
+    });
+});
+
+
 app.listen(port, () => {
   console.log(`Audible title service listening at http://localhost:${port}`);
 });
