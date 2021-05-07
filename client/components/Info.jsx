@@ -9,17 +9,17 @@ class Info extends React.Component {
     return (
       <div className='image'>
         <ul>
-       <li>By: <span>{this.props.book.author}</span></li>
-       <li>Narrated By: <span>{this.props.book.narrator}</span></li>
-       <li>Narrated By: <span>{this.props.book.narrator}</span></li>
+       <li>By: <a href="#">{this.props.book.author}</a></li>
+       <li>Narrated By: <a href="#">{this.props.book.narrator}</a></li>
        <li>Length: {this.props.book.length}</li>
        <li>{this.props.book.version}</li>
        <li>Categories: {
          this.props.book.categories.map((category, i) => {
+           //dont add a comma on the last category
            if (i === this.props.book.categories.length - 1) {
-             return (<span key={i}>{category.name}</span>)
+             return (<a key={i} href="#">{category.name}</a>)
            }
-           return (<span key={i}>{category.name}, </span>)
+           return (<span key={i}><a href="#">{category.name}</a>, </span>)
          })
          }</li>
         </ul>

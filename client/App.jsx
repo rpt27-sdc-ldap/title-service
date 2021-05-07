@@ -1,6 +1,6 @@
 import React from 'react';
 import Image from './Components/Image.jsx';
-import Audio from './Components/Audio.jsx';
+import AudioSample from './Components/Audio.jsx';
 import Title from './Components/Title.jsx';
 import Info from './Components/Info.jsx';
 
@@ -43,7 +43,7 @@ class App extends React.Component {
     return (
       <div className='container'>
         <Image url={this.state.currentBook.imageUrl}/>
-        <Audio url={this.state.currentBook.audioSampleUrl}/>
+        <AudioSample audio={new Audio(this.state.currentBook.audioSampleUrl)}/>
         <Title book={this.state.currentBook}/>
         <Info book={this.state.currentBook}/>
       </div>
