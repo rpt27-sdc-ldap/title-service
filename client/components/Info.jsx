@@ -17,9 +17,9 @@ class Info extends React.Component {
        <li>Categories: {
          this.props.book.categories.map((category, i) => {
            if (i === this.props.book.categories.length - 1) {
-             return (<span>{category.name}</span>)
+             return (<span key={i}>{category.name}</span>)
            }
-           return (<span>{category.name}, </span>)
+           return (<span key={i}>{category.name}, </span>)
          })
          }</li>
         </ul>

@@ -9,20 +9,34 @@ class App extends React.Component {
    super();
    this.state = {
      currentBook: {
-      title: "A Promised Land",
+      title: "",
       subtitle: "",
-      author: "Barack Obama",
-      narrator: "Barack Obama",
-      imageUrl: "https://hr-rpt-audible.s3-us-west-1.amazonaws.com/001-a-promised-land.jpg",
-      audioSampleUrl: "https://hr-rpt-audible.s3-us-west-1.amazonaws.com/001-a-promised-land.mp3",
-      length: "29:10",
-      version: "Unabridged Audiobook",
+      author: "",
+      narrator: "",
+      imageUrl: "",
+      audioSampleUrl: "",
+      length: "",
+      version: "",
       categories: [
-        { name: "Biographies & Memoirs" },
-        { name: "Politics & Activism" }
+        { name: "" },
+        { name: "" }
       ]
     }
    }
+  }
+
+  getBook() {
+    const query = new URLSearchParams(location.search);
+    const id = query.get('id');
+    fetch(`http://localhost:2002/api/book/${id}`)
+      .then((response) => response.json())
+      .then(data => {
+        this.setState({currentBook: data});
+      })
+  }
+
+  componentDidMount() {
+    this.getBook();
   }
 
   render() {
