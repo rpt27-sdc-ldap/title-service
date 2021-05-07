@@ -20,7 +20,7 @@ class AudioSample extends React.Component {
         if (!this.state.played) {
           //set the time to length of audio (MM:SS) - prevents empty string from displaying
           this.setState({loading: true, time: new Date((this.props.audio.duration) * 1000).toISOString().substr(14, 5)});
-          //wait 0.5 seconds to prevent jumpy loading animation
+          //wait 0.5 second to prevent jumpy loading animation
           setTimeout(() => {
             this.audioTimeCount();
             this.setState({playing: true, played: true, loading: false});
