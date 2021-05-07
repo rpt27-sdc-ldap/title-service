@@ -8,7 +8,7 @@ class Audio extends React.Component {
   render() {
     return (
       <div className='audio'>
-        this is the audio component
+        <img src="https://hr-rpt-audible.s3-us-west-1.amazonaws.com/play.png"></img> Play Sample
       </div>
     );
   }

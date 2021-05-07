@@ -8,7 +8,8 @@ class Title extends React.Component {
   render() {
     return (
       <div className='title'>
-        this is the title component
+        <h1>{this.props.book.title}</h1>
+        <h2>{this.props.book.subtitle}</h2>
       </div>
     );
   }

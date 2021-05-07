@@ -8,7 +8,7 @@ class Image extends React.Component {
   render() {
     return (
       <div className='image'>
-        this is the image component
+        <img src={this.props.url}></img>
       </div>
     );
   }
