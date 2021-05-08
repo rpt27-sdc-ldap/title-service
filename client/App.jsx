@@ -42,10 +42,14 @@ class App extends React.Component {
   render() {
     return (
       <div className='container'>
+        <div className='image-sample'>
         <Image url={this.state.currentBook.imageUrl}/>
         <AudioSample audio={new Audio(this.state.currentBook.audioSampleUrl)}/>
+        </div>
+        <div className='title-info'>
         <Title book={this.state.currentBook}/>
         <Info book={this.state.currentBook}/>
+        </div>
       </div>
     );
   }
