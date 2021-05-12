@@ -48,7 +48,7 @@ class AudioSample extends React.Component {
       return (
       <div className='audioSample'>
         <button>
-        <img src="https://hr-rpt-audible.s3-us-west-1.amazonaws.com/loading.gif" width='16px' height='16px'></img>
+        <img src="https://hr-rpt-audible.s3-us-west-1.amazonaws.com/loading.gif" width='12px' height='12px'></img>
         </button>
       </div>
       )
@@ -57,7 +57,7 @@ class AudioSample extends React.Component {
       return (
       <div className='audioSample'>
         <button onClick={this.pauseAudioSample}>
-        <img src="https://hr-rpt-audible.s3-us-west-1.amazonaws.com/pause.png" width='16px' height='16px'></img> {this.state.time}
+        <img src="https://hr-rpt-audible.s3-us-west-1.amazonaws.com/pause_04.png" width='12px' height='12px'></img> <span>{this.state.time}</span>
         </button>
       </div>
       )
@@ -66,7 +66,7 @@ class AudioSample extends React.Component {
       return (
         <div className='audioSample'>
         <button onClick={this.playAudioSample}>
-        <img src="https://hr-rpt-audible.s3-us-west-1.amazonaws.com/play.png" width='16px' height='16px'></img> {this.state.time}
+        <img src="https://hr-rpt-audible.s3-us-west-1.amazonaws.com/play_04.png" width='12px' height='12px'></img> <span>{this.state.time}</span>
         </button>
       </div>
       )
@@ -74,7 +74,7 @@ class AudioSample extends React.Component {
     return (
       <div className='audioSample'>
       <button onClick={this.playAudioSample}>
-      <img src="https://hr-rpt-audible.s3-us-west-1.amazonaws.com/play.png" width='16px' height='16px'></img> Sample
+      <img src="https://hr-rpt-audible.s3-us-west-1.amazonaws.com/play_04.png" width='12px' height='12px'></img> <span>Sample</span>
       </button>
     </div>
     )
