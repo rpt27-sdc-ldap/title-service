@@ -5,6 +5,8 @@ $button-hover: rgba(255, 255, 255, 0.411);
 
 $font-family: 'Source Sans Pro', sans-serif;
 
+$break-point: '860px';
+
 body {
   background-color: white;
   color: white;
@@ -16,15 +18,18 @@ body {
 h1 {
   color: $primary-color;
   font-size: 20px;
-  //line-height: 1px;
 }
 
 h2 {
   color: $secondary-color;
   font-size: 16px;
-  line-height: 16px;
+  line-height: 20px;
   margin-top: -10px;
 }
+
+///////////////////////////////////////
+////////   BACKGROUNG IMAGE  //////////
+///////////////////////////////////////
 
 .background-container {
   position: relative;
@@ -34,7 +39,7 @@ h2 {
 }
 
 .background-image {
-  //background: url('https://hr-rpt-audible.s3-us-west-1.amazonaws.com/010-fellowship-ring.jpg');
+  background-color: rgb(58, 58, 58);
   background-position: center;
   background-repeat: no-repeat;
   -webkit-background-size: cover;
@@ -55,10 +60,14 @@ h2 {
   z-index: 0;
 }
 
+///////////////////////////////////////
+////////       ELEMENTS      //////////
+///////////////////////////////////////
+
 .price-service {
-  //border: white solid 1px;
+  border: white solid 1px;
   border-radius: 5px;
-  width: 300px;
+  max-width: 300px;
 }
 
 .content-container {
@@ -68,7 +77,8 @@ h2 {
   grid-template-columns: 0.5fr 1fr 1fr;
   position: absolute;
   top: 40px;
-  left: 25%;
+  left: 50%;
+  transform: translate(-50%);
   z-index: 2;
 }
 
@@ -97,10 +107,12 @@ h2 {
 
 .title {
   padding-left: 20px;
+  max-width: 240px;
 }
 
 .info {
   margin-top: 25px;
+  max-width: 220px;
   padding-left: 20px;
   ul {
     padding-left: 0;
@@ -117,4 +129,67 @@ h2 {
       text-decoration: underline;
     }
   }
+}
+
+///////////////////////////////////////
+////////        MOBILE       //////////
+///////////////////////////////////////
+
+
+@media (max-width: $break-point) {
+
+  body {
+    text-align: center;
+  }
+
+  h1 {
+    font-size: 24px;
+  }
+
+  h2 {
+    font-size: 20px;
+  }
+
+  .background-container {
+    height: 900px;
+  }
+
+  .content-container {
+    display: inline;
+    top: 20px;
+    width: 90%;
+  }
+
+  .image {
+    margin: auto;
+    width: 240px;
+    height: 240px;
+  }
+
+  .audioSample button {
+    width: 240px;
+    height: 40px;
+  }
+
+  .info {
+    padding-left: 0px;
+    width: 240px;
+    margin: auto;
+    ul {
+      font-size: 14px;
+    }
+  }
+
+  .title {
+    padding-left: 0px;
+    width: 240px;
+    margin: auto;
+  }
+
+  .price-service {
+    margin: auto;
+    margin-top: 30px;
+    height: 315px;
+  }
+
 }
