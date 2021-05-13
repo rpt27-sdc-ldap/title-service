@@ -417,5 +417,285 @@
       { "name": "Biographies & Memoirs" },
       { "name": "Entertainment & Celebrities" }
     ]
+  },
+  {
+    "title": "Dreams from My Father",
+    "subtitle": "A Story of Race and Inheritance",
+    "author": "Barack Obama",
+    "narrator": "Barack Obama",
+    "imageUrl": "https://hr-rpt-audible.s3-us-west-1.amazonaws.com/031-dreams-father.jpg",
+    "audioSampleUrl": "https://hr-rpt-audible.s3-us-west-1.amazonaws.com/031-dreams-father.mp3",
+    "length": "7:08",
+    "version": "Abridged Audiobook",
+    "categories": [
+      { "name": "Biographies & Memoirs" },
+      { "name": "Cultural, Ethnic & Regional" }
+    ]
+  },
+  {
+    "title": "The Audacity of Hope",
+    "subtitle": "Thoughts on Reclaiming the American Dream",
+    "author": "Barack Obama",
+    "narrator": "Barack Obama",
+    "imageUrl": "https://hr-rpt-audible.s3-us-west-1.amazonaws.com/032-audacity-hope.jpg",
+    "audioSampleUrl": "https://hr-rpt-audible.s3-us-west-1.amazonaws.com/032-audacity-hope.mp3",
+    "length": "6:10",
+    "version": "Abridged Audiobook",
+    "categories": [
+      { "name": "Biographies & Memoirs" },
+      { "name": "Politics & Activism" }
+    ]
+  },
+  {
+    "title": "The White Plague",
+    "subtitle": "",
+    "author": "Frank Herbert",
+    "narrator": "Scott Brick",
+    "imageUrl": "https://hr-rpt-audible.s3-us-west-1.amazonaws.com/033-white-plague.jpg",
+    "audioSampleUrl": "https://hr-rpt-audible.s3-us-west-1.amazonaws.com/033-white-plague.mp3",
+    "length": "19:49",
+    "version": "Unabridged Audiobook",
+    "categories": [
+      { "name": "Science Fiction" },
+      { "name": "Science Fiction & Fantasy" }
+    ]
+  },
+  {
+    "title": "Hellstrom's Hive",
+    "subtitle": "",
+    "author": "Frank Herbert",
+    "narrator": "Scott Brick",
+    "imageUrl": "https://hr-rpt-audible.s3-us-west-1.amazonaws.com/034-hellstroms-hive.jpg",
+    "audioSampleUrl": "https://hr-rpt-audible.s3-us-west-1.amazonaws.com/034-hellstroms-hive.mp3",
+    "length": "12:10",
+    "version": "Unabridged Audiobook",
+    "categories": [
+      { "name": "Science Fiction" },
+      { "name": "Science Fiction & Fantasy" }
+    ]
+  },
+  {
+    "title": "Blade Runner",
+    "subtitle": "Originally published as Do Androids Dream of Electric Sheep?",
+    "author": "Philip K. Dick",
+    "narrator": "Scott Brick",
+    "imageUrl": "https://hr-rpt-audible.s3-us-west-1.amazonaws.com/035-blade-runner.jpg",
+    "audioSampleUrl": "https://hr-rpt-audible.s3-us-west-1.amazonaws.com/035-blade-runner.mp3",
+    "length": "9:12",
+    "version": "Unabridged Audiobook",
+    "categories": [
+      { "name": "Science Fiction" },
+      { "name": "Science Fiction & Fantasy" }
+    ]
+  },
+  {
+    "title": "The Devil in the White City",
+    "subtitle": "Murder, Magic, and Madness at the Fair That Changed America",
+    "author": "Erik Larson",
+    "narrator": "Scott Brick",
+    "imageUrl": "https://hr-rpt-audible.s3-us-west-1.amazonaws.com/036-devil-city.jpg",
+    "audioSampleUrl": "https://hr-rpt-audible.s3-us-west-1.amazonaws.com/036-devil-city.mp3",
+    "length": "14:58",
+    "version": "Unabridged Audiobook",
+    "categories": [
+      { "name": "Biographies & Memoirs" },
+      { "name": "True Crime" }
+    ]
+  },
+  {
+    "title": "Dirk Gently's Holistic Detective Agency",
+    "subtitle": "",
+    "author": "Douglas Adams",
+    "narrator": "Douglas Adams",
+    "imageUrl": "https://hr-rpt-audible.s3-us-west-1.amazonaws.com/037-dirk-gently.jpg",
+    "audioSampleUrl": "https://hr-rpt-audible.s3-us-west-1.amazonaws.com/037-dirk-gently.mp3",
+    "length": "3:01",
+    "version": "Abridged Audiobook",
+    "categories": [
+      { "name": "Literature & Fiction" },
+      { "name": "Humor & Satire" }
+    ]
+  },
+  {
+    "title": "Mostly Harmless",
+    "subtitle": "",
+    "author": "Douglas Adams",
+    "narrator": "Martin Freeman",
+    "imageUrl": "https://hr-rpt-audible.s3-us-west-1.amazonaws.com/038-mostyl-harmless.jpg",
+    "audioSampleUrl": "https://hr-rpt-audible.s3-us-west-1.amazonaws.com/038-mostly-harmless.mp3",
+    "length": "6:33",
+    "version": "Unabridged Audiobook",
+    "categories": [
+      { "name": "Science Fiction & Fantasy" },
+      { "name": "Science Fiction" }
+    ]
+  },
+  {
+    "title": "Mythos",
+    "subtitle": "",
+    "author": "Stephen Fry",
+    "narrator": "Stephen Fry",
+    "imageUrl": "https://hr-rpt-audible.s3-us-west-1.amazonaws.com/039-mythos.jpg",
+    "audioSampleUrl": "https://hr-rpt-audible.s3-us-west-1.amazonaws.com/039-mythos.mp3",
+    "length": "15:26",
+    "version": "Unabridged Audiobook",
+    "categories": [
+      { "name": "History" },
+      { "name": "Ancient History" }
+    ]
+  },
+  {
+    "title": "The Ickabog",
+    "subtitle": "",
+    "author": "J.K. Rowling",
+    "narrator": "Stephen Fry",
+    "imageUrl": "https://hr-rpt-audible.s3-us-west-1.amazonaws.com/040-ickabog.jpg",
+    "audioSampleUrl": "https://hr-rpt-audible.s3-us-west-1.amazonaws.com/040-ickabog.mp3",
+    "length": "7:52",
+    "version": "Unabridged Audiobook",
+    "categories": [
+      { "name": "Children's Audiobooks" },
+      { "name": "Fairy Tales, Folk Tales & Myths" }
+    ]
+  },
+  {
+    "title": "The Casual Vacancy",
+    "subtitle": "",
+    "author": "J.K. Rowling",
+    "narrator": "Tom Hollander",
+    "imageUrl": "https://hr-rpt-audible.s3-us-west-1.amazonaws.com/041-casual-vacancy.jpg",
+    "audioSampleUrl": "https://hr-rpt-audible.s3-us-west-1.amazonaws.com/041-casual-vacancy.mp3",
+    "length": "17:51",
+    "version": "Unabridged Audiobook",
+    "categories": [
+      { "name": "Literature & Fiction" },
+      { "name": "Genre Fiction" }
+    ]
+  },
+  {
+    "title": "The Silmarillion",
+    "subtitle": "",
+    "author": "J. R.R. Tolkien",
+    "narrator": "Martin Shaw",
+    "imageUrl": "https://hr-rpt-audible.s3-us-west-1.amazonaws.com/042-silmarillion.jpg",
+    "audioSampleUrl": "https://hr-rpt-audible.s3-us-west-1.amazonaws.com/042-silmarillion.mp3",
+    "length": "14:49",
+    "version": "Unabridged Audiobook",
+    "categories": [
+      { "name": "Science Fiction & Fantasy" },
+      { "name": "Fantasy" }
+    ]
+  },
+  {
+    "title": "The Two Towers",
+    "subtitle": "Book Two in the Lord of the Rings Trilogy",
+    "author": "J. R.R. Tolkien",
+    "narrator": "Rob Inglis",
+    "imageUrl": "https://hr-rpt-audible.s3-us-west-1.amazonaws.com/043-two-towers.jpg",
+    "audioSampleUrl": "https://hr-rpt-audible.s3-us-west-1.amazonaws.com/043-two-towers.mp3",
+    "length": "16:40",
+    "version": "Unabridged Audiobook",
+    "categories": [
+      { "name": "Literature & Fiction" },
+      { "name": "Classics" }
+    ]
+  },
+  {
+    "title": "The Hobbit",
+    "subtitle": "",
+    "author": "J. R.R. Tolkien",
+    "narrator": "Andy Serkis",
+    "imageUrl": "https://hr-rpt-audible.s3-us-west-1.amazonaws.com/044-hobbit.jpg",
+    "audioSampleUrl": "https://hr-rpt-audible.s3-us-west-1.amazonaws.com/044-hobbit.mp3",
+    "length": "10:25",
+    "version": "Unabridged Audiobook",
+    "categories": [
+      { "name": "Children's Audiobooks" },
+      { "name": "Literature & Fiction" }
+    ]
+  },
+  {
+    "title": "Angels and Demons",
+    "subtitle": "",
+    "author": "Dan Brown",
+    "narrator": "Richard Poe",
+    "imageUrl": "https://hr-rpt-audible.s3-us-west-1.amazonaws.com/045-angels-demons.jpg",
+    "audioSampleUrl": "https://hr-rpt-audible.s3-us-west-1.amazonaws.com/045-angels-demons.mp3",
+    "length": "18:28",
+    "version": "Unabridged Audiobook",
+    "categories": [
+      { "name": "Action & Adventure" },
+      { "name": "Literature & Fiction" }
+    ]
+  },
+  {
+    "title": "Origin",
+    "subtitle": "A Novel",
+    "author": "Dan Brown",
+    "narrator": "Paul Michael",
+    "imageUrl": "https://hr-rpt-audible.s3-us-west-1.amazonaws.com/046-origin.jpg",
+    "audioSampleUrl": "https://hr-rpt-audible.s3-us-west-1.amazonaws.com/046-origin.mp3",
+    "length": "18:10",
+    "version": "Unabridged Audiobook",
+    "categories": [
+      { "name": "Action & Adventure" },
+      { "name": "Literature & Fiction" }
+    ]
+  },
+  {
+    "title": "The Laws of Human Nature",
+    "subtitle": "",
+    "author": "Robert Greene",
+    "narrator": "Paul Michael",
+    "imageUrl": "https://hr-rpt-audible.s3-us-west-1.amazonaws.com/047-human-nature.jpg",
+    "audioSampleUrl": "https://hr-rpt-audible.s3-us-west-1.amazonaws.com/047-human-nature.mp3",
+    "length": "28:26",
+    "version": "Unabridged Audiobook",
+    "categories": [
+      { "name": "Business & Careers" },
+      { "name": "Career Success" }
+    ]
+  },
+  {
+    "title": "Art of Seduction",
+    "subtitle": "An Indispensible Primer on the Ultimate Form of Power",
+    "author": "Robert Greene",
+    "narrator": "Joseph Powers",
+    "imageUrl": "https://hr-rpt-audible.s3-us-west-1.amazonaws.com/048-seduction.jpg",
+    "audioSampleUrl": "https://hr-rpt-audible.s3-us-west-1.amazonaws.com/048-seduction.mp3",
+    "length": "22:51",
+    "version": "Unabridged Audiobook",
+    "categories": [
+      { "name": "Erotica" },
+      { "name": "Sex Instruction" }
+    ]
+  },
+  {
+    "title": "The Martian",
+    "subtitle": "",
+    "author": "Andy Weir",
+    "narrator": "Wil Wheaton",
+    "imageUrl": "https://hr-rpt-audible.s3-us-west-1.amazonaws.com/049-martian.jpg",
+    "audioSampleUrl": "https://hr-rpt-audible.s3-us-west-1.amazonaws.com/048-seduction.mp3",
+    "length": "10:59",
+    "version": "Unabridged Audiobook",
+    "categories": [
+      { "name": "Science Fiction & Fantasy" },
+      { "name": "Science Fiction" }
+    ]
+  },
+  {
+    "title": "Project Hail Mary",
+    "subtitle": "",
+    "author": "Ray Porter",
+    "narrator": "Wil Wheaton",
+    "imageUrl": "https://hr-rpt-audible.s3-us-west-1.amazonaws.com/050-hail-mary.jpg",
+    "audioSampleUrl": "https://hr-rpt-audible.s3-us-west-1.amazonaws.com/050-hail-mary.mp3",
+    "length": "16:10",
+    "version": "Unabridged Audiobook",
+    "categories": [
+      { "name": "Science Fiction & Fantasy" },
+      { "name": "Science Fiction" }
+    ]
   }
 ]
