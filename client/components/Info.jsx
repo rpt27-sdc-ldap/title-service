@@ -7,11 +7,11 @@ class Info extends React.Component {
 
   render() {
     return (
-      <div className='image'>
+      <div className='info'>
         <ul>
        <li>By: <a href="#">{this.props.book.author}</a></li>
        <li>Narrated By: <a href="#">{this.props.book.narrator}</a></li>
-       <li>Length: {this.props.book.length}</li>
+       <li>Length: {this.props.book.length.split(':')[0]} hrs and {this.props.book.length.split(':')[1]} mins</li>
        <li>{this.props.book.version}</li>
        <li>Categories: {
          this.props.book.categories.map((category, i) => {

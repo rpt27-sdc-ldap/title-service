@@ -40,12 +40,28 @@ class App extends React.Component {
   }
 
   render() {
+    const backgroundStyle = {
+      backgroundImage: `url('${this.state.currentBook.imageUrl}')`,
+      backgroundRepeat: 'no-repeat'
+    };
     return (
-      <div className='container'>
-        <Image url={this.state.currentBook.imageUrl}/>
-        <AudioSample audio={new Audio(this.state.currentBook.audioSampleUrl)}/>
-        <Title book={this.state.currentBook}/>
-        <Info book={this.state.currentBook}/>
+      <div>
+      <div className='background-container'>
+        <div className='background-image' style={backgroundStyle}></div>
+      </div>
+
+        <div className='content-container'>
+          <div className='image-sample'>
+          <Image url={this.state.currentBook.imageUrl}/>
+          <AudioSample audio={new Audio(this.state.currentBook.audioSampleUrl)}/>
+          </div>
+          <div className='title-info'>
+          <Title book={this.state.currentBook}/>
+          <Info book={this.state.currentBook}/>
+          </div>
+          <div className='price-service'>
+          </div>
+        </div>
       </div>
     );
   }
