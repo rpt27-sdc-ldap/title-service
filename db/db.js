@@ -45,7 +45,8 @@ const Book = sequelize.define('Book', {
 
 const Category = sequelize.define('Category', {
   name: {
-    type: DataTypes.STRING
+    type: DataTypes.STRING,
+    unique: true
   }
 });
 
@@ -98,3 +99,4 @@ Category.belongsToMany(Book, {
 module.exports.sequelize = sequelize;
 module.exports.Book = Book;
 module.exports.Category = Category;
+module.exports.BookCategory = Book_Category;
