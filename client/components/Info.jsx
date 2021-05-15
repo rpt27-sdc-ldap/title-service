@@ -23,8 +23,8 @@ class Info extends React.Component {
            return (<span key={i}><a href="#">{category.name}</a>, </span>)
          })
          }</li>
-        </ul>
         <Rating />
+        </ul>
       </div>
     );
   }
