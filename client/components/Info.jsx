@@ -1,4 +1,5 @@
 import React from 'react';
+import Rating from './Rating.jsx'
 
 class Info extends React.Component {
   constructor(props) {
@@ -23,6 +24,7 @@ class Info extends React.Component {
          })
          }</li>
         </ul>
+        <Rating />
       </div>
     );
   }
