@@ -5,7 +5,7 @@ $button-hover: rgba(255, 255, 255, 0.411);
 
 $font-family: 'Source Sans Pro', sans-serif;
 
-$break-point: '860px';
+$break-point: '960px';
 
 body {
   background-color: white;
@@ -17,13 +17,13 @@ body {
 
 h1 {
   color: $primary-color;
-  font-size: 20px;
+  font-size: 30px;
 }
 
 h2 {
   color: $secondary-color;
-  font-size: 16px;
-  line-height: 20px;
+  font-size: 28px;
+  line-height: 28px;
   margin-top: -10px;
 }
 
@@ -33,7 +33,7 @@ h2 {
 
 .background-container {
   position: relative;
-  height: 280px;
+  height: 420px;
   padding-top: 40px;
   overflow: hidden;
 }
@@ -71,7 +71,7 @@ h2 {
 }
 
 .content-container {
-  width: 800px;
+  width: 1000px;
   margin: auto;
   display: grid;
   grid-template-columns: 0.5fr 1fr 1fr;
@@ -83,18 +83,19 @@ h2 {
 }
 
 .image {
-  width: 180px;
-  height: 180px;
+  width: 230px;
+  height: 230px;
 }
 
 .audioSample button {
-  width: 180px;
+  width: 230px;
   background-color: $button-color;
   color: $primary-color;
   border: none;
-  height: 30px;
+  height: 40px;
   span {
     vertical-align: middle;
+    font-size: 14px;
   }
   img {
    vertical-align: middle;
@@ -106,18 +107,20 @@ h2 {
 }
 
 .title {
+  padding-top: 0px;
+  margin-top: -20px;
   padding-left: 20px;
-  max-width: 240px;
+  max-width: 340px;
 }
 
 .info {
   margin-top: 25px;
-  max-width: 220px;
+  max-width: 320px;
   padding-left: 20px;
   ul {
     padding-left: 0;
     color: $secondary-color;
-    font-size: 12px;
+    font-size: 15px;
   }
   li {
     list-style-type: none;

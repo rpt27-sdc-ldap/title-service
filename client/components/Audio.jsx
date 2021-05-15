@@ -35,6 +35,9 @@ class AudioSample extends React.Component {
     setInterval(() => {
       //converts seconds into MM:SS
       this.setState({time: new Date((this.props.audio.duration - this.props.audio.currentTime) * 1000).toISOString().substr(14, 5)});
+      if (this.state.time === '00:00'){
+        this.setState({playing: false, played: false, loading: false})
+      }
      }, 1000);
   }
 
@@ -48,7 +51,7 @@ class AudioSample extends React.Component {
       return (
       <div className='audioSample'>
         <button>
-        <img src="https://hr-rpt-audible.s3-us-west-1.amazonaws.com/loading.gif" width='12px' height='12px'></img>
+        <img src="https://hr-rpt-audible.s3-us-west-1.amazonaws.com/loading.gif" width='16px' height='16px'></img>
         </button>
       </div>
       )
@@ -57,7 +60,7 @@ class AudioSample extends React.Component {
       return (
       <div className='audioSample'>
         <button onClick={this.pauseAudioSample}>
-        <img src="https://hr-rpt-audible.s3-us-west-1.amazonaws.com/pause_04.png" width='12px' height='12px'></img> <span>{this.state.time}</span>
+        <img src="https://hr-rpt-audible.s3-us-west-1.amazonaws.com/pause_04.png" width='16px' height='16px'></img> <span>{this.state.time}</span>
         </button>
       </div>
       )
@@ -66,7 +69,7 @@ class AudioSample extends React.Component {
       return (
         <div className='audioSample'>
         <button onClick={this.playAudioSample}>
-        <img src="https://hr-rpt-audible.s3-us-west-1.amazonaws.com/play_04.png" width='12px' height='12px'></img> <span>{this.state.time}</span>
+        <img src="https://hr-rpt-audible.s3-us-west-1.amazonaws.com/play_04.png" width='16px' height='16px'></img> <span>{this.state.time}</span>
         </button>
       </div>
       )
@@ -74,7 +77,7 @@ class AudioSample extends React.Component {
     return (
       <div className='audioSample'>
       <button onClick={this.playAudioSample}>
-      <img src="https://hr-rpt-audible.s3-us-west-1.amazonaws.com/play_04.png" width='12px' height='12px'></img> <span>Sample</span>
+      <img src="https://hr-rpt-audible.s3-us-west-1.amazonaws.com/play_04.png" width='16px' height='16px'></img> <span>Sample</span>
       </button>
     </div>
     )

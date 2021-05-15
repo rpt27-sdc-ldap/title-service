@@ -697,5 +697,159 @@
       { "name": "Science Fiction & Fantasy" },
       { "name": "Science Fiction" }
     ]
+  },
+  {
+    "title": "Yearbook",
+    "subtitle": "",
+    "author": "Seth Rogen",
+    "narrator": "Seth Rogen",
+    "imageUrl": "https://hr-rpt-audible.s3-us-west-1.amazonaws.com/051-year-book.jpg",
+    "audioSampleUrl": "https://hr-rpt-audible.s3-us-west-1.amazonaws.com/051-year-book.mp3",
+    "length": "6:13",
+    "version": "Unabridged Audiobook",
+    "categories": [
+      { "name": "Biographies & Memoirs" },
+      { "name": "Entertainment & Celebrities" }
+    ]
+  },
+  {
+    "title": "Ghostbuster's Daughter",
+    "subtitle": "Life with My Dad, Harold Ramis",
+    "author": "Violet Ramis Stiel",
+    "narrator": "Seth Rogen",
+    "imageUrl": "https://hr-rpt-audible.s3-us-west-1.amazonaws.com/052-ghostbuster.jpg",
+    "audioSampleUrl": "https://hr-rpt-audible.s3-us-west-1.amazonaws.com/052-ghostbuster.mp3",
+    "length": "7:30",
+    "version": "Unabridged Audiobook",
+    "categories": [
+      { "name": "Arts & Entertainment" },
+      { "name": "Entertainment & Performing Arts" }
+    ]
+  },
+  {
+    "title": "The Vanishing Half",
+    "subtitle": "A Novel",
+    "author": "Brit Bennett",
+    "narrator": "Shayna Small",
+    "imageUrl": "https://hr-rpt-audible.s3-us-west-1.amazonaws.com/053-vanishing-half.jpg",
+    "audioSampleUrl": "https://hr-rpt-audible.s3-us-west-1.amazonaws.com/053-vanishing-half.mp3",
+    "length": "11:34",
+    "version": "Unabridged Audiobook",
+    "categories": [
+      { "name": "Literature & Fiction" },
+      { "name": "Genre Fiction" }
+    ]
+  },
+  {
+    "title": "The Mothers",
+    "subtitle": "A Novel",
+    "author": "Brit Bennett",
+    "narrator": "Adenrele Ojo",
+    "imageUrl": "https://hr-rpt-audible.s3-us-west-1.amazonaws.com/054-mothers.jpg",
+    "audioSampleUrl": "https://hr-rpt-audible.s3-us-west-1.amazonaws.com/054-mothers.mp3",
+    "length": "9:55",
+    "version": "Unabridged Audiobook",
+    "categories": [
+      { "name": "Literature & Fiction" },
+      { "name": "Genre Fiction" }
+    ]
+  },
+  {
+    "title": "Catching Fire",
+    "subtitle": "The Hunger Games, Book 2",
+    "author": "Suzanne Collins",
+    "narrator": "Tatiana Maslany",
+    "imageUrl": "https://hr-rpt-audible.s3-us-west-1.amazonaws.com/055-catching-fire.jpg",
+    "audioSampleUrl": "https://hr-rpt-audible.s3-us-west-1.amazonaws.com/055-catching-fire.mp3",
+    "length": "11:03",
+    "version": "Unabridged Audiobook",
+    "categories": [
+      { "name": "Teen" },
+      { "name": "Literature & Fiction" }
+    ]
+  },
+  {
+    "title": "The Hunger Games: Special Edition",
+    "subtitle": "",
+    "author": "Suzanne Collins",
+    "narrator": "Tatiana Maslany",
+    "imageUrl": "https://hr-rpt-audible.s3-us-west-1.amazonaws.com/056-hunger-games.jpg",
+    "audioSampleUrl": "https://hr-rpt-audible.s3-us-west-1.amazonaws.com/056-hunger-games.mp3",
+    "length": "10:35",
+    "version": "Unabridged Audiobook",
+    "categories": [
+      { "name": "Children's Audiobooks" },
+      { "name": "Action & Adventure" }
+    ]
+  },
+  {
+    "title": "Locke & Key",
+    "subtitle": "",
+    "author": "Joe Hill, Gabriel Rodriguez",
+    "narrator": "Tatiana Maslany",
+    "imageUrl": "https://hr-rpt-audible.s3-us-west-1.amazonaws.com/057-locke-key.jpg",
+    "audioSampleUrl": "https://hr-rpt-audible.s3-us-west-1.amazonaws.com/057-locke-key.mp3",
+    "length": "13:23",
+    "version": "Unabridged Audiobook",
+    "categories": [
+      { "name": "Literature & Fiction, Horror" },
+      { "name": "Horror" }
+    ]
+  },
+  {
+    "title": "Sherlock Holmes",
+    "subtitle": "",
+    "author": "Arthur Conan Doyle",
+    "narrator": "Stephen Fry",
+    "imageUrl": "https://hr-rpt-audible.s3-us-west-1.amazonaws.com/058-holmes.jpg",
+    "audioSampleUrl": "https://hr-rpt-audible.s3-us-west-1.amazonaws.com/058-holmes.mp3",
+    "length": "62:52",
+    "version": "Unabridged Audiobook",
+    "categories": [
+      { "name": "Literature & Fiction" },
+      { "name": "Classics" }
+    ]
+  },
+  {
+    "title": "Harry Potter and the Prisoner of Azkaban, Book 3",
+    "subtitle": "",
+    "author": "J.K. Rowling",
+    "narrator": "Jim Dale",
+    "imageUrl": "https://hr-rpt-audible.s3-us-west-1.amazonaws.com/059-prisoner-azkaban.jpg",
+    "audioSampleUrl": "https://hr-rpt-audible.s3-us-west-1.amazonaws.com/059-prisoner-azkaban.mp3",
+    "length": "11:49",
+    "version": "Unabridged Audiobook",
+    "categories": [
+      { "name": "Children's Audiobooks" },
+      { "name": "Literature & Fiction" }
+    ]
+  },
+  {
+    "title": "The Midnight Library",
+    "subtitle": "A Novel",
+    "author": "Matt Haig",
+    "narrator": "Carey Mulligan",
+    "imageUrl": "https://hr-rpt-audible.s3-us-west-1.amazonaws.com/060-midnight-library.jpg",
+    "audioSampleUrl": "https://hr-rpt-audible.s3-us-west-1.amazonaws.com/060-midnight-library.mp3",
+    "length": "8:50",
+    "version": "Unabridged Audiobook",
+    "categories": [
+      { "name": "Science Fiction & Fantasy" },
+      { "name": "Science Fiction" }
+    ]
+  },
+  {
+    "title": "Girls & Boys",
+    "subtitle": "",
+    "author": "Dennis Kelly",
+    "narrator": "Carey Mulligan",
+    "imageUrl": "https://hr-rpt-audible.s3-us-west-1.amazonaws.com/061-girls-boys.jpg",
+    "audioSampleUrl": "https://hr-rpt-audible.s3-us-west-1.amazonaws.com/061-girls-boys.mp3",
+    "length": "8:50",
+    "version": "Unabridged Audiobook",
+    "categories": [
+      { "name": "Science Fiction & Fantasy" },
+      { "name": "Science Fiction" }
+    ]
   }
 ]
