@@ -851,5 +851,145 @@
       { "name": "Science Fiction & Fantasy" },
       { "name": "Science Fiction" }
     ]
+  },
+  {
+    "title": "American Gods: The Tenth Anniversary Edition (A Full Cast Production)",
+    "subtitle": "",
+    "author": "Neil Gaiman",
+    "narrator": "Ron McLarty, Daniel Oreskes, full cast",
+    "imageUrl": "https://hr-rpt-audible.s3-us-west-1.amazonaws.com/062-american-gods.jpg",
+    "audioSampleUrl": "https://hr-rpt-audible.s3-us-west-1.amazonaws.com/062-american-gods.mp3",
+    "length": "19:39",
+    "version": "Unabridged Audiobook",
+    "categories": [
+      { "name": "Literature & Fiction" },
+      { "name": "Action & Adventure" }
+    ]
+  },
+  {
+    "title": "Odd and the Frost Giants",
+    "subtitle": "",
+    "author": "Neil Gaiman",
+    "narrator": "Neil Gaiman",
+    "imageUrl": "https://hr-rpt-audible.s3-us-west-1.amazonaws.com/063-odd-giants.jpg",
+    "audioSampleUrl": "https://hr-rpt-audible.s3-us-west-1.amazonaws.com/063-odd-giants.mp3",
+    "length": "1:46",
+    "version": "Unabridged Audiobook",
+    "categories": [
+      { "name": "Children's Audiobooks" },
+      { "name": "Fairy Tales, Folk Tales & Myths" }
+    ]
+  },
+  {
+    "title": "Stardust",
+    "subtitle": "",
+    "author": "Neil Gaiman",
+    "narrator": "Neil Gaiman",
+    "imageUrl": "https://hr-rpt-audible.s3-us-west-1.amazonaws.com/064-stardust.jpg",
+    "audioSampleUrl": "https://hr-rpt-audible.s3-us-west-1.amazonaws.com/064-stardust.mp3",
+    "length": "6:21",
+    "version": "Unabridged Audiobook",
+    "categories": [
+      { "name": "Literature & Fiction" },
+      { "name": "Genre Fiction" }
+    ]
+  },
+  {
+    "title": "The Mysterious Affair at Styles",
+    "subtitle": "",
+    "author": "Agatha Christie",
+    "narrator": "David Thorn",
+    "imageUrl": "https://hr-rpt-audible.s3-us-west-1.amazonaws.com/065-affair-styles.jpg",
+    "audioSampleUrl": "https://hr-rpt-audible.s3-us-west-1.amazonaws.com/065-affair-styles.mp3",
+    "length": "6:25",
+    "version": "Unabridged Audiobook",
+    "categories": [
+      { "name": "Literature & Fiction" },
+      { "name": "Genre Fiction" }
+    ]
+  },
+  {
+    "title": "Death on the Nile",
+    "subtitle": "Hercule Poirot Mysteries, Book 17",
+    "author": "Agatha Christie",
+    "narrator": "David Thorn",
+    "imageUrl": "https://hr-rpt-audible.s3-us-west-1.amazonaws.com/066-death-nile.jpg",
+    "audioSampleUrl": "https://hr-rpt-audible.s3-us-west-1.amazonaws.com/066-death-nile.mp3",
+    "length": "8:14",
+    "version": "Unabridged Audiobook",
+    "categories": [
+      { "name": "Mystery" },
+      { "name": "Thriller & Suspense, Mystery" }
+    ]
+  },
+  {
+    "title": "Mansfield Park",
+    "subtitle": "",
+    "author": "Jane Austen",
+    "narrator": "Anna Bentinck",
+    "imageUrl": "https://hr-rpt-audible.s3-us-west-1.amazonaws.com/067-mansfield-park.jpg",
+    "audioSampleUrl": "https://hr-rpt-audible.s3-us-west-1.amazonaws.com/067-mansfield-park.mp3",
+    "length": "18:41",
+    "version": "Unabridged Audiobook",
+    "categories": [
+      { "name": "Literature & Fiction" },
+      { "name": "Classics" }
+    ]
+  },
+  {
+    "title": "Pride and Prejudice",
+    "subtitle": "",
+    "author": "Jane Austen",
+    "narrator": "Rosamund Pike",
+    "imageUrl": "https://hr-rpt-audible.s3-us-west-1.amazonaws.com/068-pride-prejudice.jpg",
+    "audioSampleUrl": "https://hr-rpt-audible.s3-us-west-1.amazonaws.com/068-pride-prejudice.mp3",
+    "length": "11:35",
+    "version": "Unabridged Audiobook",
+    "categories": [
+      { "name": "Literature & Fiction" },
+      { "name": "Classics" }
+    ]
+  },
+  {
+    "title": "Jane Eyre",
+    "subtitle": "",
+    "author": "Charlotte Brontë",
+    "narrator": "Thandiwe Newton",
+    "imageUrl": "https://hr-rpt-audible.s3-us-west-1.amazonaws.com/069-jane-eyre.jpg",
+    "audioSampleUrl": "https://hr-rpt-audible.s3-us-west-1.amazonaws.com/069-jane-eyre.mp3",
+    "length": "19:10",
+    "version": "Unabridged Audiobook",
+    "categories": [
+      { "name": "Literature & Fiction" },
+      { "name": "Classics" }
+    ]
+  },
+  {
+    "title": "Great Expectations",
+    "subtitle": "",
+    "author": "Charles Dickens",
+    "narrator": "Simon Prebble",
+    "imageUrl": "https://hr-rpt-audible.s3-us-west-1.amazonaws.com/070-great-expectations.jpg",
+    "audioSampleUrl": "https://hr-rpt-audible.s3-us-west-1.amazonaws.com/070-great-expectations.mp3",
+    "length": "18:32",
+    "version": "Unabridged Audiobook",
+    "categories": [
+      { "name": "Literature & Fiction" },
+      { "name": "Classics" }
+    ]
+  },
+  {
+    "title": "Great Expectations",
+    "subtitle": "",
+    "author": "Charles Dickens",
+    "narrator": "Simon Prebble",
+    "imageUrl": "https://hr-rpt-audible.s3-us-west-1.amazonaws.com/070-great-expectations.jpg",
+    "audioSampleUrl": "https://hr-rpt-audible.s3-us-west-1.amazonaws.com/070-great-expectations.mp3",
+    "length": "18:32",
+    "version": "Unabridged Audiobook",
+    "categories": [
+      { "name": "Literature & Fiction" },
+      { "name": "Classics" }
+    ]
   }
 ]
