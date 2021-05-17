@@ -979,17 +979,422 @@
     ]
   },
   {
-    "title": "Great Expectations",
+    "title": "A Christmas Carol",
     "subtitle": "",
     "author": "Charles Dickens",
-    "narrator": "Simon Prebble",
-    "imageUrl": "https://hr-rpt-audible.s3-us-west-1.amazonaws.com/070-great-expectations.jpg",
-    "audioSampleUrl": "https://hr-rpt-audible.s3-us-west-1.amazonaws.com/070-great-expectations.mp3",
-    "length": "18:32",
+    "narrator": "Bob Neufeld",
+    "imageUrl": "https://hr-rpt-audible.s3-us-west-1.amazonaws.com/071-christmas-carol.jpg",
+    "audioSampleUrl": "https://hr-rpt-audible.s3-us-west-1.amazonaws.com/071-christmas-carol.mp3",
+    "length": "3:30",
     "version": "Unabridged Audiobook",
     "categories": [
       { "name": "Literature & Fiction" },
       { "name": "Classics" }
+    ]
+  },
+  {
+    "title": "The Republic",
+    "subtitle": "",
+    "author": "Plato",
+    "narrator": "Bob Neufeld",
+    "imageUrl": "https://hr-rpt-audible.s3-us-west-1.amazonaws.com/072-republic.jpg",
+    "audioSampleUrl": "https://hr-rpt-audible.s3-us-west-1.amazonaws.com/071-christmas-carol.mp3",
+    "length": "12:19",
+    "version": "Unabridged Audiobook",
+    "categories": [
+      { "name": "Literature & Fiction" },
+      { "name": "Classics" }
+    ]
+  },
+  {
+    "title": "The Allegory of the Cave",
+    "subtitle": "",
+    "author": "Plato",
+    "narrator": "Adriel Brandt",
+    "imageUrl": "https://hr-rpt-audible.s3-us-west-1.amazonaws.com/073-cave.jpg",
+    "audioSampleUrl": "https://hr-rpt-audible.s3-us-west-1.amazonaws.com/073-cave.mp3",
+    "length": "2:07",
+    "version": "Unabridged Audiobook",
+    "categories": [
+      { "name": "Literature & Fiction" },
+      { "name": "Classics" }
+    ]
+  },
+  {
+    "title": "The Everything Store",
+    "subtitle": "Jeff Bezos and the Age of Amazon",
+    "author": "Brad Stone",
+    "narrator": "Pete Larkin",
+    "imageUrl": "https://hr-rpt-audible.s3-us-west-1.amazonaws.com/074-everything-store.jpg",
+    "audioSampleUrl": "https://hr-rpt-audible.s3-us-west-1.amazonaws.com/074-everything-store.mp3",
+    "length": "13:15",
+    "version": "Unabridged Audiobook",
+    "categories": [
+      { "name": "Biographies & Memoirs" },
+      { "name": "Professionals & Academics" }
+    ]
+  },
+  {
+    "title": "Steve Jobs",
+    "subtitle": "",
+    "author": "Walter Isaacson",
+    "narrator": "Dylan Baker",
+    "imageUrl": "https://hr-rpt-audible.s3-us-west-1.amazonaws.com/075-jobs.jpg",
+    "audioSampleUrl": "https://hr-rpt-audible.s3-us-west-1.amazonaws.com/075-jobs.mp3",
+    "length": "25:18",
+    "version": "Unabridged Audiobook",
+    "categories": [
+      { "name": "Biographies & Memoirs" },
+      { "name": "Professionals & Academics" }
+    ]
+  },
+  {
+    "title": "The Code Breaker",
+    "subtitle": "",
+    "author": "Walter Isaacson",
+    "narrator": "Kathe Mazur",
+    "imageUrl": "https://hr-rpt-audible.s3-us-west-1.amazonaws.com/076-code-breaker.jpg",
+    "audioSampleUrl": "https://hr-rpt-audible.s3-us-west-1.amazonaws.com/076-code-breaker.mp3",
+    "length": "16:04",
+    "version": "Unabridged Audiobook",
+    "categories": [
+      { "name": "Biographies & Memoirs" },
+      { "name": "Professionals & Academics" }
+    ]
+  },
+  {
+    "title": "Einstein",
+    "subtitle": "His Life and Universe",
+    "author": "Walter Isaacson",
+    "narrator": "Edward Herrmann",
+    "imageUrl": "https://hr-rpt-audible.s3-us-west-1.amazonaws.com/077-einstein.jpg",
+    "audioSampleUrl": "https://hr-rpt-audible.s3-us-west-1.amazonaws.com/077-einstein.mp3",
+    "length": "21:30",
+    "version": "Unabridged Audiobook",
+    "categories": [
+      { "name": "Biographies & Memoirs" },
+      { "name": "Professionals & Academics" }
+    ]
+  },
+  {
+    "title": "Behold the Dreamers (Oprah's Book Club)",
+    "subtitle": "A Novel",
+    "author": "Imbolo Mbue",
+    "narrator": "Prentice Onayemi",
+    "imageUrl": "https://hr-rpt-audible.s3-us-west-1.amazonaws.com/078-behold-dreamers.jpg",
+    "audioSampleUrl": "https://hr-rpt-audible.s3-us-west-1.amazonaws.com/078-behold-dreamers.mp3",
+    "length": "12:14",
+    "version": "Unabridged Audiobook",
+    "categories": [
+      { "name": "Literature & Fiction" },
+      { "name": "Genre Fiction" }
+    ]
+  },
+  {
+    "title": "Boy Swallows Universe",
+    "subtitle": "A Novel",
+    "author": "Trent Dalton",
+    "narrator": "Stig Wemyss",
+    "imageUrl": "https://hr-rpt-audible.s3-us-west-1.amazonaws.com/079-boy-universe.jpg",
+    "audioSampleUrl": "https://hr-rpt-audible.s3-us-west-1.amazonaws.com/079-boy-universe.mp3",
+    "length": "16:42",
+    "version": "Unabridged Audiobook",
+    "categories": [
+      { "name": "Literature & Fiction" },
+      { "name": "Genre Fiction" }
+    ]
+  },
+  {
+    "title": "The Pull of the Stars",
+    "subtitle": "A Novel",
+    "author": "Emma Donoghue",
+    "narrator": "Emma Lowe",
+    "imageUrl": "https://hr-rpt-audible.s3-us-west-1.amazonaws.com/080-pull-stars.jpg",
+    "audioSampleUrl": "https://hr-rpt-audible.s3-us-west-1.amazonaws.com/080-pull-stars.mp3",
+    "length": "9:06",
+    "version": "Unabridged Audiobook",
+    "categories": [
+      { "name": "Literature & Fiction" },
+      { "name": "Genre Fiction" }
+    ]
+  },
+  {
+    "title": "21 Lessons for the 21st Century",
+    "subtitle": "",
+    "author": "Yuval Noah Harari",
+    "narrator": "Derek Perkins",
+    "imageUrl": "https://hr-rpt-audible.s3-us-west-1.amazonaws.com/081-lessons.jpg",
+    "audioSampleUrl": "https://hr-rpt-audible.s3-us-west-1.amazonaws.com/081-lessons.mp3",
+    "length": "11:50",
+    "version": "Unabridged Audiobook",
+    "categories": [
+      { "name": "Politics & Social Sciences" },
+      { "name": "Anthropology" }
+    ]
+  },
+  {
+    "title": "How to Avoid a Climate Disaster",
+    "subtitle": "The Solutions We Have and the Breakthroughs We Need",
+    "author": "Bill Gates",
+    "narrator": "Wil Wheaton, Bill Gates",
+    "imageUrl": "https://hr-rpt-audible.s3-us-west-1.amazonaws.com/082-climate-disaster.jpg",
+    "audioSampleUrl": "https://hr-rpt-audible.s3-us-west-1.amazonaws.com/082-climate-disaster.mp3",
+    "length": "7:11",
+    "version": "Unabridged Audiobook",
+    "categories": [
+      { "name": "Money & Finance" },
+      { "name": "Economics" }
+    ]
+  },
+  {
+    "title": "Algorithms to Live By",
+    "subtitle": "The Computer Science of Human Decisions",
+    "author": "Brian Christian, Tom Griffiths",
+    "narrator": "Brian Christian",
+    "imageUrl": "https://hr-rpt-audible.s3-us-west-1.amazonaws.com/083-algorithms.jpg",
+    "audioSampleUrl": "https://hr-rpt-audible.s3-us-west-1.amazonaws.com/083-algorithms.mp3",
+    "length": "11:50",
+    "version": "Unabridged Audiobook",
+    "categories": [
+      { "name": "Business & Careers" },
+      { "name": "Career Success" }
+    ]
+  },
+  {
+    "title": "The Pragmatic Programmer",
+    "subtitle": "Your Journey to Mastery",
+    "author": "David Thomas, Andrew Hunt",
+    "narrator": "Anna Katarina",
+    "imageUrl": "https://hr-rpt-audible.s3-us-west-1.amazonaws.com/084-pragmatic.jpg",
+    "audioSampleUrl": "https://hr-rpt-audible.s3-us-west-1.amazonaws.com/084-pragmatic.mp3",
+    "length": "9:55",
+    "version": "Unabridged Audiobook",
+    "categories": [
+      { "name": "Computers & Technology" }
+    ]
+  },
+  {
+    "title": "Soft Skills: The Software Developer's Life Manual",
+    "subtitle": "",
+    "author": "John Sonmez",
+    "narrator": "John Sonmez",
+    "imageUrl": "https://hr-rpt-audible.s3-us-west-1.amazonaws.com/085-soft-skills.jpg",
+    "audioSampleUrl": "https://hr-rpt-audible.s3-us-west-1.amazonaws.com/085-soft-skills.mp3",
+    "length": "13:19",
+    "version": "Unabridged Audiobook",
+    "categories": [
+      { "name": "Business & Careers" },
+      { "name": "Marketing & Sales" }
+    ]
+  },
+  {
+    "title": "Outlander",
+    "subtitle": "Outlander, Book 1",
+    "author": "Diana Gabaldon",
+    "narrator": "Davina Porter",
+    "imageUrl": "https://hr-rpt-audible.s3-us-west-1.amazonaws.com/086-outlander.jpg",
+    "audioSampleUrl": "https://hr-rpt-audible.s3-us-west-1.amazonaws.com/086-outlander.mp3",
+    "length": "32:38",
+    "version": "Unabridged Audiobook",
+    "categories": [
+      { "name": "Romance" },
+      { "name": "Historical" }
+    ]
+  },
+  {
+    "title": "A Plague of Zombies",
+    "subtitle": "An Outlander Novella",
+    "author": "Diana Gabaldon",
+    "narrator": "Jeff Woodman",
+    "imageUrl": "https://hr-rpt-audible.s3-us-west-1.amazonaws.com/087-zombies.jpg",
+    "audioSampleUrl": "https://hr-rpt-audible.s3-us-west-1.amazonaws.com/087-zombies.mp3",
+    "length": "3:13",
+    "version": "Unabridged Audiobook",
+    "categories": [
+      { "name": "Science Fiction & Fantasy" },
+      { "name": "Fantasy" }
+    ]
+  },
+  {
+    "title": "Orphan X",
+    "subtitle": "",
+    "author": "Gregg Hurwitz",
+    "narrator": "Scott Brick",
+    "imageUrl": "https://hr-rpt-audible.s3-us-west-1.amazonaws.com/088-orphan-x.jpg",
+    "audioSampleUrl": "https://hr-rpt-audible.s3-us-west-1.amazonaws.com/088-orphan-x.mp3",
+    "length": "11:16",
+    "version": "Unabridged Audiobook",
+    "categories": [
+      { "name": "Literature & Fiction" },
+      { "name": "Action & Adventure" }
+    ]
+  },
+  {
+    "title": "Into the Fire",
+    "subtitle": "An Orphan X Novel",
+    "author": "Gregg Hurwitz",
+    "narrator": "Scott Brick",
+    "imageUrl": "https://hr-rpt-audible.s3-us-west-1.amazonaws.com/089-into-fire.jpg",
+    "audioSampleUrl": "https://hr-rpt-audible.s3-us-west-1.amazonaws.com/089-into-fire.mp3",
+    "length": "11:58",
+    "version": "Unabridged Audiobook",
+    "categories": [
+      { "name": "Mystery" },
+      { "name": "Thriller & Suspense" }
+    ]
+  },
+  {
+    "title": "The Judge's List",
+    "subtitle": "A Novel",
+    "author": "John Grisham",
+    "narrator": "Scott Brick",
+    "imageUrl": "https://hr-rpt-audible.s3-us-west-1.amazonaws.com/090-judges-list.jpg",
+    "audioSampleUrl": "https://hr-rpt-audible.s3-us-west-1.amazonaws.com/089-into-fire.mp3",
+    "length": "18:12",
+    "version": "Unabridged Audiobook",
+    "categories": [
+      { "name": "Mystery" },
+      { "name": "Thriller & Suspense" }
+    ]
+  },
+  {
+    "title": "Sycamore Row",
+    "subtitle": "",
+    "author": "John Grisham",
+    "narrator": "Michael Beck",
+    "imageUrl": "https://hr-rpt-audible.s3-us-west-1.amazonaws.com/091-sycamore-row.jpg",
+    "audioSampleUrl": "https://hr-rpt-audible.s3-us-west-1.amazonaws.com/091-sycamore-row.mp3",
+    "length": "7:19",
+    "version": "Unabridged Audiobook",
+    "categories": [
+      { "name": "Mystery" },
+      { "name": "Thriller & Suspense" }
+    ]
+  },
+  {
+    "title": "A Time to Kill",
+    "subtitle": "",
+    "author": "John Grisham",
+    "narrator": "Michael Beck",
+    "imageUrl": "https://hr-rpt-audible.s3-us-west-1.amazonaws.com/092-time-kill.jpg",
+    "audioSampleUrl": "https://hr-rpt-audible.s3-us-west-1.amazonaws.com/092-time-kill.mp3",
+    "length": "16:47",
+    "version": "Unabridged Audiobook",
+    "categories": [
+      { "name": "Mystery" },
+      { "name": "Thriller & Suspense" }
+    ]
+  },
+  {
+    "title": "The Firm",
+    "subtitle": "",
+    "author": "John Grisham",
+    "narrator": "Scott Brick",
+    "imageUrl": "https://hr-rpt-audible.s3-us-west-1.amazonaws.com/093-firm.jpg",
+    "audioSampleUrl": "https://hr-rpt-audible.s3-us-west-1.amazonaws.com/093-firm.mp3",
+    "length": "17:10",
+    "version": "Unabridged Audiobook",
+    "categories": [
+      { "name": "Mystery" },
+      { "name": "Thriller & Suspense" }
+    ]
+  },
+  {
+    "title": "A Game of Thrones",
+    "subtitle": "Book 1 of A Song of Ice and Fire",
+    "author": "George R.R. Martin",
+    "narrator": "Roy Dotrice",
+    "imageUrl": "https://hr-rpt-audible.s3-us-west-1.amazonaws.com/094-game-thrones.jpg",
+    "audioSampleUrl": "https://hr-rpt-audible.s3-us-west-1.amazonaws.com/094-game-thrones.mp3",
+    "length": "33:45",
+    "version": "Unabridged Audiobook",
+    "categories": [
+      { "name": "Science Fiction & Fantasy" },
+      { "name": "Fantasy" }
+    ]
+  },
+  {
+    "title": "A Clash of Kings",
+    "subtitle": "A Song of Ice and Fire, Book 2",
+    "author": "George R.R. Martin",
+    "narrator": "Roy Dotrice",
+    "imageUrl": "https://hr-rpt-audible.s3-us-west-1.amazonaws.com/095-clash-kings.jpg",
+    "audioSampleUrl": "https://hr-rpt-audible.s3-us-west-1.amazonaws.com/095-clash-kings.mp3",
+    "length": "37:12",
+    "version": "Unabridged Audiobook",
+    "categories": [
+      { "name": "Science Fiction & Fantasy" },
+      { "name": "Fantasy" }
+    ]
+  },
+  {
+    "title": "Meditation for Fidgety Skeptics",
+    "subtitle": "A 10% Happier How-to Book",
+    "author": "Dan Harris, Carlye Adler, Jeffrey Warren",
+    "narrator": "Dan Harris, Jeffrey Warren",
+    "imageUrl": "https://hr-rpt-audible.s3-us-west-1.amazonaws.com/096-meditation.jpg",
+    "audioSampleUrl": "https://hr-rpt-audible.s3-us-west-1.amazonaws.com/096-meditation.mp3",
+    "length": "8:34",
+    "version": "Unabridged Audiobook",
+    "categories": [
+      { "name": "Relationships & Personal Development" },
+      { "name": "Personal Development" }
+    ]
+  },
+  {
+    "title": "Mindfulness",
+    "subtitle": "Six Guided Practices for Awakening",
+    "author": "Joseph Goldstein",
+    "narrator": "Joseph Goldstein",
+    "imageUrl": "https://hr-rpt-audible.s3-us-west-1.amazonaws.com/097-mindfulness.jpg",
+    "audioSampleUrl": "https://hr-rpt-audible.s3-us-west-1.amazonaws.com/097-mindfulness.mp3",
+    "length": "2:31",
+    "version": "Speech",
+    "categories": [
+      { "name": "Relationships & Personal Development" },
+      { "name": "Personal Development" }
+    ]
+  },
+  {
+    "title": "Yes Please",
+    "subtitle": "",
+    "author": "Amy Poehler",
+    "narrator": "Amy Poehler",
+    "imageUrl": "https://hr-rpt-audible.s3-us-west-1.amazonaws.com/098-yes-please.jpg",
+    "audioSampleUrl": "https://hr-rpt-audible.s3-us-west-1.amazonaws.com/098-yes-please.mp3",
+    "length": "7:31",
+    "version": "Unabridged Audiobook",
+    "categories": [
+      { "name": "Biographies & Memoirs" },
+      { "name": "Entertainment & Celebrities" }
+    ]
+  },
+  {
+    "title": "Of Mice and Men",
+    "subtitle": "",
+    "author": "John Steinbeck",
+    "narrator": "Gary Sinise",
+    "imageUrl": "https://hr-rpt-audible.s3-us-west-1.amazonaws.com/099-mice-men.jpg",
+    "audioSampleUrl": "https://hr-rpt-audible.s3-us-west-1.amazonaws.com/099-mice-men.mp3",
+    "length": "3:11",
+    "version": "Unabridged Audiobook",
+    "categories": [
+      { "name": "Literature & Fiction" },
+      { "name": "Classics" }
+    ]
+  },
+  {
+    "title": "The Restaurant at the End of the Universe",
+    "subtitle": "The Hitchhiker's Guide to the Galaxy, Book 2",
+    "author": "Douglas Adams",
+    "narrator": "Martin Freeman",
+    "imageUrl": "https://hr-rpt-audible.s3-us-west-1.amazonaws.com/100-end-universe.jpg",
+    "audioSampleUrl": "https://hr-rpt-audible.s3-us-west-1.amazonaws.com/100-end-universe.mp3",
+    "length": "5:47",
+    "version": "Unabridged Audiobook",
+    "categories": [
+      { "name": "Science Fiction & Fantasy" },
+      { "name": "Science Fiction" }
     ]
   }
 ]

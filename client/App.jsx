@@ -8,20 +8,6 @@ class App extends React.Component {
   constructor(props) {
    super();
    this.state = {
-     currentBook: {
-      title: "",
-      subtitle: "",
-      author: "",
-      narrator: "",
-      imageUrl: "",
-      audioSampleUrl: "",
-      length: "",
-      version: "",
-      categories: [
-        { name: "" },
-        { name: "" }
-      ]
-    }
    }
   }
 
@@ -40,30 +26,34 @@ class App extends React.Component {
   }
 
   render() {
-    const backgroundStyle = {
-      backgroundImage: `url('${this.state.currentBook.imageUrl}')`,
-      backgroundRepeat: 'no-repeat'
-    };
-    return (
-      <div>
-      <div className='background-container'>
-        <div className='background-image' style={backgroundStyle}></div>
-      </div>
+    if (this.state.currentBook) {
+      const backgroundStyle = {
+        backgroundImage: `url('${this.state.currentBook.imageUrl}')`,
+        backgroundRepeat: 'no-repeat'
+      };
+      return (
+        <div>
+        <div className='background-container'>
+          <div className='background-image' style={backgroundStyle}></div>
+        </div>
 
-        <div className='content-container'>
-          <div className='image-sample'>
-          <Image url={this.state.currentBook.imageUrl}/>
-          <AudioSample audio={new Audio(this.state.currentBook.audioSampleUrl)}/>
-          </div>
-          <div className='title-info'>
-          <Title book={this.state.currentBook}/>
-          <Info book={this.state.currentBook}/>
-          </div>
-          <div className='price-service'>
+          <div className='content-container'>
+            <div className='image-sample'>
+            <Image url={this.state.currentBook.imageUrl}/>
+            <AudioSample audio={new Audio(this.state.currentBook.audioSampleUrl)}/>
+            </div>
+            <div className='title-info'>
+            <Title book={this.state.currentBook}/>
+            <Info book={this.state.currentBook}/>
+            </div>
+            <div className='price-service'>
+            </div>
           </div>
         </div>
-      </div>
-    );
+      );
+    }
+    //return nothing if a book is not retrieved
+    return null;
   }
 }
 
