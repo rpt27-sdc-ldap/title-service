@@ -1,4 +1,5 @@
 import React from 'react';
+import Rating from './Rating.jsx'
 
 class Info extends React.Component {
   constructor(props) {
@@ -22,6 +23,7 @@ class Info extends React.Component {
            return (<span key={i}><a href="#">{category.name}</a>, </span>)
          })
          }</li>
+        <Rating />
         </ul>
       </div>
     );
