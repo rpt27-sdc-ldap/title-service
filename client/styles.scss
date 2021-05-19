@@ -15,16 +15,18 @@ body {
   padding: 0px;
 }
 
-h1 {
-  color: $primary-color;
-  font-size: 30px;
-}
+.title {
+  h1 {
+    color: $primary-color;
+    font-size: 30px;
+  }
 
-h2 {
-  color: $secondary-color;
-  font-size: 28px;
-  line-height: 28px;
-  margin-top: -10px;
+  h2 {
+    color: $secondary-color;
+    font-size: 28px;
+    line-height: 28px;
+    margin-top: -10px;
+  }
 }
 
 ///////////////////////////////////////
