@@ -1,6 +1,12 @@
 const data = require('./data.json');
 const db = require('../db.js');
 
+//ensures that order is retained which is
+//important for testing
+data.forEach((book, index) => {
+  book.id = index + 1;
+});
+
 const insertCategories= () => {
   return new Promise((resolve, reject) => {
     data.forEach((book, index) => {
@@ -73,21 +79,29 @@ const bulkAddBooksAndSetCategories = () => {
   });
 }
 
-db.sequelize.sync({force: true})
-  .then(() => {
-    return insertCategories();
-  })
-  .then(() => {
-    return setCategoryIds();
-  })
-  .then(() => {
-    return bulkAddBooksAndSetCategories();
-  })
-  .then(() => {
-    console.log('database seeded successfully');
-    return db.sequelize.close();
-  })
-  .catch((err) => {
-    console.log('DATABASE ERR: ', err);
-    return db.sequelize.close();
-  })
+const seedDatabase = () => {
+  return new Promise((resolve, reject) => {
+    db.sequelize.sync({force: true})
+      .then(() => {
+        return insertCategories();
+      })
+      .then(() => {
+        return setCategoryIds();
+      })
+      .then(() => {
+        return bulkAddBooksAndSetCategories();
+      })
+      .then(() => {
+        console.log('database seeded successfully');
+        //db.sequelize.close();
+        resolve();
+      })
+      .catch((err) => {
+        console.log('DATABASE ERR: ', err);
+        //db.sequelize.close();
+        reject();
+      })
+  });
+}
+
+module.exports.seedDatabase = seedDatabase;
