@@ -42,10 +42,6 @@ app.get('/api/book/:id/related', (req, res) => {
     });
 });
 
-app.get('/test', (req, res) => {
-  res.send('Pass!');
-});
-
 //module is exported for testing
 //see start.js for app.listen and port
 module.exports = app;
