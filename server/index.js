@@ -1,6 +1,5 @@
 const express  = require('express');
 const app = express();
-const port = 2002;
 
 const Book = require('../db/models/book.js');
 
@@ -43,7 +42,10 @@ app.get('/api/book/:id/related', (req, res) => {
     });
 });
 
-
-app.listen(port, () => {
-  console.log(`Audible title service listening at http://localhost:${port}`);
+app.get('/test', (req, res) => {
+  res.send('Pass!');
 });
+
+//module is exported for testing
+//see start.js for app.listen and port
+module.exports = app;
