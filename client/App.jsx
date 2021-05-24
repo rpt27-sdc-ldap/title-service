@@ -15,7 +15,9 @@ class App extends React.Component {
     const query = new URLSearchParams(location.search);
     const id = query.get('id');
     fetch(`http://localhost:2002/api/book/${id}`)
-      .then((response) => response.json())
+      .then((response) => {
+        return response.json()
+      })
       .then(data => {
         this.setState({currentBook: data});
       })

@@ -29,6 +29,9 @@ class AudioSample extends React.Component {
           this.setState({playing: true});
         }
       })
+      .catch(err => {
+        console.log(err);
+      });
   }
 
   audioTimeCount() {
