@@ -13,7 +13,7 @@ class App extends React.Component {
 
   getBook() {
     const query = new URLSearchParams(location.search);
-    const id = query.get('id');
+    const id = query.get('bookId');
     fetch(`http://localhost:2002/api/book/${id}`)
       .then((response) => {
         return response.json()
@@ -34,7 +34,7 @@ class App extends React.Component {
         backgroundRepeat: 'no-repeat'
       };
       return (
-        <div>
+        <div className='title-service-container'>
         <div className='background-container'>
           <div className='background-image' style={backgroundStyle}></div>
         </div>
@@ -48,14 +48,14 @@ class App extends React.Component {
             <Title book={this.state.currentBook}/>
             <Info book={this.state.currentBook}/>
             </div>
-            <div className='price-service'>
+            <div className='price-service' id="price-service">
             </div>
           </div>
         </div>
       );
     }
     //return nothing if a book is not retrieved
-    return null;
+    return null
   }
 }
 
