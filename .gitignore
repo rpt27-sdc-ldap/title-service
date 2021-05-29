@@ -4,6 +4,7 @@ public/*
 !public/index.html
 node_modules/
 *.log
+*.pem
 
 .DS_Store
 .DS_Store?

@@ -31,6 +31,7 @@ body {
 
 .title-service-container {
   position: relative;
+  height: 420px;
 }
 
 ///////////////////////////////////////
@@ -39,9 +40,10 @@ body {
 
 .background-container {
   position: relative;
-  height: 420px;
+  height: 100%;
   padding-top: 40px;
   overflow: hidden;
+  z-index: -1;
 }
 
 .background-image {
@@ -63,7 +65,7 @@ body {
   -ms-filter: blur(50px) brightness(0.4);
   -o-filter: blur(50px) brightness(0.4);
   position: absolute;
-  z-index: 0;
+  z-index: -2;
 }
 
 ///////////////////////////////////////
@@ -137,6 +139,10 @@ body {
     }
   }
 }
+.stars svg {
+  stroke: white;
+  stroke-width: 3px;
+}
 
 ///////////////////////////////////////
 ////////        MOBILE       //////////
@@ -197,6 +203,9 @@ body {
     margin: auto;
     margin-top: 30px;
     height: 315px;
+  }
+  .hide-mobile {
+    display: none;
   }
 
 }

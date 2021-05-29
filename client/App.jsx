@@ -34,7 +34,7 @@ class App extends React.Component {
         backgroundRepeat: 'no-repeat'
       };
       return (
-        <div className='title-service-container'>
+      <div className='title-service-container'>
         <div className='background-container'>
           <div className='background-image' style={backgroundStyle}></div>
         </div>

@@ -35,8 +35,8 @@ class Rating extends React.Component {
 
   render() {
     return (
-      <li>
-        <StarRatings rating={this.state.stars} starRatedColor='rgb(255,197,54)' starDimension='14px' starSpacing='3px' starEmptyColor='grey'/> {this.state.stars} &#40;{this.state.numberOfReviews} ratings&#41;
+      <li className="stars">
+        <StarRatings rating={this.state.stars} starRatedColor='rgb(255,197,54)' starDimension='14px' starSpacing='3px' starEmptyColor='rgba(0,0,0,0)'/> <span className="hide-mobile">{this.state.stars} &#40;{this.state.numberOfReviews} ratings&#41;</span>
       </li>
     );
   }
