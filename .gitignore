@@ -5,6 +5,7 @@ public/*
 node_modules/
 *.log
 *.pem
+*.sh
 
 .DS_Store
 .DS_Store?
