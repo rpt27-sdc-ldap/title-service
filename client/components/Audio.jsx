@@ -14,30 +14,36 @@ class AudioSample extends React.Component {
    this.audioTimeCount = this.audioTimeCount.bind(this);
   }
   playAudioSample() {
-    this.props.audio.play()
-      .then(() => {
-        //check if loading is needed
-        if (!this.state.played) {
-          //set the time to length of audio (MM:SS) - prevents empty string from displaying
-          this.setState({loading: true, time: new Date((this.props.audio.duration) * 1000).toISOString().substr(14, 5)});
-          //wait 0.5 second to prevent jumpy loading animation
-          setTimeout(() => {
-            this.audioTimeCount();
-            this.setState({playing: true, played: true, loading: false});
-          }, 500)
-        } else {
-          this.setState({playing: true});
-        }
+    if (!this.state.played) {
+      //load the audio on click - callback waits for state to update
+      this.setState({loading: true, audio: new Audio(this.props.audioUrl)},
+      () => {
+        this.state.audio.play()
+          .then(() => {
+              //set the time to length of audio (MM:SS) - prevents empty string from displaying
+              this.setState({time: new Date((this.state.audio.duration) * 1000).toISOString().substr(14, 5)});
+              //wait 0.5 second to prevent jumpy loading animation
+              setTimeout(() => {
+                this.audioTimeCount();
+                this.setState({playing: true, played: true, loading: false});
+              }, 500)
+            })
+          .catch(err => {
+            console.log(err);
+          });
       })
-      .catch(err => {
-        console.log(err);
-      });
+    } else {
+      this.state.audio.play()
+      .then(() => {
+        this.setState({playing: true});
+      })
+    }
   }
 
   audioTimeCount() {
     setInterval(() => {
       //converts seconds into MM:SS
-      this.setState({time: new Date((this.props.audio.duration - this.props.audio.currentTime) * 1000).toISOString().substr(14, 5)});
+      this.setState({time: new Date((this.state.audio.duration - this.state.audio.currentTime) * 1000).toISOString().substr(14, 5)});
       if (this.state.time === '00:00'){
         this.setState({playing: false, played: false, loading: false})
       }
@@ -46,7 +52,7 @@ class AudioSample extends React.Component {
 
   pauseAudioSample() {
     this.setState({playing: false});
-    this.props.audio.pause();
+    this.state.audio.pause();
   }
 
   render() {
