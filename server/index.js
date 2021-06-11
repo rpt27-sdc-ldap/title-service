@@ -20,7 +20,9 @@ app.get('/api/book/:id', (req, res) => {
 });
 
 app.get('/api/books', (req, res) => {
-  Book.getByIds(req.body.ids)
+  //need to convert query sting into array of ids
+    const ids = req.query.ids ? req.query.ids.split(',').map(string => parseInt(string)) : req.body.ids;
+  Book.getByIds(ids)
     .then((result) => {
       res.send(result);
     })
