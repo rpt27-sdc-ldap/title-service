@@ -7,38 +7,26 @@ class Rating extends React.Component {
    this.state = {
    };
 
-  this.randomlyGenerateStats = this.randomlyGenerateStats.bind(this);
-  }
-
-  randomNumberGenerator(min, max) {
-    return Math.floor(Math.random() * (max - min + 1) + min);
-  }
-
-
-  randomlyGenerateStats() {
-    //set number of reviews
-    const numberOfReviews = this.randomNumberGenerator(20, 20000)
-    //set number of stars
-    let stars = this.randomNumberGenerator(1, 5);
-    //set the .5 or not
-    if (stars < 5) {
-      if(this.randomNumberGenerator(0, 1) === 1) {
-        stars += .5;
-      }
-    }
-    return {numberOfReviews, stars};
   }
 
   componentDidMount(){
-    this.setState(this.randomlyGenerateStats());
+    const bookId = this.props.id
+    fetch(`http://ec2-18-220-21-137.us-east-2.compute.amazonaws.com:2880/api/aggReview/${bookId}`)
+    .then(data => data.json())
+    .then(response => {
+      this.setState({rating: response[0].overall});
+    })
   }
 
   render() {
-    return (
-      <li className="stars">
-        <StarRatings rating={this.state.stars} starRatedColor='rgb(255,197,54)' starDimension='14px' starSpacing='3px' starEmptyColor='rgba(0,0,0,0)'/> <span className="hide-mobile">{this.state.stars} &#40;{this.state.numberOfReviews} ratings&#41;</span>
-      </li>
-    );
+    if (this.state.rating) {
+      return (
+        <li className="stars">
+          <StarRatings rating={this.state.rating.average} starRatedColor='rgb(255,197,54)' starDimension='14px' starSpacing='3px' starEmptyColor='rgba(0,0,0,0)'/> <span className="hide-mobile">{this.state.rating.average} &#40;{this.state.rating.total} ratings&#41;</span>
+        </li>
+      );
+    }
+    return null;
   }
 }
 
