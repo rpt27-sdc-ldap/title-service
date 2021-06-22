@@ -1,4 +1,4 @@
-# FEC huang-pei-mei audible - title and images service
+# Title and Images Service
 
 > this is the fullstack service for the image and title displayed at the top of the page
 this service also handles the top bar that slides in on scroll down containing the
