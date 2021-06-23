@@ -8,6 +8,7 @@
 2. [Installation](#installation)
 3. [Database](#database)
 4. [API](#api)
+5. [Testing](#testing)
 
 ## Overview
 
@@ -93,3 +94,8 @@ DB_HOST={mysqlHost}
    - /api/book/{id}/related
        * returns an object containing related books
        * {byAuthor: [], byNarrator:[]}
+
+## TESTING
+
+**WARNING** currently running `npm run test` will repopulate the database.
+see `/test/setupDb.js` to disable re-seed for tests
