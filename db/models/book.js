@@ -87,3 +87,14 @@ module.exports.getRelatedById = (id) => {
   });
 };
 
+module.exports.add = (book) => {
+  return db.Book.create(book)
+    .then((response) => {
+      return response.dataValues;
+    })
+    .catch((err) => {
+      if (err) {
+        console.log(err);
+      }
+    })
+}
