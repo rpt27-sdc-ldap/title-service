@@ -110,3 +110,25 @@ module.exports.add = (book) => {
   })
 
 };
+
+module.exports.update = (book) => {
+
+  return new Promise((resolve, reject) => {
+    db.Book.update(book, {
+      where: {
+        id: book.id
+      }
+    })
+      .then((response) => {
+        console.log(response[0]);
+        if (response[0] === 0) {
+          throw `no record with id:${book.id} found`;
+        }
+        resolve(`Updated ${response.length} record`);
+      })
+      .catch((err) => {
+        reject(err);
+      })
+  })
+
+};

@@ -52,10 +52,11 @@ app.post('/api/book', (req, res) => {
 
   Book.add(req.body.book)
     .then((response) => {
-      res.send(response);
+      res.status(200);
+      res.send(response + '\n');
     })
     .catch((response) => {
-      res.write(response);
+      res.write(response + '\n');
       res.status(400);
       res.send();
     })
@@ -63,6 +64,17 @@ app.post('/api/book', (req, res) => {
 });
 
 app.put('/api/book', (req, res) => {
+
+  Book.update(req.body.book)
+    .then((response) => {
+      res.status(200);
+      res.send(response + '\n');
+    })
+    .catch((response) => {
+      res.write(response + '\n');
+      res.status(404);
+      res.send();
+    })
 
 });
 
