@@ -93,7 +93,7 @@ module.exports.add = (book) => {
     db.Book.create(book)
       .then((response) => {
         const data = {
-          message: `Successfully added ${response.dataValues} into db`,
+          message: `Successfully added '${response.dataValues.title}' into db`,
           dataValues: response.dataValues
         }
         resolve(data);
@@ -101,7 +101,7 @@ module.exports.add = (book) => {
       .catch((err) => {
         let response;
         if (err) {
-          response = err;
+          response = err.errors[0].message;
         } else {
           response = 'Could not insert into database';
         }

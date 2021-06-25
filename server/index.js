@@ -55,15 +55,9 @@ app.post('/api/book', (req, res) => {
       res.send(response);
     })
     .catch((response) => {
-      if (response.errors) {
-        res.write(response.errors[0].message);
-        res.status(400);
-        res.send();
-      } else {
-        res.write(response);
-        res.status(400);
-        res.send();
-      }
+      res.write(response);
+      res.status(400);
+      res.send();
     })
 
 });
