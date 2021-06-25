@@ -120,7 +120,7 @@ module.exports.update = (book) => {
       }
     })
       .then((response) => {
-        console.log(response[0]);
+        // console.log(response[0]);
         if (response[0] === 0) {
           throw `no record with id:${book.id} found`;
         }
@@ -130,5 +130,28 @@ module.exports.update = (book) => {
         reject(err);
       })
   })
+
+};
+
+module.exports.delete = (id) => {
+  id = Number(id);
+
+  return new Promise((resolve, reject) => {
+    db.Book.destroy({
+      where: {id}
+    })
+      .then((response) => {
+        if (response === 0) {
+          throw `Record with id:${id} not found`;
+        } else {
+          resolve(response);
+        }
+      })
+      .catch((err) => {
+        reject(err);
+      })
+
+  })
+
 
 };
