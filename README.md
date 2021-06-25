@@ -111,6 +111,9 @@ DB_HOST={mysqlHost}
         updatedAt: 'datetime
       }
       ```
+  PUT:
+    - /api/book
+      * takes a 'book' parameter with the properties to be updated.
 
 ## TESTING
 
