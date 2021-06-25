@@ -54,11 +54,16 @@ app.post('/api/book', (req, res) => {
     .then((response) => {
       res.send(response);
     })
-    .catch((err) => {
-      if (err) {
-        console.log(err);
+    .catch((response) => {
+      if (response.errors) {
+        res.write(response.errors[0].message);
+        res.status(400);
+        res.send();
+      } else {
+        res.write(response);
+        res.status(400);
+        res.send();
       }
-      res.sendStatus(400);
     })
 
 });

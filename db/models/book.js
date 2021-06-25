@@ -88,13 +88,25 @@ module.exports.getRelatedById = (id) => {
 };
 
 module.exports.add = (book) => {
-  return db.Book.create(book)
-    .then((response) => {
-      return response.dataValues;
-    })
-    .catch((err) => {
-      if (err) {
-        console.log(err);
-      }
-    })
-}
+
+  return new Promise((resolve, reject) => {
+    db.Book.create(book)
+      .then((response) => {
+        const data = {
+          message: `Successfully added ${response.dataValues} into db`,
+          dataValues: response.dataValues
+        }
+        resolve(data);
+      })
+      .catch((err) => {
+        let response;
+        if (err) {
+          response = err;
+        } else {
+          response = 'Could not insert into database';
+        }
+        reject(response);
+      })
+  })
+
+};
