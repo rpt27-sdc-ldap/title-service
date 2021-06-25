@@ -96,7 +96,7 @@ DB_HOST={mysqlHost}
        * {byAuthor: [], byNarrator:[]}
   POST:
     - /api/book
-        * takes in a data object called 'book'
+        * takes a 'book' parameter with the following properties
       ```javascript
       book: {
         title: 'string', // Required
