@@ -9,15 +9,15 @@ module.exports.getById = (id) => {
       },
       include: 'categories'
     })
-    .then (result => {
-      if (result === null) {
-        reject('not found')
-      }
-      resolve(result);
-    })
-    .catch(err => {
-      reject(err);
-    })
+      .then (result => {
+        if (result === null) {
+          reject('not found');
+        }
+        resolve(result);
+      })
+      .catch(err => {
+        reject(err);
+      });
   });
 };
 
@@ -53,41 +53,41 @@ module.exports.getRelatedById = (id) => {
         id
       }
     })
-    .then((result) => {
-      author = result.author;
-      return db.Book.findAll({
-        where: {
-          [Op.and] : [
-            {narrator: result.narrator},
-            //don't include results of the same author - so it is only the same narrator
-            {author: {[Op.not]: author}},
-            //dont include the original book
-            {id: {[Op.not]: id}}
-          ]
-        },
-        include: 'categories'
+      .then((result) => {
+        author = result.author;
+        return db.Book.findAll({
+          where: {
+            [Op.and]: [
+              {narrator: result.narrator},
+              //don't include results of the same author - so it is only the same narrator
+              {author: {[Op.not]: author}},
+              //dont include the original book
+              {id: {[Op.not]: id}}
+            ]
+          },
+          include: 'categories'
+        });
+      })
+      .then((result) => {
+        relatedBy.byNarrator = result;
+        return db.Book.findAll({
+          where: {
+            [Op.and]: [
+              {author: author},
+              //dont include the original book
+              {id: {[Op.not]: id}}
+            ]
+          },
+          include: 'categories'
+        });
+      })
+      .then((result) => {
+        relatedBy.byAuthor = result;
+        resolve(relatedBy);
+      })
+      .catch((err) => {
+        reject(err);
       });
-    })
-    .then((result) => {
-      relatedBy.byNarrator = result;
-      return db.Book.findAll({
-        where: {
-          [Op.and] : [
-            {author: author},
-            //dont include the original book
-            {id: {[Op.not]: id}}
-          ]
-        },
-        include: 'categories'
-      });
-    })
-    .then((result) => {
-      relatedBy.byAuthor = result;
-      resolve(relatedBy);
-    })
-    .catch((err) => {
-      reject(err);
-    })
   });
 };
 
@@ -107,8 +107,8 @@ module.exports.add = (book) => {
           response = 'Could not insert into database';
         }
         reject(response);
-      })
-  })
+      });
+  });
 
 };
 
@@ -131,8 +131,8 @@ module.exports.update = (id, book) => {
       })
       .catch((err) => {
         reject(err);
-      })
-  })
+      });
+  });
 
 };
 
@@ -152,6 +152,6 @@ module.exports.delete = (id) => {
       })
       .catch((err) => {
         reject(err);
-      })
-  })
+      });
+  });
 };

@@ -1,7 +1,7 @@
-const db = require('../db.js')
+const db = require('../db.js');
 const seed = require('./seed.js');
 
 seed.seedDatabase()
- .then(() => {
+  .then(() => {
     db.sequelize.close();
- });
+  });

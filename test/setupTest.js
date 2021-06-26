@@ -1,5 +1,5 @@
 import { configure } from 'enzyme';
-import 'regenerator-runtime/runtime'
+import 'regenerator-runtime/runtime';
 
 //patch to make enzyme work with react-17
 import Enzyme from 'enzyme';

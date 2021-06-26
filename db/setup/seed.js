@@ -7,7 +7,7 @@ data.forEach((book, index) => {
   book.id = index + 1;
 });
 
-const insertCategories= () => {
+const insertCategories = () => {
   return new Promise((resolve, reject) => {
     data.forEach((book, index) => {
       book.categories.forEach((category, i) => {
@@ -19,11 +19,11 @@ const insertCategories= () => {
           })
           .catch((err) => {
             reject(err);
-          })
-      })
+          });
+      });
     });
-  })
-}
+  });
+};
 
 const setCategoryIds = () => {
   return new Promise((resolve, reject) => {
@@ -38,11 +38,11 @@ const setCategoryIds = () => {
           })
           .catch((err) => {
             reject(err);
-          })
-      })
-    })
-  })
-}
+          });
+      });
+    });
+  });
+};
 
 const addCategoriesToBook = (bookId, categories) => {
   return new Promise((resolve, reject) => {
@@ -58,26 +58,26 @@ const addCategoriesToBook = (bookId, categories) => {
         });
     });
   });
-}
+};
 
 const bulkAddBooksAndSetCategories = () => {
   return new Promise((resolve, reject) => {
     data.forEach((book, index) => {
       db.Book.create(book)
-      .then((entry) => {
-        return addCategoriesToBook(entry.id, book.categories);
-      })
-      .then(() => {
-        if (index === data.length - 1) {
-          resolve();
-        }
-      })
-      .catch((err) => {
-        reject(err);
-      })
-    })
+        .then((entry) => {
+          return addCategoriesToBook(entry.id, book.categories);
+        })
+        .then(() => {
+          if (index === data.length - 1) {
+            resolve();
+          }
+        })
+        .catch((err) => {
+          reject(err);
+        });
+    });
   });
-}
+};
 
 const seedDatabase = () => {
   return new Promise((resolve, reject) => {
@@ -100,8 +100,8 @@ const seedDatabase = () => {
         console.log('DATABASE ERR: ', err);
         //db.sequelize.close();
         reject();
-      })
+      });
   });
-}
+};
 
 module.exports.seedDatabase = seedDatabase;

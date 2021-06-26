@@ -10,15 +10,15 @@ describe('AUDIO SAMPLE BUTTON', () => {
     window.HTMLMediaElement.prototype.play = () => {
       return new Promise((resolve) => {
         resolve();
-      })
+      });
     };
     //prevent date from throwing error
     window.Date.prototype.toISOString = (val) => {
-      return 'YYYY-MM-DDTHH:10:20.sssZ'
+      return 'YYYY-MM-DDTHH:10:20.sssZ';
     };
   });
 
-  it(`should display proper button on load`, async () => {
+  it('should display proper button on load', async () => {
     const component = await mount(<AudioSample audio={ new Audio('https://hr-rpt-audible.s3-us-west-1.amazonaws.com/001-a-promised-land.mp3')}/>);
 
     expect(component.containsAllMatchingElements([
@@ -26,7 +26,7 @@ describe('AUDIO SAMPLE BUTTON', () => {
     ])).toBe(true);
   });
 
-  it(`should toggle proper button on click`, async () => {
+  it('should toggle proper button on click', async () => {
     const component = await mount(<AudioSample audio={new Audio('https://hr-rpt-audible.s3-us-west-1.amazonaws.com/001-a-promised-land.mp3')}/>);
 
     component.find('button').simulate('click');
@@ -44,7 +44,7 @@ describe('AUDIO SAMPLE BUTTON', () => {
     }, 600);
   });
 
-  it(`should change state on click`, async () => {
+  it('should change state on click', async () => {
     const component = await mount(<AudioSample audio={new Audio('https://hr-rpt-audible.s3-us-west-1.amazonaws.com/001-a-promised-land.mp3')}/>);
 
     component.find('button').simulate('click');
