@@ -22,9 +22,9 @@ app.get('/api/book/:id', (req, res) => {
     });
 });
 
+// Possibly remove this in future
 app.get('/api/books', (req, res) => {
   //need to convert query sting into array of ids
-  console.log(req.query)
     const ids = req.query.ids ? req.query.ids.split(',').map(string => parseInt(string)) : req.body.ids;
   Book.getByIds(ids)
     .then((result) => {
@@ -53,23 +53,25 @@ app.post('/api/book', (req, res) => {
 
   Book.add(req.body.book)
     .then((response) => {
-      res.status(200);
-      res.send(response);
+      res.write(response)
+      res.status(200)
+      res.send();
     })
     .catch((response) => {
       res.write(response);
-      res.status(400);
+      res.status(500);
       res.send();
     })
 
 });
 
-app.put('/api/book', (req, res) => {
+app.put('/api/book/:id', (req, res) => {
 
-  Book.update(req.body.book)
+  Book.update(req.params.id, req.body.book)
     .then((response) => {
-      res.status(200);
-      res.send(response);
+      res.write(response);
+      res.status(200)
+      res.send();
     })
     .catch((response) => {
       res.write(response);
@@ -83,12 +85,14 @@ app.delete('/api/book/:id', (req, res) => {
 
   Book.delete(req.params.id)
     .then((response) => {
+      res.write(response);
       res.status(200)
-      res.send(response);
+      res.send();
     })
     .catch((err) => {
+      res.write(err)
       res.status(404);
-      res.send(err);
+      res.send();
     })
 
 })

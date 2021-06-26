@@ -21,6 +21,7 @@ module.exports.getById = (id) => {
   });
 };
 
+// Possibly remove this in future
 module.exports.getByIds = (ids) => {
   return new Promise((resolve, reject) => {
     db.Book.findAll({
@@ -32,11 +33,9 @@ module.exports.getByIds = (ids) => {
       include: 'categories'
     })
       .then((result) => {
-        console.log(result)
         resolve(result);
       })
       .catch((err) => {
-        console.log(err)
         reject(err);
       });
   });
@@ -97,10 +96,7 @@ module.exports.add = (book) => {
   return new Promise((resolve, reject) => {
     db.Book.create(book)
       .then((response) => {
-        const data = {
-          message: `Successfully added '${response.dataValues.title}' into db`,
-          dataValues: response.dataValues
-        }
+        const data = `Successfully added ${response.dataValues.title} by ${response.dataValues.author} with id:${response.dataValues.id} into db`;
         resolve(data);
       })
       .catch((err) => {
@@ -116,16 +112,18 @@ module.exports.add = (book) => {
 
 };
 
-module.exports.update = (book) => {
+module.exports.update = (id, book) => {
+  if (!id) {
+    id = book.id;
+  }
 
   return new Promise((resolve, reject) => {
     db.Book.update(book, {
       where: {
-        id: book.id
+        id: id
       }
     })
       .then((response) => {
-        // console.log(response[0]);
         if (response[0] === 0) {
           throw `no record with id:${book.id} found`;
         }
@@ -149,7 +147,7 @@ module.exports.delete = (id) => {
         if (response === 0) {
           throw `Record with id:${id} not found`;
         } else {
-          resolve(response);
+          resolve(`${response} record deleted`);
         }
       })
       .catch((err) => {
