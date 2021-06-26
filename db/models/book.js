@@ -96,7 +96,7 @@ module.exports.add = (book) => {
   return new Promise((resolve, reject) => {
     db.Book.create(book)
       .then((response) => {
-        const data = `Successfully added ${response.dataValues.title} by ${response.dataValues.author} with id:${response.dataValues.id} into db`;
+        const data = `Successfully added ${response.dataValues.title} by ${response.dataValues.author} with id:${response.dataValues.id}`;
         resolve(data);
       })
       .catch((err) => {
