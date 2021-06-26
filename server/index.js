@@ -16,7 +16,7 @@ app.get('/api/book/:id', (req, res) => {
       res.send(result);
     })
     .catch((err) => {
-      res.status(500);
+      res.status(404);
       console.log('db err: ', err);
       res.send(err);
     });
@@ -24,6 +24,7 @@ app.get('/api/book/:id', (req, res) => {
 
 app.get('/api/books', (req, res) => {
   //need to convert query sting into array of ids
+  console.log(req.query)
     const ids = req.query.ids ? req.query.ids.split(',').map(string => parseInt(string)) : req.body.ids;
   Book.getByIds(ids)
     .then((result) => {
@@ -53,10 +54,10 @@ app.post('/api/book', (req, res) => {
   Book.add(req.body.book)
     .then((response) => {
       res.status(200);
-      res.send(response + '\n');
+      res.send(response);
     })
     .catch((response) => {
-      res.write(response + '\n');
+      res.write(response);
       res.status(400);
       res.send();
     })
@@ -68,10 +69,10 @@ app.put('/api/book', (req, res) => {
   Book.update(req.body.book)
     .then((response) => {
       res.status(200);
-      res.send(response + '\n');
+      res.send(response);
     })
     .catch((response) => {
-      res.write(response + '\n');
+      res.write(response);
       res.status(404);
       res.send();
     })
@@ -87,7 +88,7 @@ app.delete('/api/book/:id', (req, res) => {
     })
     .catch((err) => {
       res.status(404);
-      res.send(err + '\n');
+      res.send(err);
     })
 
 })

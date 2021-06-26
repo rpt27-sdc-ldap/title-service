@@ -10,6 +10,9 @@ module.exports.getById = (id) => {
       include: 'categories'
     })
     .then (result => {
+      if (result === null) {
+        reject('not found')
+      }
       resolve(result);
     })
     .catch(err => {
@@ -29,9 +32,11 @@ module.exports.getByIds = (ids) => {
       include: 'categories'
     })
       .then((result) => {
+        console.log(result)
         resolve(result);
       })
       .catch((err) => {
+        console.log(err)
         reject(err);
       });
   });
@@ -150,8 +155,5 @@ module.exports.delete = (id) => {
       .catch((err) => {
         reject(err);
       })
-
   })
-
-
 };
