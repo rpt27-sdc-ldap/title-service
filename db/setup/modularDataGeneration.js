@@ -1,37 +1,59 @@
 let faker = require('faker');
-// let ffmpeg = require('fluent-ffmpeg');
-// let axios = require('axios');
 const AWS = require('aws-sdk');
-// let s3 = require('s3');
 let config = require('../../config.js');
-
-const BUCKET_NAME = 'charlotte-badger-course-content-stock-footage';
+let start = Date.now();
 
 const s3 = new AWS.S3({
   accessKeyId: config.accessKeyID,
   secretAccessKey: config.secretAccessKey
 });
 
-let audio;
+let params = {
+  title: [],
+  subtitle: [],
+  author: [],
+  narrator: [],
+  imageUrl: []
+};
 
 const getContents = async () => {
 
-  const contents = await s3.listObjects({ Bucket: BUCKET_NAME }).promise();
+  const contents = await s3.listObjects({ Bucket: config.bucket }).promise();
 
-  audio = contents.Contents;
+  if (!params) {
+    params = {};
+  }
+
+  params['audioSampleUrl'] = contents.Contents;
 };
 
-const getRandomBook = () => {
+
+const generateParams = async (num) => {
+
+  for (let i = 0; i < num; i++) {
+
+    params.title.push(faker.git.commitMessage());
+    params.subtitle.push(faker.git.commitMessage());
+    params.author.push(faker.name.findName());
+    params.narrator.push(faker.name.findName());
+    params.imageUrl.push(faker.image.imageUrl());
+
+  }
+
+  return 'complete';
+};
+
+const getRandomBook = async () => {
 
   let version = (Math.random() < 0.1 ? 'Unabridged Audiobook' : 'Abridged Audiobook');
 
   let book = {
-    title: faker.git.commitMessage(),
-    subtitle: faker.git.commitMessage(),
-    author: faker.name.findName(),
-    narrator: faker.name.findName(),
-    imageUrl: faker.image.imageUrl(),
-    audioSampleUrl: audio[Math.floor(Math.random() * audio.length)],
+    title: params.title[Math.floor(Math.random() * params.title.length)],
+    subtitle: params.subtitle[Math.floor(Math.random() * params.title.length)],
+    author: params.author[Math.floor(Math.random() * params.author.length)],
+    narrator: params.narrator[Math.floor(Math.random() * params.narrator.length)],
+    imageUrl: params.imageUrl[Math.floor(Math.random() * params.imageUrl.length)],
+    audioSampleUrl: config.prefix + params.audioSampleUrl[Math.floor(Math.random() * params.audioSampleUrl.length)].Key,
     length: Math.floor(Math.random() * 1800000),
     version
   };
@@ -39,22 +61,28 @@ const getRandomBook = () => {
   return book;
 };
 
-const bookArray = [];
 
 const seed = async (books) => {
 
+  await generateParams(1000);
   await getContents();
+
+  const bookArray = [];
 
   for (let i = 0; i < books; i++) {
     let book = getRandomBook();
-    if (i % 2000 === 0) {
-      console.log(i);
+    if (i % 20000 === 0) {
+      console.log(`${(Date.now() - start) / 1000.00}s`);
     }
     bookArray.push(book);
   }
 
-  console.log(bookArray);
+  return bookArray;
 
 };
 
-seed(10000000);
+let result = seed(10000000)
+  .then((result) => {
+    console.log(result);
+    return result;
+  });
