@@ -4,6 +4,10 @@ let config = require('../../config.js');
 let start = Date.now();
 
 class Seed {
+  #s3;
+  #accessKeyID;
+  #secretAccessKey;
+  #bucket;
 
   constructor(records, bucket, accessKeyID, secretAccessKey) {
     this.params = {
@@ -15,12 +19,12 @@ class Seed {
       audioSampleUrl: []
     };
     this.records = records;
-    this.bucket = bucket;
-    this.accessKeyID = accessKeyID;
-    this.secretAccessKey = secretAccessKey;
-    this.s3 = new AWS.S3({
-      accessKeyId: this.accessKeyID,
-      secretAccessKey: this.secretAccessKey
+    this.#bucket = bucket;
+    this.#accessKeyID = accessKeyID;
+    this.#secretAccessKey = secretAccessKey;
+    this.#s3 = new AWS.S3({
+      accessKeyId: this.#accessKeyID,
+      secretAccessKey: this.#secretAccessKey
     });
     this.books = this.seed(this.records)
       .then((result) => {
@@ -29,8 +33,7 @@ class Seed {
   }
 
   async getContents() {
-
-    const contents = await this.s3.listObjects({ Bucket: this.bucket }).promise();
+    const contents = await this.#s3.listObjects({ Bucket: this.#bucket }).promise();
   
     if (!this.params) {
       this.params = {};
@@ -40,15 +43,12 @@ class Seed {
   }
 
   async generateParams(num) {
-
     for (let i = 0; i < num; i++) {
-  
       this.params.title.push(faker.git.commitMessage());
       this.params.subtitle.push(faker.git.commitMessage());
       this.params.author.push(faker.name.findName());
       this.params.narrator.push(faker.name.findName());
       this.params.imageUrl.push(faker.image.imageUrl());
-  
     }
 
     return;
@@ -59,7 +59,6 @@ class Seed {
   }
 
   getRandomBook() {
-
     let version = (Math.random() < 0.1 ? 'Unabridged Audiobook' : 'Abridged Audiobook');
   
     let book = {
@@ -77,7 +76,6 @@ class Seed {
   }
 
   async seed() {
-
     await this.generateParams(1000);
     await this.getContents();
   
@@ -92,13 +90,8 @@ class Seed {
     }
   
     return bookArray;
-  
   }
 
 }
 
-let seed = new Seed(10000000, config.bucket, config.accessKeyID, config.secretAccessKey);
-
-setTimeout(() => {
-  console.log(seed);
-}, 10000);
+module.exports.Seed = Seed;
