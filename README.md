@@ -94,8 +94,9 @@ DB_HOST={mysqlHost}
    - /api/book/{id}/related
        * returns an object containing related books
        * {byAuthor: [], byNarrator:[]}
+
   POST:
-    - /api/book
+   - /api/book
         * takes a 'book' parameter with the following properties
       ```javascript
       book: {
@@ -109,11 +110,19 @@ DB_HOST={mysqlHost}
         version: 'string',
         createdAt: 'datetime',
         updatedAt: 'datetime
-      }
+      };
       ```
+
   PUT:
-    - /api/book
-      * takes a 'book' parameter with the properties to be updated.
+   - /api/book/:id
+      * takes id as last url parameter
+      * takes a 'book' parameter (above) with the properties to be updated.
+      * updates all given parameters
+  
+  DELETE:
+   - /api/book/:id
+      * takes id as last url parameter
+      * delete's specified book from the database
 
 ## TESTING
 
