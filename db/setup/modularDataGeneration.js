@@ -43,17 +43,21 @@ const generateParams = async (num) => {
   return 'complete';
 };
 
+const getRandomArrayIdx = (array) => {
+  return Math.floor(Math.random() * array.length);
+};
+
 const getRandomBook = async () => {
 
   let version = (Math.random() < 0.1 ? 'Unabridged Audiobook' : 'Abridged Audiobook');
 
   let book = {
-    title: params.title[Math.floor(Math.random() * params.title.length)],
-    subtitle: params.subtitle[Math.floor(Math.random() * params.title.length)],
-    author: params.author[Math.floor(Math.random() * params.author.length)],
-    narrator: params.narrator[Math.floor(Math.random() * params.narrator.length)],
-    imageUrl: params.imageUrl[Math.floor(Math.random() * params.imageUrl.length)],
-    audioSampleUrl: config.prefix + params.audioSampleUrl[Math.floor(Math.random() * params.audioSampleUrl.length)].Key,
+    title: params.title[getRandomArrayIdx(params.title)],
+    subtitle: params.subtitle[getRandomArrayIdx(params.subtitle)],
+    author: params.author[getRandomArrayIdx(params.author)],
+    narrator: params.narrator[getRandomArrayIdx(params.narrator)],
+    imageUrl: params.imageUrl[getRandomArrayIdx(params.imageUrl)],
+    audioSampleUrl: config.prefix + params.audioSampleUrl[getRandomArrayIdx(params.audioSampleUrl)].Key,
     length: Math.floor(Math.random() * 1800000),
     version
   };
@@ -71,8 +75,8 @@ const seed = async (books) => {
 
   for (let i = 0; i < books; i++) {
     let book = getRandomBook();
-    if (i % 20000 === 0) {
-      console.log(`${(Date.now() - start) / 1000.00}s`);
+    if (i % 200000 === 0) {
+      console.log(`${(Date.now() - start) / 1000.000}s elapsed --- ${i} records generated`);
     }
     bookArray.push(book);
   }
@@ -81,8 +85,8 @@ const seed = async (books) => {
 
 };
 
-let result = seed(10000000)
+seed(10000000)
   .then((result) => {
-    console.log(result);
+    console.log(result.length);
     return result;
   });
