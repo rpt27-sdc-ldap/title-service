@@ -1,8 +1,8 @@
 import React from 'react';
-import Image from './Components/Image.jsx';
-import AudioSample from './Components/Audio.jsx';
-import Title from './Components/Title.jsx';
-import Info from './Components/Info.jsx';
+import Image from './components/Image.jsx';
+import AudioSample from './components/Audio.jsx';
+import Title from './components/Title.jsx';
+import Info from './components/Info.jsx';
 
 class App extends React.Component {
   constructor(props) {
@@ -14,7 +14,7 @@ class App extends React.Component {
   getBook() {
     const query = new URLSearchParams(location.search);
     const id = query.get('bookId');
-    fetch(`http://13.57.14.144:2002/api/book/${id}`)
+    fetch(`http://127.0.0.1:2002/api/book/${id}`)
       .then((response) => {
         return response.json()
       })

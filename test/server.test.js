@@ -4,7 +4,7 @@ const request = supertest(app);
 
 describe('ROUTES', () => {
 
-  it(`returns an html file on GET '/'`, async done => {
+  it('returns an html file on GET \'/\'', async done => {
     const response = await request.get('/');
 
     expect(response.status).toBe(200);
@@ -13,7 +13,7 @@ describe('ROUTES', () => {
     done();
   });
 
-  it(`returns a single book on GET '/api/book/:id'`, async done => {
+  it('returns a single book on GET \'/api/book/:id\'', async done => {
     const response = await request.get('/api/book/1');
     const body = JSON.parse(response.text);
 
@@ -23,7 +23,7 @@ describe('ROUTES', () => {
     done();
   });
 
-  it(`includes categories on GET '/api/book/:id'`, async done => {
+  it('includes categories on GET \'/api/book/:id\'', async done => {
     const response = await request.get('/api/book/1');
     const body = JSON.parse(response.text);
 
@@ -33,7 +33,7 @@ describe('ROUTES', () => {
     done();
   });
 
-  it(`returns an array of books on GET '/api/books'`, async done => {
+  it('returns an array of books on GET \'/api/books\'', async done => {
     const response = await request.get('/api/books').send({ids: [1, 2, 3, 4]});
     const body = JSON.parse(response.text);
 
@@ -43,7 +43,7 @@ describe('ROUTES', () => {
     done();
   });
 
-  it(`includes categories on GET '/api/books'`, async done => {
+  it('includes categories on GET \'/api/books\'', async done => {
     const response = await request.get('/api/books').send({ids: [1, 2, 3, 4]});
     const body = JSON.parse(response.text);
 
@@ -53,7 +53,7 @@ describe('ROUTES', () => {
     done();
   });
 
-  it(`returns an object of arrays of books on GET '/api/book/:id/related'`, async done => {
+  it('returns an object of arrays of books on GET \'/api/book/:id/related\'', async done => {
     const response = await request.get('/api/book/1/related');
     const body = JSON.parse(response.text);
 
@@ -64,7 +64,7 @@ describe('ROUTES', () => {
     done();
   });
 
-  it(`includes categories on GET '/api/book/:id/related'`, async done => {
+  it('includes categories on GET \'/api/book/:id/related\'', async done => {
     const response = await request.get('/api/book/1/related');
     const body = JSON.parse(response.text);
 

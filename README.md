@@ -85,7 +85,7 @@ DB_HOST={mysqlHost}
      it will also not include books by the original book's author in the byNarrator list
 
 ## API
- The API contains three routes:
+  GET:
    - /api/book/{id}
        * returns a single book
    - /api/books
@@ -94,6 +94,26 @@ DB_HOST={mysqlHost}
    - /api/book/{id}/related
        * returns an object containing related books
        * {byAuthor: [], byNarrator:[]}
+  POST:
+    - /api/book
+        * takes a 'book' parameter with the following properties
+      ```javascript
+      book: {
+        title: 'string', // Required
+        subtitle: 'string',
+        author: 'string', // Required
+        narrator: 'string', // Required
+        imageUrl: 'string',
+        audioSampleUrl: 'string',
+        length: 'string',
+        version: 'string',
+        createdAt: 'datetime',
+        updatedAt: 'datetime
+      }
+      ```
+  PUT:
+    - /api/book
+      * takes a 'book' parameter with the properties to be updated.
 
 ## TESTING
 

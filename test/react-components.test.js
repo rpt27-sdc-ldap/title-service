@@ -7,19 +7,19 @@ import Image from '../client/components/Image.jsx';
 import AudioSample from '../client/components/Audio.jsx';
 
 const testBook = {
-  "title": "A Promised Land",
-  "subtitle": "this is a subtitle",
-  "author": "Barack Obama",
-  "narrator": "Michelle Obama",
-  "imageUrl": "https://hr-rpt-audible.s3-us-west-1.amazonaws.com/001-a-promised-land.jpg",
-  "audioSampleUrl": "https://hr-rpt-audible.s3-us-west-1.amazonaws.com/001-a-promised-land.mp3",
-  "length": "29:10",
-  "version": "Unabridged Audiobook",
-  "categories": [
-    { "name": "Biographies & Memoirs" },
-    { "name": "Politics & Activism" }
+  'title': 'A Promised Land',
+  'subtitle': 'this is a subtitle',
+  'author': 'Barack Obama',
+  'narrator': 'Michelle Obama',
+  'imageUrl': 'https://hr-rpt-audible.s3-us-west-1.amazonaws.com/001-a-promised-land.jpg',
+  'audioSampleUrl': 'https://hr-rpt-audible.s3-us-west-1.amazonaws.com/001-a-promised-land.mp3',
+  'length': '29:10',
+  'version': 'Unabridged Audiobook',
+  'categories': [
+    { 'name': 'Biographies & Memoirs' },
+    { 'name': 'Politics & Activism' }
   ]
-}
+};
 
 describe('COMPONENTS', () => {
 
