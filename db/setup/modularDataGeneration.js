@@ -87,6 +87,5 @@ const seed = async (books) => {
 
 seed(10000000)
   .then((result) => {
-    console.log(result.length);
     return result;
   });
