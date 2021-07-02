@@ -71,7 +71,7 @@ const downloadAndSaveOneImage = async () => {
   });
 };
 
-const getImages = async (num = 1000) => {
+const getImages = async (num) => {
 
   const exists = fs.existsSync(IMAGE_DIR);
   if (exists) {
@@ -170,8 +170,8 @@ const uploadFiles = async () => {
 
 };
 
-const searchAndDownload = async () => {
-  await getImages(1000);
+const searchAndDownload = async (numImages) => {
+  await getImages(numImages);
   await uploadFiles();
   return;
 };
@@ -193,7 +193,7 @@ const generateParams = async (num) => {
 
   for (let i = 0; i < num; i++) {
 
-    if (i % 100000 === 0) {
+    if (i % Math.floor((num / 100)) === 0) {
       console.log(`${moment(start).fromNow(true)} elapsed (${Date.now() - start}ms) --- ${i} sets of parameters generated`);
     }
 
@@ -211,7 +211,7 @@ const generateParams = async (num) => {
 const getRandomArrayIdx = (array, exclude) => {
   let idx = Math.floor(Math.random() * array.length);
   if (idx === exclude) {
-    return getRandomIdx(array, exclude);
+    return getRandomArrayIdx(array, exclude);
   } else {
     return Math.floor(Math.random() * array.length);
   }
@@ -241,17 +241,17 @@ const getRandomBook = () => {
   return book;
 };
 
-const seed = async (books = 10000000) => {
+const seed = async (books = 10000000, params = 100000, images = 1000) => {
   console.log(`Beginning seed of ${books} records`);
-  await searchAndDownload();
-  await generateParams(1000000);
+  await searchAndDownload(images);
+  await generateParams(params);
   await getContents();
 
   const bookArray = [];
 
   for (let i = 0; i < books; i++) {
     let book = getRandomBook();
-    if (i % 200000 === 0) {
+    if (i % Math.floor((i / 100)) === 0) {
       console.log(`${moment(start).fromNow(true)} elapsed (${Date.now() - start}ms) --- ${i} records generated`);
     }
     bookArray.push(book);
