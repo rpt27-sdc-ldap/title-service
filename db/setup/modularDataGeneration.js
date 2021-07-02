@@ -17,7 +17,32 @@ let params = {
   subtitle: [],
   author: [],
   narrator: [],
-  imageUrl: []
+  imageUrl: [],
+  categories: [
+    'Literature & Fiction',
+    'Classic',
+    'Biographies & Memoirs',
+    'Professionals & Academic',
+    'Genre Fiction',
+    'Politics & Social Sciences',
+    'Anthropology',
+    'Money & Finance',
+    'Economic',
+    'Business & Careers',
+    'Career Success',
+    'Computers & Technology',
+    'Marketing & Sales',
+    'Romance',
+    'Historical',
+    'Science Fiction & Fantasy',
+    'Fantasy',
+    'Action & Adventure',
+    'Mystery',
+    'Thriller & Suspense',
+    'Relationships & Personal Development',
+    'Personal Development',
+    'Entertainment & Celebrities'
+  ]
 };
 
 const downloadAndSaveOneImage = async () => {
@@ -183,13 +208,20 @@ const generateParams = async (num) => {
   return 'complete';
 };
 
-const getRandomArrayIdx = (array) => {
-  return Math.floor(Math.random() * array.length);
+const getRandomArrayIdx = (array, exclude) => {
+  let idx = Math.floor(Math.random() * array.length);
+  if (idx === exclude) {
+    return getRandomIdx(array, exclude);
+  } else {
+    return Math.floor(Math.random() * array.length);
+  }
 };
 
 const getRandomBook = () => {
 
   let version = (Math.random() < 0.1 ? 'Unabridged Audiobook' : 'Abridged Audiobook');
+  let categoryIdx1 = getRandomArrayIdx(params.categories);
+  let categoryIdx2 = getRandomArrayIdx(params.categories, categoryIdx1);
 
   let book = {
     title: params.title[getRandomArrayIdx(params.title)],
@@ -199,7 +231,11 @@ const getRandomBook = () => {
     imageUrl: params.imageUrl[getRandomArrayIdx(params.imageUrl)],
     audioSampleUrl: config.audioPrefix + params.audioSampleUrl[getRandomArrayIdx(params.audioSampleUrl)].Key,
     length: Math.floor(Math.random() * 1800000),
-    version
+    version,
+    categories: [
+      { name: params.categories[categoryIdx1] },
+      { name: params.categories[categoryIdx2] }
+    ]
   };
 
   return book;
