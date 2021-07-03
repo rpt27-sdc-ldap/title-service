@@ -1,8 +1,8 @@
 const { Sequelize, DataTypes } = require('sequelize');
 require('dotenv').config();
 const seed = require('./modularDataGeneration.js').seed;
-const fs = require('fs');
-const path = require('path');
+const db = require('../db.js');
+const start = Date.now();
 
 const sequelize = new Sequelize('audible', process.env.PSQL_DB_USER, process.env.PSQL_DB_PASSWORD, {
   host: process.env.PSQL_DB_HOST,
@@ -10,40 +10,47 @@ const sequelize = new Sequelize('audible', process.env.PSQL_DB_USER, process.env
   logging: false
 });
 
-const writeToCSV = async () => {
+const seedPG = async () => {
 
-  let data = await seed();
+  let data = await seed(10000000, 10, 10);
+  
   let categories = [];
-
+  
+  // Find all categories
   for (let i = 0; i < data.length; i++) {
-    let array = [];
-
-    for (let key in data[i]) {
-
-      if (typeof data[i][key] === 'object') {
-
-
-
-        for (let category in data[i][key]) {
-          array.push(data[i][key][category].name);
-          if (!categories.includes(data[i][key][category].name)) {
-            categories.push(data[i][key][category].name);
-          }
-        }
-
-
-
-      } else {
-        array.push(data[i][key]);
+    for (let j = 0; j < data[i].categories.length; j++) {
+      let category = data[i].categories[j].name;
+      if (!categories.includes(category)) {
+        categories.push(category);
       }
-
     }
+  }
+  
+  // Add all categories to db
+  for (let category of categories) {
+    console.log(`Inserting category '${category}' into database`);
 
-    if (i % Math.floor((i / 100)) === 0) {
-      console.log(`${i} records recorded`);
-    }
+    await db.Category.create({
+      name: category
+    });
 
   }
+
+
+  let i = 1;
+  for (let record of data) {
+    let record = data[i];
+    if (i % 100 === 0) {
+      console.log(`${i} records saved to Postgres. ${(Date.now() - start) / 1000}s elapsed`);
+    }
+  
+    await db.Book.create(record).then();
+    i++;
+  }
+
+
+  console.log(`done in ${(Date.now() - start) / 1000}s`);
+  return;
 };
 
-writeToCSV();
+seedPG();

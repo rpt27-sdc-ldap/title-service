@@ -193,7 +193,7 @@ const generateParams = async (num) => {
 
   for (let i = 0; i < num; i++) {
 
-    if (i % Math.floor((num / 100)) === 0) {
+    if (i % Math.floor((num / 1000)) === 0) {
       console.log(`${moment(start).fromNow(true)} elapsed (${Date.now() - start}ms) --- ${i} sets of parameters generated`);
     }
 
@@ -228,8 +228,8 @@ const getRandomBook = () => {
     subtitle: params.subtitle[getRandomArrayIdx(params.subtitle)],
     author: params.author[getRandomArrayIdx(params.author)],
     narrator: params.narrator[getRandomArrayIdx(params.narrator)],
-    imageUrl: params.imageUrl[getRandomArrayIdx(params.imageUrl)],
-    audioSampleUrl: config.audioPrefix + params.audioSampleUrl[getRandomArrayIdx(params.audioSampleUrl)].Key,
+    'image_url': params.imageUrl[getRandomArrayIdx(params.imageUrl)],
+    'audio_sample_url': config.audioPrefix + params.audioSampleUrl[getRandomArrayIdx(params.audioSampleUrl)].Key,
     length: Math.floor(Math.random() * 1800000),
     version,
     categories: [
@@ -251,7 +251,7 @@ const seed = async (books = 10000000, params = 100000, images = 1000) => {
 
   for (let i = 0; i < books; i++) {
     let book = getRandomBook();
-    if (i % Math.floor((i / 100)) === 0) {
+    if (i % Math.floor((i / 1000)) === 0) {
       console.log(`${moment(start).fromNow(true)} elapsed (${Date.now() - start}ms) --- ${i} records generated`);
     }
     bookArray.push(book);
