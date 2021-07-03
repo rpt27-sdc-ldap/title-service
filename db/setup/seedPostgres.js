@@ -12,7 +12,7 @@ const sequelize = new Sequelize('audible', process.env.PSQL_DB_USER, process.env
 
 const seedPG = async () => {
 
-  let data = await seed(10000000, 10, 10);
+  let data = await seed(100000, 10, 10);
   
   let categories = [];
   
@@ -37,17 +37,34 @@ const seedPG = async () => {
   }
 
 
+  let promises = [];
+
   let i = 1;
+  let j = 1;
   for (let record of data) {
-    let record = data[i];
     if (i % 100 === 0) {
       console.log(`${i} records saved to Postgres. ${(Date.now() - start) / 1000}s elapsed`);
     }
+    let promise = new Promise((resolve, reject) => {
+      db.Book.create(record)
+        .then((result) => {
+          if (j % 100 === 0) {
+            console.log('j', j, `${(Date.now() - start) / 1000}s elapsed`);
+          }
+          j++;
+          resolve();
+        })
+        .catch((err) => {
+          console.log(err);
+          reject();
+        });
+    });
   
-    await db.Book.create(record).then();
+    promises.push(promise);
     i++;
   }
 
+  await Promise.all(promises);
 
   console.log(`done in ${(Date.now() - start) / 1000}s`);
   return;
