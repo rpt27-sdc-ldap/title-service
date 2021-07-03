@@ -213,7 +213,7 @@ const getRandomArrayIdx = (array, exclude) => {
   if (idx === exclude) {
     return getRandomArrayIdx(array, exclude);
   } else {
-    return Math.floor(Math.random() * array.length);
+    return idx;
   }
 };
 
