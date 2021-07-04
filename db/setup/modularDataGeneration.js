@@ -185,7 +185,19 @@ const getContents = async () => {
   }
 
   params['audioSampleUrl'] = contents.Contents;
+
+  const images = await s3.listObjects({ Bucket: config.audioBucket }).promise();
+
+  if (!params) {
+    params = {};
+  }
+
+  params['imageUrl'] = images.Contents;
+  console.log(params.audioSampleUrl);
+
 };
+
+getContents();
 
 
 const generateParams = async (num) => {
@@ -201,7 +213,7 @@ const generateParams = async (num) => {
     params.subtitle.push(faker.git.commitMessage());
     params.author.push(faker.name.findName());
     params.narrator.push(faker.name.findName());
-    params.imageUrl.push(faker.image.imageUrl());
+    // params.imageUrl.push(faker.image.imageUrl());
 
   }
 
