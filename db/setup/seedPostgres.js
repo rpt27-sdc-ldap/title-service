@@ -7,7 +7,10 @@ const start = Date.now();
 const sequelize = new Sequelize('audible', process.env.PSQL_DB_USER, process.env.PSQL_DB_PASSWORD, {
   host: process.env.PSQL_DB_HOST,
   dialect: 'postgres',
-  logging: false
+  logging: false,
+  pool: {
+    max: 1000
+  }
 });
 
 const seedPG = async () => {
@@ -43,7 +46,7 @@ const seedPG = async () => {
   let j = 1;
   for (let record of data) {
     if (i % 100 === 0) {
-      console.log(`${i} records saved to Postgres. ${(Date.now() - start) / 1000}s elapsed`);
+      console.log(`${i} promises generated. ${(Date.now() - start) / 1000}s elapsed`);
     }
     let promise = new Promise((resolve, reject) => {
       db.Book.create(record)
