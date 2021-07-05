@@ -97,13 +97,12 @@ const seedPG = async () => {
       done();
     });
     stream.on('finish', () => {
-      console.log('stream finish');
+      console.log(`Done in ${(Date.now() - start) / 1000}s`);
       done();
     });
     fileStream.pipe(stream);
   });
 
-  console.log(`Done in ${(Date.now() - start) / 1000}s`);
 };
 
 seedPG();
