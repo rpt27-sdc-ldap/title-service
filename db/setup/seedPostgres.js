@@ -23,7 +23,7 @@ const seedPG = async () => {
 
   // await client.end();
 
-  let data = await seed(100, 10, 10);
+  let data = await seed();
   
   let categories = [];
   
