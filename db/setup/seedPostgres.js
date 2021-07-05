@@ -1,24 +1,29 @@
-const { Sequelize, DataTypes } = require('sequelize');
 require('dotenv').config();
 const seed = require('./modularDataGeneration.js').seed;
 const db = require('../db.js');
 const start = Date.now();
 const fs = require('fs');
 const path = require('path');
-const asyncJS = require('async')
-
-const sequelize = new Sequelize('audible', process.env.PSQL_DB_USER, process.env.PSQL_DB_PASSWORD, {
-  host: process.env.PSQL_DB_HOST,
-  dialect: 'postgres',
-  logging: false,
-  pool: {
-    max: 1000
-  }
-});
+const schema = fs.readFileSync(path.join(__dirname, 'schema.sql'), {encoding: 'utf8'});
+const { Client, Pool } = require('pg');
+const client = new Client();
+const pool = new Pool();
+const copyFrom = require('pg-copy-streams').from;
 
 const seedPG = async () => {
 
-  let data = await seed(100, 10, 1);
+  await client.connect();
+
+  await client.query(schema, (err, res) => {
+    if (err) {
+      console.log(err);
+    }
+    return;
+  });
+
+  // await client.end();
+
+  let data = await seed(100, 10, 10);
   
   let categories = [];
   
@@ -78,6 +83,25 @@ const seedPG = async () => {
       console.log(i + 1);
     }
   }
+
+  await pool.connect((err, client, done) => {
+    let csvFile = path.join(__dirname, 'data.csv');
+    let stream = client.query(copyFrom("COPY books FROM STDIN DELIMITER ',' CSV HEADER"));
+    let fileStream = fs.createReadStream(csvFile);
+    fileStream.on('error', () => {
+      console.log('fileStream error');
+      done();
+    });
+    stream.on('error', (err) => {
+      console.log('stream error', err);
+      done();
+    });
+    stream.on('finish', () => {
+      console.log('stream finish');
+      done();
+    });
+    fileStream.pipe(stream);
+  });
 
   console.log(`Done in ${(Date.now() - start) / 1000}s`);
 };

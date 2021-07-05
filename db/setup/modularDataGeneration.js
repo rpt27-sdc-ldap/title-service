@@ -186,14 +186,13 @@ const getContents = async () => {
 
   params['audioSampleUrl'] = contents.Contents;
 
-  const images = await s3.listObjects({ Bucket: config.audioBucket }).promise();
+  const images = await s3.listObjects({ Bucket: config.imageBucket }).promise();
 
   if (!params) {
     params = {};
   }
 
   params['imageUrl'] = images.Contents;
-  console.log(params.audioSampleUrl);
 
 };
 
@@ -240,7 +239,7 @@ const getRandomBook = () => {
     subtitle: params.subtitle[getRandomArrayIdx(params.subtitle)],
     author: params.author[getRandomArrayIdx(params.author)],
     narrator: params.narrator[getRandomArrayIdx(params.narrator)],
-    'image_url': params.imageUrl[getRandomArrayIdx(params.imageUrl)],
+    'image_url': config.imagePrefix + params.imageUrl[getRandomArrayIdx(params.imageUrl)].Key,
     'audio_sample_url': config.audioPrefix + params.audioSampleUrl[getRandomArrayIdx(params.audioSampleUrl)].Key,
     length: Math.floor(Math.random() * 1800000),
     version,
@@ -253,7 +252,7 @@ const getRandomBook = () => {
   return book;
 };
 
-const seed = async (books = 10000000, params = 100000, images = 1000) => {
+const seed = async (books = 10000000, params = 10000, images = 1000) => {
   console.log(`Beginning seed of ${books} records`);
   await searchAndDownload(images);
   await generateParams(params);
