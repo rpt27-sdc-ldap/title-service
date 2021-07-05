@@ -4,22 +4,6 @@ DROP TABLE IF EXISTS categories CASCADE;
 DROP TABLE IF EXISTS books CASCADE;
 DROP TABLE IF EXISTS books_categories CASCADE;
 
-CREATE TABLE authors (
-
-  id SERIAL PRIMARY KEY,
-  first varchar(255),
-  last varchar(255)
-
-);
-
-CREATE TABLE narrators (
-
-  id SERIAL PRIMARY KEY,
-  first varchar(255),
-  last varchar(255)
-
-);
-
 CREATE TABLE categories (
 
   id SERIAL PRIMARY KEY,
