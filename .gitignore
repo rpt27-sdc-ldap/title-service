@@ -15,3 +15,6 @@ node_modules/
 ehthumbs.db
 Thumbs.db
 .env
+config.js
+images
+data.csv

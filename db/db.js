@@ -1,14 +1,14 @@
 const { Sequelize, DataTypes } = require('sequelize');
 require('dotenv').config();
 
-const sequelize = new Sequelize('audible', process.env.DB_USER, process.env.DB_PASSWORD, {
-  host: process.env.DB_HOST,
+const sequelize = new Sequelize('audible', process.env.PSQL_DB_USER, process.env.PSQL_DB_PASSWORD, {
+  host: process.env.PSQL_DB_HOST,
   dialect: 'postgres',
   logging: false
 });
 
 
-const Book = sequelize.define('Book', {
+const Book = sequelize.define('books', {
   title: {
     type: DataTypes.STRING,
     allowNull: false
@@ -24,10 +24,10 @@ const Book = sequelize.define('Book', {
     type: DataTypes.STRING,
     allowNull: false
   },
-  imageUrl: {
+  image_url: {
     type: DataTypes.STRING
   },
-  audioSampleUrl: {
+  audio_sample_url: {
     type: DataTypes.STRING
   },
   length: {
@@ -36,20 +36,30 @@ const Book = sequelize.define('Book', {
   version: {
     type: DataTypes.STRING
   }
+}, {
+  timestamps: false
 });
 
-const Category = sequelize.define('Category', {
+const Category = sequelize.define('categories', {
   name: {
     type: DataTypes.STRING,
     unique: true
   }
+}, {
+  timestamps: false
 });
 
-const Book_Category = sequelize.define('Book_Category', {
-  id: {
+const Book_Category = sequelize.define('books_categories', {
+  category_id: {
     type: DataTypes.INTEGER(11),
-    primaryKey: true,
-    autoIncrement: true
+    primaryKey: false,
+    unique: true,
+    references: {
+      model: Category,
+      key: 'id',
+    },
+    onDelete: 'cascade',
+    onUpdate: 'cascade',
   },
   book_id: {
     type: DataTypes.INTEGER(11),
@@ -61,37 +71,28 @@ const Book_Category = sequelize.define('Book_Category', {
     },
     onDelete: 'cascade',
     onUpdate: 'cascade',
-  },
-  category_id: {
-    type: DataTypes.INTEGER(11),
-    primaryKey: false,
-    unique: true,
-    references: {
-      model: Category,
-      key: 'id',
-    },
-    onDelete: 'cascade',
-    onUpdate: 'cascade',
   }
 }, {
   timestamps: false,
   freezeTableName: true
+}, {
+  timestamps: false
 });
 
 
 Book.belongsToMany(Category, {
   through: Book_Category,
   as: 'categories',
-  foreignKey: 'book_id'
+  foreignKey: 'id'
 });
 
 Category.belongsToMany(Book, {
   through: Book_Category,
   as: 'books',
-  foreignKey: 'category_id'
+  foreignKey: 'id'
 });
 
 module.exports.sequelize = sequelize;
 module.exports.Book = Book;
 module.exports.Category = Category;
-module.exports.BookCategory = Book_Category;
+module.exports.Book_Category = Book_Category;
