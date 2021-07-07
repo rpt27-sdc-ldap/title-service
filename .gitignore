@@ -17,4 +17,5 @@ Thumbs.db
 .env
 config.js
 images
-data.csv
+books.csv
+books_categories.csv

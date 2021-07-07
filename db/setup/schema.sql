@@ -32,7 +32,7 @@ CREATE TABLE books_categories (
   id SERIAL PRIMARY KEY,
   book_id SERIAL,
   category_id SERIAL,
-  FOREIGN KEY (id) references books(id),
-  FOREIGN KEY (id) references categories(id)
+  FOREIGN KEY (book_id) references books(id),
+  FOREIGN KEY (category_id) references categories(id)
 
 );

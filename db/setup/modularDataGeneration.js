@@ -159,9 +159,6 @@ const uploadFiles = async () => {
   await Promise.all(promises)
     .then((values) => {
       for (let i = 0; i < values.length; i++) {
-        if (i === values.length - 1) {
-          console.log('promise', values[i]);
-        }
         params.imageUrl.push(values[i].Location);
       }
     })
@@ -255,15 +252,15 @@ const getRandomBook = () => {
   return book;
 };
 
-const seed = async (books = 10000000, params = 10000, images = 1000) => {
+const seed = async (numBooks = 10000000, numParams = 10000, numImages = 1000) => {
   console.log(`Beginning seed of ${books} records`);
-  await searchAndDownload(images);
-  await generateParams(params);
+  await searchAndDownload(numImages);
+  await generateParams(numParams);
   await getContents();
 
   const bookArray = [];
 
-  for (let i = 0; i < books; i++) {
+  for (let i = 0; i < numBooks; i++) {
     let book = getRandomBook();
     if (i % Math.floor((i / 1000)) === 0) {
       console.log(`${moment(start).fromNow(true)} elapsed (${Date.now() - start}ms) --- ${i} records generated`);

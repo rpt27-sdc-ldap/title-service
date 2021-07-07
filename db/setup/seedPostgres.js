@@ -10,7 +10,7 @@ const client = new Client();
 const pool = new Pool();
 const copyFrom = require('pg-copy-streams').from;
 
-const seedPG = async () => {
+const seedPG = async (numBooks, numParams, numImages) => {
 
   await client.connect();
 
@@ -23,7 +23,7 @@ const seedPG = async () => {
 
   // await client.end();
 
-  let data = await seed(100, 10, 10);
+  let data = await seed(numBooks, numParams, numImages);
 
   let categories = [];
 
@@ -49,7 +49,7 @@ const seedPG = async () => {
 
   // csv
 
-  let file = path.join(__dirname, 'data.csv');
+  let file = path.join(__dirname, 'books.csv');
   let booksCategories = path.join(__dirname, 'books_categories.csv');
   let booksCategoriesRows = [];
 
@@ -64,6 +64,7 @@ const seedPG = async () => {
 
   fs.writeFileSync(file, keys.join(',') + '\n');
 
+  booksCategoriesRows.push(['id', 'book_id', 'category_id']);
   for (let i = 0; i < data.length; i++) {
     let row = [];
     let bookId = i + 1;
@@ -85,23 +86,23 @@ const seedPG = async () => {
 
 
     for (let key of data[i].categories) {
-      let row = [];
+      let booksCategoriesRow = [];
       let id;
-      if (booksCategoriesRows.length === 0) {
+      if (booksCategoriesRows.length === 1) {
         id = 1;
-        booksCategoriesRows.push('id');
-        booksCategoriesRows.push('book_id');
-        booksCategoriesRows.push('category_id');
       } else {
         id = booksCategoriesRows[booksCategoriesRows.length - 1][0] + 1;
       }
 
-      console.log(data[i].categories);
-      row.push(id);
-      row.push(bookId);
-      let category = await client.query(`SELECT id FROM categories WHERE name="${key.name}"`);
-      row.push(category);
-      booksCategoriesRows.push(row);
+      booksCategoriesRow.push(id);
+      booksCategoriesRow.push(bookId);
+      let category = await client.query(`SELECT id FROM categories WHERE name='${key.name}'`);
+      if (category.rows.length === 1) {
+        booksCategoriesRow.push(category.rows[0].id);
+      } else {
+        throw 'more than one category found';
+      }
+      booksCategoriesRows.push(booksCategoriesRow);
     }
 
     if ((i + 1) % 100000 === 0) {
@@ -109,11 +110,13 @@ const seedPG = async () => {
     }
   }
 
-  for (let i = 0; i < booksCategoriesRows.length; i++) {
+  for (let i = 1; i < booksCategoriesRows.length; i++) {
 
     booksCategoriesRows[i] = booksCategoriesRows[i].join(',');
 
   }
+
+  // return;
 
   booksCategoriesRows = booksCategoriesRows.join('\n');
   exists = fs.existsSync(booksCategories);
@@ -124,7 +127,7 @@ const seedPG = async () => {
   fs.writeFileSync(booksCategories, booksCategoriesRows);
 
   await pool.connect((err, client, done) => {
-    let stream = client.query(copyFrom('COPY books FROM STDIN DELIMITER "," CSV HEADER'));
+    let stream = client.query(copyFrom("COPY books FROM STDIN DELIMITER ',' CSV HEADER"));
     let fileStream = fs.createReadStream(file);
     fileStream.on('error', () => {
       console.log('fileStream error');
@@ -142,7 +145,7 @@ const seedPG = async () => {
   });
 
   await pool.connect((err, client, done) => {
-    let stream = client.query(copyFrom('COPY books FROM STDIN DELIMITER "," CSV HEADER'));
+    let stream = client.query(copyFrom("COPY books_categories FROM STDIN DELIMITER ',' CSV HEADER"));
     let fileStream = fs.createReadStream(booksCategories);
     fileStream.on('error', () => {
       console.log('fileStream error');
