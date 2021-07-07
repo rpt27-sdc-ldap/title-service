@@ -253,7 +253,7 @@ const getRandomBook = () => {
 };
 
 const seed = async (numBooks = 10000000, numParams = 10000, numImages = 1000) => {
-  console.log(`Beginning seed of ${books} records`);
+  console.log(`Beginning seed of ${numBooks} records`);
   await searchAndDownload(numImages);
   await generateParams(numParams);
   await getContents();
