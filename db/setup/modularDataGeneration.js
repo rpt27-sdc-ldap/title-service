@@ -156,9 +156,12 @@ const uploadFiles = async () => {
     promises.push(promise);
   }
 
-  Promise.all(promises)
+  await Promise.all(promises)
     .then((values) => {
       for (let i = 0; i < values.length; i++) {
+        if (i === values.length - 1) {
+          console.log('promise', values[i]);
+        }
         params.imageUrl.push(values[i].Location);
       }
     })

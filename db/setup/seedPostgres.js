@@ -24,9 +24,9 @@ const seedPG = async () => {
   // await client.end();
 
   let data = await seed(100, 10, 10);
-  
+
   let categories = [];
-  
+
   // Find all categories
   for (let i = 0; i < data.length; i++) {
     for (let j = 0; j < data[i].categories.length; j++) {
@@ -36,7 +36,7 @@ const seedPG = async () => {
       }
     }
   }
-  
+
   // Add all categories to db
   for (let category of categories) {
     console.log(`Inserting category '${category}' into database`);
@@ -71,7 +71,7 @@ const seedPG = async () => {
 
     for (let key in data[i]) {
       let column = data[i][key];
-      
+
       if (key !== 'categories') {
         row.push(column);
       }
@@ -96,7 +96,7 @@ const seedPG = async () => {
         id = booksCategoriesRows[booksCategoriesRows.length - 1][0] + 1;
       }
 
-      console.log(data[i].categories)
+      console.log(data[i].categories);
       row.push(id);
       row.push(bookId);
       let category = await client.query(`SELECT id FROM categories WHERE name="${key.name}"`);
@@ -135,7 +135,7 @@ const seedPG = async () => {
       done();
     });
     stream.on('finish', () => {
-      console.log(`Inserted into books in ${(Date.now() - start) / 1000}s`);    
+      console.log(`Inserted into books in ${(Date.now() - start) / 1000}s`);
       done();
     });
     fileStream.pipe(stream);
@@ -153,7 +153,7 @@ const seedPG = async () => {
       done();
     });
     stream.on('finish', () => {
-      console.log(`Inserted into books_categories ${(Date.now() - start) / 1000}s`);    
+      console.log(`Inserted into books_categories ${(Date.now() - start) / 1000}s`);
       done();
     });
     fileStream.pipe(stream);

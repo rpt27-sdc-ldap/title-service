@@ -19,6 +19,7 @@
     "react-prod": "webpack --mode production",
     "server-dev": "nodemon ./server/start.js",
     "seed-db": "node ./db/setup/run-seed.js",
+    "seed-postgres": "node ./db/setup/seedPostgres.js",
     "test": "jest"
   },
   "repository": {
@@ -56,6 +57,7 @@
   "dependencies": {
     "async": "^3.2.0",
     "aws-sdk": "^2.936.0",
+    "axios": "^0.21.1",
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
     "dotenv": "^9.0.2",
