@@ -11,6 +11,7 @@ const s3 = new AWS.S3({
 });
 const moment = require('moment');
 const IMAGE_DIR = path.join(__dirname, 'images');
+const csvWriter = require('csv-write-stream');
 
 let params = {
   title: [],
@@ -244,8 +245,8 @@ const getRandomBook = () => {
     length: Math.floor(Math.random() * 1800000),
     version,
     categories: [
-      { name: params.categories[categoryIdx1] },
-      { name: params.categories[categoryIdx2] }
+      params.categories[categoryIdx1],
+      params.categories[categoryIdx2]
     ]
   };
 
@@ -258,15 +259,28 @@ const seed = async (numBooks = 10000000, numParams = 10000, numImages = 1000) =>
   await generateParams(numParams);
   await getContents();
 
-  const bookArray = [];
+  const bookPath = path.join(__dirname, 'data.csv');
+  const writer = csvWriter();
 
   for (let i = 0; i < numBooks; i++) {
     let book = getRandomBook();
-    if (i % Math.floor((i / 1000)) === 0) {
+    if (i % Math.floor((i / 100)) === 0) {
       console.log(`${moment(start).fromNow(true)} elapsed (${Date.now() - start}ms) --- ${i} records generated`);
     }
-    bookArray.push(book);
+
+    const stream = fs.createWriteStream(bookPath);
+
+    writer.pipe(stream);
+    writer.write(book);
+
+    (i < 3 ? console.log(writer) : i = i );
+    if (writer._writableState.length === 0 && writer._writableState.needDrain) {
+      writer._writableState.needDrain = false;
+      writer.emit('drain');
+      console.log('%c Draining ', 'background: #222; color: #bada55');
+    }
   }
+  writer.end();
 
   return bookArray;
 };

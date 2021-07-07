@@ -164,4 +164,4 @@ const seedPG = async (numBooks, numParams, numImages) => {
 
 };
 
-seedPG();
+seedPG(10000, 10, 10);
