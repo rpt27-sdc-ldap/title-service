@@ -11,7 +11,6 @@ const s3 = new AWS.S3({
 });
 const moment = require('moment');
 const IMAGE_DIR = path.join(__dirname, 'images');
-const csvWriter = require('csv-write-stream');
 
 let params = {
   title: [],
@@ -229,26 +228,28 @@ const getRandomArrayIdx = (array, exclude) => {
   }
 };
 
-const getRandomBook = () => {
+const getRandomBook = (id) => {
 
   let version = (Math.random() < 0.1 ? 'Unabridged Audiobook' : 'Abridged Audiobook');
   let categoryIdx1 = getRandomArrayIdx(params.categories);
   let categoryIdx2 = getRandomArrayIdx(params.categories, categoryIdx1);
 
-  let book = {
-    title: params.title[getRandomArrayIdx(params.title)],
-    subtitle: params.subtitle[getRandomArrayIdx(params.subtitle)],
-    author: params.author[getRandomArrayIdx(params.author)],
-    narrator: params.narrator[getRandomArrayIdx(params.narrator)],
-    'image_url': config.imagePrefix + params.imageUrl[getRandomArrayIdx(params.imageUrl)].Key,
-    'audio_sample_url': config.audioPrefix + params.audioSampleUrl[getRandomArrayIdx(params.audioSampleUrl)].Key,
-    length: Math.floor(Math.random() * 1800000),
-    version,
-    categories: [
-      params.categories[categoryIdx1],
-      params.categories[categoryIdx2]
-    ]
-  };
+  let book = {};
+  if (id) {
+    book['id'] = id;
+  }
+  book['title'] = params.title[getRandomArrayIdx(params.title)];
+  book['subtitle'] = params.subtitle[getRandomArrayIdx(params.subtitle)];
+  book['author'] = params.author[getRandomArrayIdx(params.author)];
+  book['narrator'] = params.narrator[getRandomArrayIdx(params.narrator)];
+  book['image_url'] = config.imagePrefix + params.imageUrl[getRandomArrayIdx(params.imageUrl)].Key;
+  book['audio_sample_url'] = config.audioPrefix + params.audioSampleUrl[getRandomArrayIdx(params.audioSampleUrl)].Key;
+  book['length'] = Math.floor(Math.random() * 1800000);
+  book['version'] = version;
+  book['categories'] = [
+    params.categories[categoryIdx1],
+    params.categories[categoryIdx2]
+  ];
 
   return book;
 };
@@ -260,29 +261,50 @@ const seed = async (numBooks = 10000000, numParams = 10000, numImages = 1000) =>
   await getContents();
 
   const bookPath = path.join(__dirname, 'data.csv');
-  const writer = csvWriter();
-
-  for (let i = 0; i < numBooks; i++) {
-    let book = getRandomBook();
-    if (i % Math.floor((i / 100)) === 0) {
-      console.log(`${moment(start).fromNow(true)} elapsed (${Date.now() - start}ms) --- ${i} records generated`);
-    }
-
-    const stream = fs.createWriteStream(bookPath);
-
-    writer.pipe(stream);
-    writer.write(book);
-
-    (i < 3 ? console.log(writer) : i = i );
-    if (writer._writableState.length === 0 && writer._writableState.needDrain) {
-      writer._writableState.needDrain = false;
-      writer.emit('drain');
-      console.log('%c Draining ', 'background: #222; color: #bada55');
-    }
+  const exists = fs.existsSync(bookPath);
+  if (exists) {
+    fs.unlinkSync(bookPath);
   }
-  writer.end();
 
-  return bookArray;
+  fs.appendFileSync(bookPath, Object.keys(getRandomBook(1)).join(',') + '\n');
+
+  let bookArray = [];
+  let postWrite = 0;
+  let iterable = ['hello'];
+
+  const timeout = async (ms) => {
+    console.log(`Waiting ${ms}ms`);
+    return new Promise(resolve => setTimeout(resolve, ms));
+  };
+  count = 0;
+
+  while (count <= numBooks) {
+    count++;
+    let book = getRandomBook(count);
+    if (count % 10000 === 0) {
+      console.log(`${moment(start).fromNow(true)} elapsed (${Date.now() - start}ms) --- ${count} records generated`);
+    }
+
+    bookArray.push(book);
+
+    if (bookArray.length === 1000000 || bookArray.length === numBooks) {
+      const used = process.memoryUsage().heapUsed / 1024 / 1024;
+      console.log(`The script uses approximately ${Math.round(used * 100) / 100} MB`);
+      bookArray = bookArray.map((string) => {
+        string.categories = string.categories.join(',');
+        string.categories = JSON.stringify(string.categories);
+        string = Object.values(string);
+        return string.join(',');
+      });
+      bookArray = bookArray.join('\n');
+      fs.appendFileSync(bookPath, bookArray);
+      bookArray = null;
+      bookArray = [];
+    }
+
+  }
+
+  return bookPath;
 };
 
 module.exports.seed = seed;
