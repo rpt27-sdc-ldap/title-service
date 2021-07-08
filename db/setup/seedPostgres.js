@@ -60,7 +60,7 @@ const seedCategories = async (rows) => {
     let counter = 0;
     const myEmitter = new EventEmitter();
     myEmitter.on('done', () => {
-      console.log('inserting into books_categories');
+      console.log('copying from csv into books_categories');
 
       let stream = client.query(copyFrom("COPY books_categories FROM STDIN DELIMITER ',' CSV HEADER"));
       let fileStream = fs.createReadStream(booksCategoriesPath);
@@ -82,7 +82,7 @@ const seedCategories = async (rows) => {
     let categoryRows;
 
     await client.query('SELECT * from categories', (err, result) => {
-      console.log('getting inserted categoires')
+      console.log('getting inserted categoires');
       categoryRows = result.rows;
 
       booksCategories.forEach((row, idx) => {
@@ -130,6 +130,7 @@ const seedPG = async (numBooks, numParams, numImages) => {
   let rows;
 
   await pool.connect(async (err, client, done) => {
+    console.log('Copying from CSV to books table');
     let stream = client.query(copyFrom("COPY books FROM STDIN DELIMITER ',' CSV HEADER"));
     let fileStream = fs.createReadStream(file);
     fileStream.on('error', () => {
