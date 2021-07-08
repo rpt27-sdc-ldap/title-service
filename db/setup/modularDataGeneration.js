@@ -266,16 +266,9 @@ const seed = async (numBooks = 10000000, numParams = 10000, numImages = 1000) =>
     fs.unlinkSync(bookPath);
   }
 
-  fs.appendFileSync(bookPath, Object.keys(getRandomBook(1)).join(',') + '\n');
+  fs.appendFileSync(bookPath, Object.keys(getRandomBook(1)).join(','));
 
   let bookArray = [];
-  let postWrite = 0;
-  let iterable = ['hello'];
-
-  const timeout = async (ms) => {
-    console.log(`Waiting ${ms}ms`);
-    return new Promise(resolve => setTimeout(resolve, ms));
-  };
   count = 0;
 
   while (count <= numBooks) {
@@ -287,9 +280,9 @@ const seed = async (numBooks = 10000000, numParams = 10000, numImages = 1000) =>
 
     bookArray.push(book);
 
-    if (bookArray.length === 1000000 || bookArray.length === numBooks) {
+    if (bookArray.length === 500000 || bookArray.length === numBooks) {
       const used = process.memoryUsage().heapUsed / 1024 / 1024;
-      console.log(`The script uses approximately ${Math.round(used * 100) / 100} MB`);
+      console.log(`Current memory usage - ${Math.round(used * 100) / 100} MB`);
       bookArray = bookArray.map((string) => {
         string.categories = string.categories.join(',');
         string.categories = JSON.stringify(string.categories);
@@ -297,7 +290,7 @@ const seed = async (numBooks = 10000000, numParams = 10000, numImages = 1000) =>
         return string.join(',');
       });
       bookArray = bookArray.join('\n');
-      fs.appendFileSync(bookPath, bookArray);
+      fs.appendFileSync(bookPath, '\n' + bookArray);
       bookArray = null;
       bookArray = [];
     }

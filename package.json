@@ -19,7 +19,7 @@
     "react-prod": "webpack --mode production",
     "server-dev": "nodemon ./server/start.js",
     "seed-db": "node ./db/setup/run-seed.js",
-    "seed-postgres": "node ./db/setup/seedPostgres.js",
+    "seed-postgres": "node --max-old-space-size=512 ./db/setup/seedPostgres.js",
     "test": "jest"
   },
   "repository": {

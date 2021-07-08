@@ -11,7 +11,12 @@ const pool = new Pool();
 const copyFrom = require('pg-copy-streams').from;
 const EventEmitter = require('events');
 
+setInterval(() => {
+  console.log(`${Math.round((process.memoryUsage().heapUsed / 1024 / 1024) * 100) / 100} MB`);
+}, 5000);
+
 const seedCategories = async (rows) => {
+  console.log('seedCategories');
 
   let categories = [];
   let booksCategories = [];
@@ -32,6 +37,7 @@ const seedCategories = async (rows) => {
   });
 
   await pool.connect(async (err, client, done) => {
+    console.log('inserting categories')
 
     categories.forEach(async (category) => {
 
@@ -54,6 +60,7 @@ const seedCategories = async (rows) => {
     let counter = 0;
     const myEmitter = new EventEmitter();
     myEmitter.on('done', () => {
+      console.log('inserting into books_categories');
 
       let stream = client.query(copyFrom("COPY books_categories FROM STDIN DELIMITER ',' CSV HEADER"));
       let fileStream = fs.createReadStream(booksCategoriesPath);
@@ -66,7 +73,7 @@ const seedCategories = async (rows) => {
         done();
       });
       stream.on('finish', async () => {
-        console.log(`Inserted into books in ${(Date.now() - start) / 1000}s`);
+        console.log(`Inserted into books_categories in ${(Date.now() - start) / 1000}s`);
         done();
       });
       fileStream.pipe(stream);
@@ -75,6 +82,7 @@ const seedCategories = async (rows) => {
     let categoryRows;
 
     await client.query('SELECT * from categories', (err, result) => {
+      console.log('getting inserted categoires')
       categoryRows = result.rows;
 
       booksCategories.forEach((row, idx) => {
@@ -151,4 +159,4 @@ const seedPG = async (numBooks, numParams, numImages) => {
 
 };
 
-seedPG();
+seedPG(10000000, 10, 10);
