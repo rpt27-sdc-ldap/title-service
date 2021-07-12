@@ -32,8 +32,6 @@ const seedPG = async (numBooks, numParams, numImages) => {
 
   let file = await seed(numBooks, numParams, numImages);
 
-  let rows;
-
   await pool.connect(async (err, client, done) => {
     let stream = client.query(copyFrom("COPY books FROM STDIN DELIMITER ',' CSV HEADER"));
     let fileStream = fs.createReadStream(file);
