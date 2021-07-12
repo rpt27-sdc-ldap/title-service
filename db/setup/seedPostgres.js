@@ -1,5 +1,6 @@
 require('dotenv').config();
 const seed = require('./modularDataGeneration.js').seed;
+const db = require('../db.js');
 const start = Date.now();
 const fs = require('fs');
 const path = require('path');
@@ -7,6 +8,7 @@ const schema = fs.readFileSync(path.join(__dirname, 'schema.sql'), {encoding: 'u
 const { Client, Pool } = require('pg');
 const client = new Client();
 const pool = new Pool();
+const copyFrom = require('pg-copy-streams').from;
 let scriptDone = false;
 
 setInterval(() => {
