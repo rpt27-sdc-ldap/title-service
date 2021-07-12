@@ -246,12 +246,29 @@ const getRandomBook = (id) => {
   book['audio_sample_url'] = config.audioPrefix + params.audioSampleUrl[getRandomArrayIdx(params.audioSampleUrl)].Key;
   book['length'] = Math.floor(Math.random() * 1800000);
   book['version'] = version;
-  book['categories'] = [
-    params.categories[categoryIdx1],
-    params.categories[categoryIdx2]
-  ];
+  book['category1'] = params.categories[categoryIdx1];
+  book['category2'] = params.categories[categoryIdx2];
+  // book['categories'] = [
+  //   params.categories[categoryIdx1],
+  //   params.categories[categoryIdx2]
+  // ];
 
   return book;
+};
+
+const convertToSQLArray = (array) => {
+  let string = JSON.stringify(array).split('');
+
+  for (let i = 0; i < string.length; i++) {
+    if (string[i] === '[') {
+      string[i] = '{';
+    }
+    if (string[i] === ']') {
+      string[i] = '}';
+    }
+  }
+
+  return string.join('');
 };
 
 const seed = async (numBooks = 10000000, numParams = 10000, numImages = 1000) => {
@@ -284,8 +301,7 @@ const seed = async (numBooks = 10000000, numParams = 10000, numImages = 1000) =>
       const used = process.memoryUsage().heapUsed / 1024 / 1024;
       console.log(`Current memory usage - ${Math.round(used * 100) / 100} MB`);
       bookArray = bookArray.map((string) => {
-        string.categories = string.categories.join(',');
-        string.categories = JSON.stringify(string.categories);
+        // string.categories = convertToSQLArray(string.categories);
         string = Object.values(string);
         return string.join(',');
       });
