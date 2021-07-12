@@ -9,110 +9,15 @@ const { Client, Pool } = require('pg');
 const client = new Client();
 const pool = new Pool();
 const copyFrom = require('pg-copy-streams').from;
-const EventEmitter = require('events');
+let scriptDone = false;
 
 setInterval(() => {
-  console.log(`${Math.round((process.memoryUsage().heapUsed / 1024 / 1024) * 100) / 100} MB`);
+  if (!scriptDone) {
+    console.log(`Memory usage at ${(Date.now() - start) / 1000} seconds - ${Math.round((process.memoryUsage().heapUsed / 1024 / 1024) * 100) / 100} MB`);
+  } else {
+    console.log('Script complete - Press ctrl + c to end');
+  }
 }, 5000);
-
-const seedCategories = async (rows) => {
-  console.log('seedCategories');
-
-  let categories = [];
-  let booksCategories = [];
-  rows.forEach((row) => {
-    let split = row.categories.split(',');
-
-    for (let i = 0; i < split.length; i++) {
-      if (!categories.includes(split[i])) {
-        categories.push(split[i]);
-      }
-
-      booksCategories.push({
-        id: row.id,
-        category: split[i]
-      });
-    }
-
-  });
-
-  await pool.connect(async (err, client, done) => {
-    console.log('inserting categories')
-
-    categories.forEach(async (category) => {
-
-      const query = {
-        name: 'insert-categories',
-        text: 'INSERT INTO categories(name) VALUES($1)',
-        values: [category]
-      };
-
-      await client.query(query);
-    });
-
-    const booksCategoriesPath = path.join(__dirname, 'books_categories.csv');
-    const exists = fs.existsSync(booksCategoriesPath);
-    if (exists) {
-      fs.unlinkSync(booksCategoriesPath);
-    }
-    await fs.appendFileSync(booksCategoriesPath, 'id,book_id,category_id\n');
-
-    let counter = 0;
-    const myEmitter = new EventEmitter();
-    myEmitter.on('done', () => {
-      console.log('copying from csv into books_categories');
-
-      let stream = client.query(copyFrom("COPY books_categories FROM STDIN DELIMITER ',' CSV HEADER"));
-      let fileStream = fs.createReadStream(booksCategoriesPath);
-      fileStream.on('error', () => {
-        console.log('fileStream error');
-        done();
-      });
-      stream.on('error', (err) => {
-        console.log('stream error', err);
-        done();
-      });
-      stream.on('finish', async () => {
-        console.log(`Inserted into books_categories in ${(Date.now() - start) / 1000}s`);
-        done();
-      });
-      fileStream.pipe(stream);
-
-    });
-    let categoryRows;
-
-    await client.query('SELECT * from categories', (err, result) => {
-      console.log('getting inserted categoires');
-      categoryRows = result.rows;
-
-      booksCategories.forEach((row, idx) => {
-        let categoryId;
-
-        for (let i = 0; i < categoryRows.length; i++) {
-          if (categoryRows[i].name === row.category) {
-            categoryId = categoryRows[i].id;
-          }
-        }
-
-        let string = idx + ',' + row.id + ',' + categoryId + '\n';
-        fs.appendFile(booksCategoriesPath, string, (err, result) => {
-          if (err) {
-            console.log(err);
-          }
-          counter++;
-          if (counter === booksCategories.length) {
-            myEmitter.emit('done');
-          }
-        });
-
-      });
-    });
-
-
-  });
-
-
-};
 
 const seedPG = async (numBooks, numParams, numImages) => {
 
@@ -122,12 +27,9 @@ const seedPG = async (numBooks, numParams, numImages) => {
     if (err) {
       console.log(err);
     }
-    return;
   });
 
   let file = await seed(numBooks, numParams, numImages);
-
-  let rows;
 
   await pool.connect(async (err, client, done) => {
     console.log('Copying from CSV to books table');
@@ -142,17 +44,25 @@ const seedPG = async (numBooks, numParams, numImages) => {
       done();
     });
     stream.on('finish', async () => {
-      console.log(`Inserted into books in ${(Date.now() - start) / 1000}s`);
+      console.log(`Inserted into books at ${(Date.now() - start) / 1000}s`);
 
-      const query = {
-        name: 'get-categories',
-        text: 'SELECT id,categories FROM books'
-      };
+      console.log('inserting into categories');
+      await client.query('INSERT INTO categories(name) SELECT category1 FROM books UNION SELECT category2 FROM books');
+      console.log(`inserted into categories at ${(Date.now() - start) / 1000}s`);
 
-      client.query(query, async (err, result) => {
-        await done();
-        await seedCategories(result.rows);
-      });
+      console.log('inserting category1 into books_categories');
+      await client.query('INSERT INTO books_categories (book_id, category_id) SELECT a.id,b.id FROM books a LEFT JOIN categories b ON (a.category1 = b.name)');
+      console.log(`inserted category1 into books_categories at ${(Date.now() - start) / 1000}s`);
+
+      console.log('inserting category2 into books_categories');
+      await client.query('INSERT INTO books_categories (book_id, category_id) SELECT a.id,b.id FROM books a LEFT JOIN categories b ON (a.category2 = b.name)');
+      console.log(`inserted category2 into books_categories at ${(Date.now() - start) / 1000}s`);
+
+      console.log('dropping columns "category1" and "category2"');
+      await client.query('ALTER TABLE books DROP COLUMN category1, DROP COLUMN category2');
+      console.log('done');
+      scriptDone = true;
+      done();
 
     });
     fileStream.pipe(stream);
@@ -160,4 +70,4 @@ const seedPG = async (numBooks, numParams, numImages) => {
 
 };
 
-seedPG(10000000, 10, 10);
+seedPG();

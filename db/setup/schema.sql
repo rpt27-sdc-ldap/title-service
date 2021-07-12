@@ -22,7 +22,9 @@ CREATE TABLE books (
   audio_sample_url varchar(255),
   length varchar(10),
   version varchar(255),
-  categories varchar(255)
+  -- categories varchar(255) ARRAY
+  category1 varchar(255),
+  category2 varchar(255)
   -- FOREIGN KEY (narrator_id) references narrators(narrator_id),
   -- FOREIGN KEY (author_id) references authors(author_id)
 
