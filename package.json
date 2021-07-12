@@ -20,6 +20,7 @@
     "server-dev": "nodemon ./server/start.js",
     "seed-db": "node ./db/setup/run-seed.js",
     "seed-postgres": "node --max-old-space-size=512 ./db/setup/seedPostgres.js",
+    "seed-couch": "cat /Users/kylejohnson/HackReactor/sdc/title-service/db/setup/data.csv | couchimport",
     "test": "jest"
   },
   "repository": {
