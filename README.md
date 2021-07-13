@@ -46,6 +46,8 @@ An `nvmrc` file is included if using [nvm](https://github.com/creationix/nvm).
 
 `npm install`
 
+### If using PostgreSQL
+
 2. create a .env file containing the following:
 ```
 DB_USER={mysqlUserName}
@@ -53,11 +55,33 @@ DB_PASSWORD={mysqlPassword}
 DB_HOST={mysqlHost}
 ```
 
-3. create a new mysql database named:
+3. create a new PostgreSQL database named:
 `audible`
 
 4. seed the database with:
-`npm run seed-db`
+`npm run seed-postgres`
+
+5. build the client bundle with:
+`npm run react-dev`
+
+6. start the server with:
+`npm run server-dev`
+
+### If using CouchDB
+
+1a. Install couchimport:
+`npm install -g couchimport`
+
+2. create a .env file containing the following:
+```
+DB_LOGIN_URL='http://admin:{password}@127.0.0.1:5984'
+```
+
+3. create a new PostgreSQL database named:
+`audible`
+
+4. seed the database with:
+`npm run seed-postgres`
 
 5. build the client bundle with:
 `npm run react-dev`

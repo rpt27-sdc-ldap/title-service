@@ -20,7 +20,7 @@
     "server-dev": "nodemon ./server/start.js",
     "seed-db": "node ./db/setup/run-seed.js",
     "seed-postgres": "node --max-old-space-size=512 ./db/setup/seedPostgres.js",
-    "seed-couch": "cat /Users/kylejohnson/HackReactor/sdc/title-service/db/setup/data.csv | couchimport",
+    "seed-couch": "node --max-old-space-size=12288 ./db/setup/seedCouch.js",
     "test": "jest"
   },
   "repository": {
@@ -61,6 +61,7 @@
     "axios": "^0.21.1",
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
+    "couchimport": "^1.5.2",
     "csv-write-stream": "^2.0.0",
     "csv-writer": "^1.6.0",
     "dotenv": "^9.0.2",

@@ -5,9 +5,10 @@ const transform = (obj) => {
   obj.categories.push(obj.category2);
   delete obj.category1;
   delete obj.category2;
-  console.log(obj);
+  delete obj.id;
+  // console.log(obj);
 
-  return JSON.stringify(obj);
+  return obj;
 };
 
 module.exports = transform;
