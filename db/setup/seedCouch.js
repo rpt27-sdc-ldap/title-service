@@ -2,10 +2,13 @@ require('dotenv').config();
 const nano = require('nano')(process.env.COUCH_LOGIN_URL);
 const seed = require('./modularDataGeneration.js').seed;
 const fs = require('fs');
+const path = require('path');
 let scriptDone = false;
 let start = Date.now();
 const axios = require('axios');
 let counter = 0;
+let connections = 0;
+let paused = false;
 
 setInterval(() => {
   if (!scriptDone) {
@@ -33,22 +36,26 @@ const refactorToJSON = (data, keys) => {
 };
 
 
-const seedCouch = async (records) => {
+const seedCouch = async (numBooks = 10000000, numParams = 10000, numImages = 1000) => {
   let dbs = await nano.db.list();
   if (dbs.includes('audible')) {
     await nano.db.destroy('audible');
   }
   await nano.db.create('audible');
-  const audible = nano.use('audible');
   
-  const file = await seed(records, 10, 10);
+  const file = await seed(numBooks, numParams, numImages);
   const stream = fs.createReadStream(file, { bufferSize: 256 * 1024});
   let leftover;
   let keys;
   let lineLength;
-  // let docs = [];
   
   const insert = async (data) => {
+    connections++;
+
+    if (connections > 9) {
+      stream.pause();
+      paused = true;
+    }
     let insertStart = Date.now();
     
     await axios({
@@ -64,20 +71,27 @@ const seedCouch = async (records) => {
       }
     })
       .then((response) => {
-        console.log(`Inserted in ${Date.now() - insertStart}ms`);
-        
+        counter += response.data.length;
+        console.log(`Inserted in ${Date.now() - insertStart}ms --- ${counter} docs`);
+        connections--;
+        if (paused) {
+          stream.resume();
+          paused = false;
+        }
+
+        if (counter >= numBooks) {
+          scriptDone = true;
+        }
       })
       .catch((err) => {
-        console.log('err', err);
-        // insert(data);
+        console.log(err.message);
       });
   };
 
   stream.on('data', async (chunk) => {
-    // counter++;
+    let docs = [];
     chunk = chunk.toString();
     let lines = chunk.split('\n');
-    let docs = [];
 
 
     for (let i = 0; i < lines.length; i++) {
@@ -98,7 +112,6 @@ const seedCouch = async (records) => {
       } else if (lineLength === columns.length) {     
         let json = refactorToJSON(columns, keys);
         docs.push(json);
-        counter++;
       } else {
         leftover = lines[i];
       }
@@ -113,4 +126,4 @@ const seedCouch = async (records) => {
 
 };
 
-seedCouch(10000000);
+seedCouch();

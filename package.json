@@ -21,7 +21,7 @@
     "seed-db": "node ./db/setup/run-seed.js",
     "seed-postgres": "node --max-old-space-size=512 ./db/setup/seedPostgres.js",
     "seed-couch": "node ./db/setup/seedCouch.js",
-    "seed-couch-custom-memory": "node --max-old-space-size=12288 ./db/setup/seedCouch.js",
+    "seed-couch-custom-memory": "node --max-old-space-size=8192 ./db/setup/seedCouch.js",
     "test": "jest"
   },
   "repository": {

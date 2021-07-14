@@ -196,9 +196,6 @@ const getContents = async () => {
 
 };
 
-getContents();
-
-
 const generateParams = async (num) => {
   console.log(`Generating ${num} sets of parameters. This could take a while.`);
 
@@ -256,24 +253,11 @@ const getRandomBook = (id) => {
   return book;
 };
 
-const convertToSQLArray = (array) => {
-  let string = JSON.stringify(array).split('');
-
-  for (let i = 0; i < string.length; i++) {
-    if (string[i] === '[') {
-      string[i] = '{';
-    }
-    if (string[i] === ']') {
-      string[i] = '}';
-    }
-  }
-
-  return string.join('');
-};
-
 const seed = async (numBooks = 10000000, numParams = 10000, numImages = 1000) => {
   console.log(`Beginning seed of ${numBooks} records`);
-  await searchAndDownload(numImages);
+  if (numImages) {
+    await searchAndDownload(numImages);
+  }
   await generateParams(numParams);
   await getContents();
 
