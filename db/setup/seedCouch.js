@@ -9,12 +9,16 @@ const axios = require('axios');
 let counter = 0;
 let connections = 0;
 let paused = false;
+let totalTime;
 
 setInterval(() => {
   if (!scriptDone) {
     console.log(`Memory usage at ${(Date.now() - start) / 1000} seconds - ${Math.round((process.memoryUsage().heapUsed / 1024 / 1024) * 100) / 100} MB`, counter);
   } else {
-    console.log('Script complete - Press ctrl + c to end');
+    if (!totalTime) {
+      totalTime = Date.now() - start;
+    }
+    console.log(`Script completed in ${totalTime / 1000}s - Press ctrl + c to end`);
   }
 }, 1000);
 
@@ -29,8 +33,10 @@ const refactorToJSON = (data, keys) => {
   obj['categories'] = [];
   obj.categories.push(obj.category1);
   obj.categories.push(obj.category2);
+  obj._id = obj.id;
   delete obj.category1;
   delete obj.category2;
+  delete obj.id;
 
   return obj;
 };
@@ -44,7 +50,7 @@ const seedCouch = async (numBooks = 10000000, numParams = 10000, numImages = 100
   await nano.db.create('audible');
   
   const file = await seed(numBooks, numParams, numImages);
-  const stream = fs.createReadStream(file, { bufferSize: 256 * 1024});
+  const stream = fs.createReadStream(file, { bufferSize: 1024 * 1024});
   let leftover;
   let keys;
   let lineLength;
@@ -91,39 +97,35 @@ const seedCouch = async (numBooks = 10000000, numParams = 10000, numImages = 100
   stream.on('data', async (chunk) => {
     let docs = [];
     chunk = chunk.toString();
+    if (leftover) {
+      chunk = leftover.concat(chunk);
+    }
     let lines = chunk.split('\n');
-
-
+    leftover = lines.pop();
+  
+    
     for (let i = 0; i < lines.length; i++) {
       let columns;
-
-      if (leftover) { 
-        let joined = leftover.concat(lines[i]);
-        columns = joined.split(',');
-        leftover = undefined;
-      } else {
-        columns = lines[i].split(',');
-      }
-
-
+      columns = lines[i].split(',');
+      
       if (!keys) {
         keys = columns;
         lineLength = columns.length;
-      } else if (lineLength === columns.length) {     
+      } else {     
         let json = refactorToJSON(columns, keys);
         docs.push(json);
-      } else {
-        leftover = lines[i];
       }
     }
-
+    
     insert(docs);
   });
 
   stream.on('end', async () => {
+    let json = refactorToJSON(leftover.split(','), keys);
+    insert([json]);
     await stream.close();
   });
 
 };
 
-seedCouch();
+seedCouch(10000000, 100000, false);

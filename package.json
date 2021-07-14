@@ -18,6 +18,7 @@
     "react-dev": "webpack --mode development --watch",
     "react-prod": "webpack --mode production",
     "server-dev": "nodemon ./server/start.js",
+    "start": "node ./server/start.js",
     "seed-db": "node ./db/setup/run-seed.js",
     "seed-postgres": "node --max-old-space-size=512 ./db/setup/seedPostgres.js",
     "seed-couch": "node ./db/setup/seedCouch.js",
