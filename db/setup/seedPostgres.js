@@ -60,6 +60,9 @@ const seedPG = async (numBooks, numParams, numImages) => {
 
       console.log('dropping columns "category1" and "category2"');
       await client.query('ALTER TABLE books DROP COLUMN category1, DROP COLUMN category2');
+
+      console.log('setting correct next value on primary key');
+      await client.query("SELECT setval(pg_get_serial_sequence('books', 'id'), (SELECT MAX(id) FROM books)+1)");
       console.log('done');
       scriptDone = true;
       done();
@@ -70,4 +73,4 @@ const seedPG = async (numBooks, numParams, numImages) => {
 
 };
 
-seedPG(10000000, 1000, false);
+seedPG(10000, 1000, false);

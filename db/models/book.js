@@ -92,6 +92,9 @@ module.exports.getRelatedById = (id) => {
 };
 
 module.exports.add = (book) => {
+  if (book.categories) {
+    
+  }
 
   return new Promise((resolve, reject) => {
     db.Book.create(book)
@@ -116,6 +119,8 @@ module.exports.update = (id, book) => {
   if (!id) {
     id = book.id;
   }
+
+  console.log(id, book);
 
   return new Promise((resolve, reject) => {
     db.Book.update(book, {

@@ -6,14 +6,14 @@ DROP TABLE IF EXISTS books_categories CASCADE;
 
 CREATE TABLE categories (
 
-  id SERIAL PRIMARY KEY,
+  id BIGSERIAL PRIMARY KEY,
   name varchar(255)
 
 );
 
 CREATE TABLE books (
 
-  id SERIAL PRIMARY KEY,
+  id BIGSERIAL PRIMARY KEY,
   title varchar(255),
   subtitle varchar(255),
   author varchar(255),
@@ -29,10 +29,14 @@ CREATE TABLE books (
 
 CREATE TABLE books_categories (
 
-  id SERIAL PRIMARY KEY,
+  id BIGSERIAL PRIMARY KEY,
   book_id SERIAL,
   category_id SERIAL,
-  FOREIGN KEY (book_id) references books(id),
-  FOREIGN KEY (category_id) references categories(id)
+  FOREIGN KEY (book_id)
+      REFERENCES books(id)
+      ON DELETE CASCADE,
+  FOREIGN KEY (category_id)
+      REFERENCES categories(id)
+      ON DELETE CASCADE
 
 );
