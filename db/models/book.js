@@ -92,7 +92,6 @@ module.exports.getRelatedById = (id) => {
 };
 
 module.exports.add = (book) => {
-  console.log(book);
   let categories;
   if (book.categories) {
     categories = book.categories.map((category) => {
@@ -101,21 +100,12 @@ module.exports.add = (book) => {
     delete book.categories;
   }
 
-  return new Promise((resolve, reject) => {
-    db.Book.create(book)
-      .then((response) => {
-        console.log(response.dataValues.id);
+  // This needs to account for categories in the future
 
-        if (categories) {
-          categories.forEach((category) => {
-            console.log(category);
-            // This eventually needs escaping
-            db.sequelize.query(`SELECT id FROM categories WHERE name=${category}`)
-              .then((result) => {
-                console.log(result);
-              });
-          });
-        }
+  return new Promise(async (resolve, reject) => {
+    await db.Book.create(book)
+      .then(async (response) => {
+        const bookId = response.dataValues.id;
 
         const data = `Successfully added ${response.dataValues.title} by ${response.dataValues.author} with id:${response.dataValues.id}`;
         resolve(data);
