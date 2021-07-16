@@ -6,14 +6,17 @@ DROP TABLE IF EXISTS books_categories CASCADE;
 
 CREATE TABLE categories (
 
-  id SERIAL PRIMARY KEY,
+  id BIGSERIAL PRIMARY KEY,
   name varchar(255)
 
 );
 
+CREATE INDEX categories_id_index ON categories (id);
+CREATE INDEX categories_name_index ON categories USING hash (name);
+
 CREATE TABLE books (
 
-  id SERIAL PRIMARY KEY,
+  id BIGSERIAL PRIMARY KEY,
   title varchar(255),
   subtitle varchar(255),
   author varchar(255),
@@ -21,18 +24,27 @@ CREATE TABLE books (
   image_url varchar(255),
   audio_sample_url varchar(255),
   length varchar(10),
-  version varchar(255)
-  -- FOREIGN KEY (narrator_id) references narrators(narrator_id),
-  -- FOREIGN KEY (author_id) references authors(author_id)
+  version varchar(255),
+  category1 varchar(255),
+  category2 varchar(255)
 
 );
+
+CREATE INDEX books_id_index ON books (id);
 
 CREATE TABLE books_categories (
 
-  id SERIAL PRIMARY KEY,
+  id BIGSERIAL PRIMARY KEY,
   book_id SERIAL,
   category_id SERIAL,
-  FOREIGN KEY (id) references books(id),
-  FOREIGN KEY (id) references categories(id)
+  FOREIGN KEY (book_id)
+      REFERENCES books(id)
+      ON DELETE CASCADE,
+  FOREIGN KEY (category_id)
+      REFERENCES categories(id)
+      ON DELETE CASCADE
 
 );
+
+CREATE INDEX books_categories_book_id_index ON books_categories (book_id);
+CREATE INDEX books_categories_category_id_index ON books_categories (category_id);

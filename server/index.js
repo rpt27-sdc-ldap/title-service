@@ -66,6 +66,7 @@ app.post('/api/book', (req, res) => {
 });
 
 app.put('/api/book/:id', (req, res) => {
+  console.log(req.body)
 
   Book.update(req.params.id, req.body.book)
     .then((response) => {
@@ -90,7 +91,8 @@ app.delete('/api/book/:id', (req, res) => {
       res.send();
     })
     .catch((err) => {
-      res.write(err);
+      console.log(err);
+      // res.write(err);
       res.status(404);
       res.send();
     });

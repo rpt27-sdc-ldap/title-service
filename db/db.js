@@ -59,7 +59,7 @@ const Book_Category = sequelize.define('books_categories', {
       key: 'id',
     },
     onDelete: 'cascade',
-    onUpdate: 'cascade',
+    onUpdate: 'cascade'
   },
   book_id: {
     type: DataTypes.INTEGER(11),
@@ -70,7 +70,7 @@ const Book_Category = sequelize.define('books_categories', {
       key: 'id',
     },
     onDelete: 'cascade',
-    onUpdate: 'cascade',
+    onUpdate: 'cascade'
   }
 }, {
   timestamps: false,
@@ -82,14 +82,18 @@ const Book_Category = sequelize.define('books_categories', {
 
 Book.belongsToMany(Category, {
   through: Book_Category,
-  as: 'categories',
-  foreignKey: 'id'
+  // as: 'categories',
+  foreignKey: {name: 'id', allowNull: false},
+  onDelete: 'cascade',
+  onUpdate: 'cascade'
 });
 
 Category.belongsToMany(Book, {
   through: Book_Category,
-  as: 'books',
-  foreignKey: 'id'
+  // as: 'books',
+  foreignKey: {name: 'id', allowNull: false},
+  onDelete: 'cascade',
+  onUpdate: 'cascade'
 });
 
 module.exports.sequelize = sequelize;
