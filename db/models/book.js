@@ -92,24 +92,32 @@ module.exports.getRelatedById = (id) => {
 };
 
 module.exports.add = (book) => {
+  console.log(book);
+  let categories;
   if (book.categories) {
-    
+    categories = book.categories.map((category) => {
+      return {name: category};
+    });
+    delete book.categories;
   }
 
   return new Promise((resolve, reject) => {
     db.Book.create(book)
       .then((response) => {
+        // console.log(response.dataValues.id);
+
+        // if (categories) {
+        //   categories.forEach((category) => {
+        //     db.sequelize.query('');
+        //   });
+        // }
+
         const data = `Successfully added ${response.dataValues.title} by ${response.dataValues.author} with id:${response.dataValues.id}`;
         resolve(data);
       })
       .catch((err) => {
-        let response;
-        if (err) {
-          response = err.errors[0].message;
-        } else {
-          response = 'Could not insert into database';
-        }
-        reject(response);
+        console.log(err);
+        reject(JSON.stringify(err));
       });
   });
 

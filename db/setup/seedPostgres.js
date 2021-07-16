@@ -73,4 +73,4 @@ const seedPG = async (numBooks, numParams, numImages) => {
 
 };
 
-seedPG(10000, 1000, false);
+seedPG(10000000, 1000, false);

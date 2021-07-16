@@ -11,6 +11,9 @@ CREATE TABLE categories (
 
 );
 
+CREATE INDEX categories_id_index ON categories (id);
+CREATE INDEX categories_name_index ON categories USING hash (name);
+
 CREATE TABLE books (
 
   id BIGSERIAL PRIMARY KEY,
@@ -27,6 +30,8 @@ CREATE TABLE books (
 
 );
 
+CREATE INDEX books_id_index ON books (id);
+
 CREATE TABLE books_categories (
 
   id BIGSERIAL PRIMARY KEY,
@@ -40,3 +45,6 @@ CREATE TABLE books_categories (
       ON DELETE CASCADE
 
 );
+
+CREATE INDEX books_categories_book_id_index ON books_categories (book_id);
+CREATE INDEX books_categories_category_id_index ON books_categories (category_id);
