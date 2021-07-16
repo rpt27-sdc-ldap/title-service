@@ -92,7 +92,7 @@ module.exports.getRelatedById = (id) => {
 };
 
 module.exports.add = (book) => {
-  // console.log(book);
+  console.log(book);
   let categories;
   if (book.categories) {
     categories = book.categories.map((category) => {
@@ -104,13 +104,18 @@ module.exports.add = (book) => {
   return new Promise((resolve, reject) => {
     db.Book.create(book)
       .then((response) => {
-        // console.log(response.dataValues.id);
+        console.log(response.dataValues.id);
 
-        // if (categories) {
-        //   categories.forEach((category) => {
-        //     db.sequelize.query('');
-        //   });
-        // }
+        if (categories) {
+          categories.forEach((category) => {
+            console.log(category);
+            // This eventually needs escaping
+            db.sequelize.query(`SELECT id FROM categories WHERE name=${category}`)
+              .then((result) => {
+                console.log(result);
+              });
+          });
+        }
 
         const data = `Successfully added ${response.dataValues.title} by ${response.dataValues.author} with id:${response.dataValues.id}`;
         resolve(data);
