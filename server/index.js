@@ -17,7 +17,7 @@ app.get('/api/book/:id', (req, res) => {
     })
     .catch((err) => {
       res.status(404);
-      console.log('db err: ', err);
+      console.error('db err: ', err);
       res.send(err);
     });
 });
@@ -32,7 +32,7 @@ app.get('/api/books', (req, res) => {
     })
     .catch((err) => {
       res.status(500);
-      console.log('db err: ', err);
+      console.error('db err: ', err);
       res.send(err);
     });
 });
@@ -44,7 +44,7 @@ app.get('/api/book/:id/related', (req, res) => {
     })
     .catch((err) => {
       res.status(500);
-      console.log('db err: ', err);
+      console.error('db err: ', err);
       res.send(err);
     });
 });
@@ -66,7 +66,6 @@ app.post('/api/book', (req, res) => {
 });
 
 app.put('/api/book/:id', (req, res) => {
-  console.log(req.body)
 
   Book.update(req.params.id, req.body.book)
     .then((response) => {
@@ -91,7 +90,7 @@ app.delete('/api/book/:id', (req, res) => {
       res.send();
     })
     .catch((err) => {
-      console.log(err);
+      console.error(err);
       // res.write(err);
       res.status(404);
       res.send();
