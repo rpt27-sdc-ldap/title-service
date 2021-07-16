@@ -107,6 +107,16 @@ module.exports.add = (book) => {
       .then(async (response) => {
         const bookId = response.dataValues.id;
 
+        if (categories) {
+
+          for (let cat of categories) {
+
+            await db.sequelize.query(`DO $do$ BEGIN IF NOT EXISTS (SELECT * FROM categories WHERE name='${cat.name}') THEN INSERT INTO categories (name) VALUES ('${cat.name}'); END IF; END; $do$`);
+            await db.sequelize.query(`INSERT INTO books_categories (book_id, category_id) VALUES ('${bookId}', (SELECT id FROM categories WHERE name='${cat.name}'))`);
+          }
+
+        }
+
         const data = `Successfully added ${response.dataValues.title} by ${response.dataValues.author} with id:${response.dataValues.id}`;
         resolve(data);
       })
