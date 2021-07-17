@@ -25,7 +25,7 @@ const seedPG = async (numBooks, numParams, numImages) => {
 
   await client.query(schema, (err, res) => {
     if (err) {
-      console.log(err);
+      console.error(err);
     }
   });
 
@@ -36,11 +36,11 @@ const seedPG = async (numBooks, numParams, numImages) => {
     let stream = client.query(copyFrom("COPY books FROM STDIN DELIMITER ',' CSV HEADER"));
     let fileStream = fs.createReadStream(file);
     fileStream.on('error', () => {
-      console.log('fileStream error');
+      console.error('fileStream error');
       done();
     });
     stream.on('error', (err) => {
-      console.log('stream error', err);
+      console.error('stream error', err);
       done();
     });
     stream.on('finish', async () => {

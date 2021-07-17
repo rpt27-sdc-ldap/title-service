@@ -92,7 +92,7 @@ module.exports.getRelatedById = (id) => {
 };
 
 module.exports.add = (book) => {
-  console.log(book);
+  // console.log(book);
   let categories;
   if (book.categories) {
     categories = book.categories.map((category) => {
@@ -116,7 +116,7 @@ module.exports.add = (book) => {
         resolve(data);
       })
       .catch((err) => {
-        console.log(err);
+        console.error(err);
         reject(JSON.stringify(err));
       });
   });
@@ -127,8 +127,6 @@ module.exports.update = (id, book) => {
   if (!id) {
     id = book.id;
   }
-
-  console.log(id, book);
 
   return new Promise((resolve, reject) => {
     db.Book.update(book, {

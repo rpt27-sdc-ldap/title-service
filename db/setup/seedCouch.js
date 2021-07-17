@@ -90,7 +90,7 @@ const seedCouch = async (numBooks = 10000000, numParams = 10000, numImages = 100
         }
       })
       .catch((err) => {
-        console.log(err.message);
+        console.err(err.message);
       });
   };
 

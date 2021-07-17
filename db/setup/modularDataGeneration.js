@@ -102,10 +102,10 @@ const getImages = async (num) => {
       })
       .catch((err) => {
         if (err) {
-          console.log(err);
+          console.error(err);
         }
         status.error++;
-        console.log('Error Downloading Video');
+        console.error('Error Downloading Video');
       });
   }
 
@@ -149,7 +149,7 @@ const uploadFiles = async () => {
 
     let promise = s3.upload(params, (err, data) => {
       if (err) {
-        console.log(err);
+        console.error(err);
       }
     }).promise();
 
@@ -164,7 +164,7 @@ const uploadFiles = async () => {
     })
     .catch((err) => {
       if (err) {
-        console.log(err);
+        console.error(err);
       }
     });
 
