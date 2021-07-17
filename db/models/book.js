@@ -1,6 +1,8 @@
 const { Op } = require('sequelize');
 const db = require('../db.js');
 const prepare = require('pg-prepare');
+const { Pool, Client } = require('pg');
+const pool = new Pool();
 
 module.exports.getById = (id) => {
   return new Promise((resolve, reject) => {
@@ -95,13 +97,14 @@ module.exports.getRelatedById = (id) => {
 module.exports.add = (book) => {
   let categories;
   if (book.categories) {
+    console.log('yes')
     categories = book.categories.map((category) => {
       return {name: category};
     });
     delete book.categories;
   }
 
-  // This needs to account for categories in the future
+  // Refactor this to sequelize. Current implementation is not working
 
   return new Promise(async (resolve, reject) => {
     await db.Book.create(book)
@@ -109,16 +112,24 @@ module.exports.add = (book) => {
         const bookId = response.dataValues.id;
 
         if (categories) {
+          console.log('yes')
 
-          for (let cat of categories) {
-            const stmt1 = prepare`DO $do$ BEGIN IF NOT EXISTS (SELECT * FROM categories WHERE name='${cat.name}') THEN INSERT INTO categories (name) VALUES ('${cat.name}'); END IF; END; $do$`;
-            const stmt2 = prepare`INSERT INTO books_categories (book_id, category_id) VALUES ('${bookId}', (SELECT id FROM categories WHERE name='${cat.name}'))`;
+          pool.connect(async (err, client, release) => {
+  
+            for (let cat of categories) {
+              const stmt1 = prepare`DO $do$ BEGIN IF NOT EXISTS (SELECT * FROM categories WHERE name='${cat.name}') THEN INSERT INTO categories (name) VALUES ('${cat.name}'); END IF; END; $do$`;
+              const stmt2 = prepare`INSERT INTO books_categories (book_id, category_id) VALUES ('${cat.name}'), (SELECT id FROM categories WHERE name='${bookId}'))`;
+  
+              await client.query(stmt1.text, stmt1.values, () => {});
+              await client.query(stmt2.text, stmt2.values, () => {});
+            }
 
-            await db.sequelize.query(stmt1);
-            await db.sequelize.query(stmt2);
-          }
-
+            await release();
+  
+          });
+            
         }
+
 
         const data = `Successfully added ${response.dataValues.title} by ${response.dataValues.author} with id:${response.dataValues.id}`;
         resolve(data);
