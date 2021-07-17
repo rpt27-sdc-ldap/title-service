@@ -113,6 +113,9 @@ module.exports.add = (book) => {
           for (let cat of categories) {
             const stmt1 = prepare`DO $do$ BEGIN IF NOT EXISTS (SELECT * FROM categories WHERE name='${cat.name}') THEN INSERT INTO categories (name) VALUES ('${cat.name}'); END IF; END; $do$`;
             const stmt2 = prepare`INSERT INTO books_categories (book_id, category_id) VALUES ('${bookId}', (SELECT id FROM categories WHERE name='${cat.name}'))`;
+
+            await db.sequelize.query(stmt1);
+            await db.sequelize.query(stmt2);
           }
 
         }
