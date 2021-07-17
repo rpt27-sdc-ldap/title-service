@@ -79,10 +79,13 @@
     "pexels": "^1.2.1",
     "pg": "^8.6.0",
     "pg-copy-streams": "^5.1.1",
+    "pg-escape": "^0.2.0",
+    "pg-prepare": "^2.0.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-star-ratings": "^2.3.0",
     "save-dev": "0.0.1-security",
-    "sequelize": "^6.6.2"
+    "sequelize": "^6.6.2",
+    "sql-escape": "^1.0.1"
   }
 }
