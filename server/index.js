@@ -50,7 +50,6 @@ app.get('/api/book/:id/related', (req, res) => {
 });
 
 app.post('/api/book', (req, res) => {
-  console.log(req.body);
 
   Book.add(req.body.book)
     .then((response) => {

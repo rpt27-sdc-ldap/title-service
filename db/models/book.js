@@ -95,42 +95,22 @@ module.exports.getRelatedById = (id) => {
 };
 
 module.exports.add = (book) => {
-  let categories;
-  if (book.categories) {
-    categories = book.categories.map((category) => {
-      return {name: category};
-    });
-    delete book.categories;
-  }
+  book.categories = book.categories.map((cat) => {
+    return { name: cat };
+  });
 
   // Refactor this to sequelize. Current implementation is not working
 
   return new Promise(async (resolve, reject) => {
-    await db.Book.create(book)
+    await db.Book.create(book, {
+      include: [{
+        association: db.Category.associations.books,
+        as: 'categories'
+      }]
+    })
       .then(async (response) => {
-        const bookId = response.dataValues.id;
-
-        if (categories) {
-
-          pool.connect(async (err, client, release) => {
-  
-            for (let cat of categories) {
-              const stmt1 = prepare`DO $do$ BEGIN IF NOT EXISTS (SELECT * FROM categories WHERE name='${cat.name}') THEN INSERT INTO categories (name) VALUES ('${cat.name}'); END IF; END; $do$`;
-              const stmt2 = prepare`INSERT INTO books_categories (book_id, category_id) VALUES ('${cat.name}'), (SELECT id FROM categories WHERE name='${bookId}'))`;
-  
-              await client.query(stmt1.text, stmt1.values, () => {});
-              await client.query(stmt2.text, stmt2.values, () => {});
-            }
-
-            await release();
-  
-          });
-            
-        }
-
-
-        const data = `Successfully added ${response.dataValues.title} by ${response.dataValues.author} with id:${response.dataValues.id}`;
-        resolve(data);
+        console.log(response)
+        resolve('inserted');
       })
       .catch((err) => {
         console.error(err);
