@@ -6,7 +6,7 @@ const pool = new Pool();
 
 module.exports.getById = (id) => {
   return new Promise((resolve, reject) => {
-    db.Book.findOne({
+    db.Book.findAll({
       where: {
         id
       },
@@ -97,7 +97,6 @@ module.exports.getRelatedById = (id) => {
 module.exports.add = (book) => {
   let categories;
   if (book.categories) {
-    console.log('yes')
     categories = book.categories.map((category) => {
       return {name: category};
     });
@@ -112,7 +111,6 @@ module.exports.add = (book) => {
         const bookId = response.dataValues.id;
 
         if (categories) {
-          console.log('yes')
 
           pool.connect(async (err, client, release) => {
   
