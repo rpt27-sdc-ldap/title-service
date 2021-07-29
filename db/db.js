@@ -4,6 +4,7 @@ require('dotenv').config();
 const sequelize = new Sequelize('audible', process.env.PSQL_DB_USER, process.env.PSQL_DB_PASSWORD, {
   host: process.env.PSQL_DB_HOST,
   dialect: 'postgres',
+  protocol: 'postgres',
   logging: false
 });
 
@@ -61,7 +62,7 @@ const Book_Category = sequelize.define('books_categories', {
     unique: true,
     references: {
       model: Category,
-      key: 'id',
+      key: 'category_id',
     },
     onDelete: 'cascade',
     onUpdate: 'cascade'
@@ -72,14 +73,15 @@ const Book_Category = sequelize.define('books_categories', {
     unique: true,
     references: {
       model: Book,
-      key: 'id',
+      key: 'book_id',
     },
     onDelete: 'cascade',
     onUpdate: 'cascade'
   }
 }, {
   timestamps: false,
-  freezeTableName: true
+  freezeTableName: true,
+  tableName: 'books_categories'
 }, {
   timestamps: false
 });
@@ -92,6 +94,7 @@ Book.belongsToMany(Category, {
   onDelete: 'cascade',
   onUpdate: 'cascade'
 });
+
 
 Category.belongsToMany(Book, {
   through: Book_Category,
