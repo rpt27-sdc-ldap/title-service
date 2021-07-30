@@ -63,6 +63,10 @@ const seedPG = async (numBooks, numParams, numImages) => {
 
       console.log('setting correct next value on primary key');
       await client.query("SELECT setval(pg_get_serial_sequence('books', 'id'), (SELECT MAX(id) FROM books)+1)");
+
+      console.log('clustering data');
+      await client.query('cluster books_categories using books_categories_category_id_index');
+      await client.query('cluster categories using categories_id_index');
       console.log('done');
       scriptDone = true;
       done();

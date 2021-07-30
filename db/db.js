@@ -4,6 +4,7 @@ require('dotenv').config();
 const sequelize = new Sequelize('audible', process.env.PSQL_DB_USER, process.env.PSQL_DB_PASSWORD, {
   host: process.env.PSQL_DB_HOST,
   dialect: 'postgres',
+  protocol: 'postgres',
   logging: false
 });
 
@@ -50,13 +51,18 @@ const Category = sequelize.define('categories', {
 });
 
 const Book_Category = sequelize.define('books_categories', {
+  id: {
+    type: DataTypes.INTEGER(11),
+    primaryKey: true,
+    autoIncrement: true
+  },
   category_id: {
     type: DataTypes.INTEGER(11),
     primaryKey: false,
     unique: true,
     references: {
       model: Category,
-      key: 'id',
+      key: 'category_id',
     },
     onDelete: 'cascade',
     onUpdate: 'cascade'
@@ -67,14 +73,15 @@ const Book_Category = sequelize.define('books_categories', {
     unique: true,
     references: {
       model: Book,
-      key: 'id',
+      key: 'book_id',
     },
     onDelete: 'cascade',
     onUpdate: 'cascade'
   }
 }, {
   timestamps: false,
-  freezeTableName: true
+  freezeTableName: true,
+  tableName: 'books_categories'
 }, {
   timestamps: false
 });
@@ -82,16 +89,17 @@ const Book_Category = sequelize.define('books_categories', {
 
 Book.belongsToMany(Category, {
   through: Book_Category,
-  // as: 'categories',
-  foreignKey: {name: 'id', allowNull: false},
+  as: 'categories',
+  foreignKey: {name: 'book_id', allowNull: false},
   onDelete: 'cascade',
   onUpdate: 'cascade'
 });
 
+
 Category.belongsToMany(Book, {
   through: Book_Category,
-  // as: 'books',
-  foreignKey: {name: 'id', allowNull: false},
+  as: 'books',
+  foreignKey: {name: 'category_id', allowNull: false},
   onDelete: 'cascade',
   onUpdate: 'cascade'
 });

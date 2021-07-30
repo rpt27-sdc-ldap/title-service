@@ -1,3 +1,4 @@
+require('dotenv').config();
 let faker = require('faker');
 let path = require('path');
 const AWS = require('aws-sdk');
@@ -6,8 +7,8 @@ let start = Date.now();
 const fs = require('fs');
 const axios = require('axios');
 const s3 = new AWS.S3({
-  accessKeyId: config.accessKeyID,
-  secretAccessKey: config.secretAccessKey
+  accessKeyId: process.env.ACCESS_KEY_ID,
+  secretAccessKey: process.env.SECRET_ACCESS_KEY
 });
 const moment = require('moment');
 const IMAGE_DIR = path.join(__dirname, 'images');
@@ -113,12 +114,12 @@ const getImages = async (num) => {
 };
 
 const emptyBucket = async () => {
-  console.log(`Emptying and repopulating bucket ${config.imageBucket}`);
+  console.log(`Emptying and repopulating bucket ${process.env.IMAGE_BUCKET}`);
 
-  const { Contents } = await s3.listObjects({ Bucket: config.imageBucket }).promise();
+  const { Contents } = await s3.listObjects({ Bucket: process.env.IMAGE_BUCKET }).promise();
   if (Contents.length > 0) {
     await s3.deleteObjects({
-      Bucket: config.imageBucket,
+      Bucket: process.env.IMAGE_BUCKET,
       Delete: {
         Objects: Contents.map(({ Key }) => ({ Key }))
       }
@@ -141,7 +142,7 @@ const uploadFiles = async () => {
     fileName = fileName[fileName.length - 1];
 
     const params = {
-      Bucket: config.imageBucket,
+      Bucket: process.env.IMAGE_BUCKET,
       Key: fileName,
       Body: fileContent,
       ContentType: 'image/jpeg'
@@ -178,7 +179,7 @@ const searchAndDownload = async (numImages) => {
 
 const getContents = async () => {
 
-  const contents = await s3.listObjects({ Bucket: config.audioBucket }).promise();
+  const contents = await s3.listObjects({ Bucket: process.env.AUDIO_BUCKET }).promise();
 
   if (!params) {
     params = {};
@@ -186,7 +187,7 @@ const getContents = async () => {
 
   params['audioSampleUrl'] = contents.Contents;
 
-  const images = await s3.listObjects({ Bucket: config.imageBucket }).promise();
+  const images = await s3.listObjects({ Bucket: process.env.IMAGE_BUCKET }).promise();
 
   if (!params) {
     params = {};
@@ -239,16 +240,12 @@ const getRandomBook = (id) => {
   book['subtitle'] = params.subtitle[getRandomArrayIdx(params.subtitle)];
   book['author'] = params.author[getRandomArrayIdx(params.author)];
   book['narrator'] = params.narrator[getRandomArrayIdx(params.narrator)];
-  book['image_url'] = config.imagePrefix + params.imageUrl[getRandomArrayIdx(params.imageUrl)].Key;
-  book['audio_sample_url'] = config.audioPrefix + params.audioSampleUrl[getRandomArrayIdx(params.audioSampleUrl)].Key;
+  book['image_url'] = process.env.IMAGE_PREFIX + params.imageUrl[getRandomArrayIdx(params.imageUrl)].Key;
+  book['audio_sample_url'] = process.env.AUDIO_PREFIX + params.audioSampleUrl[getRandomArrayIdx(params.audioSampleUrl)].Key;
   book['length'] = Math.floor(Math.random() * 1800000);
   book['version'] = version;
   book['category1'] = params.categories[categoryIdx1];
   book['category2'] = params.categories[categoryIdx2];
-  // book['categories'] = [
-  //   params.categories[categoryIdx1],
-  //   params.categories[categoryIdx2]
-  // ];
 
   return book;
 };

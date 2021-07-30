@@ -1,9 +1,13 @@
+const sequelize = require('sequelize');
 const { Op } = require('sequelize');
 const db = require('../db.js');
+const prepare = require('pg-prepare');
+const { Pool, Client } = require('pg');
+const pool = new Pool();
 
 module.exports.getById = (id) => {
   return new Promise((resolve, reject) => {
-    db.Book.findOne({
+    db.Book.findAll({
       where: {
         id
       },
@@ -92,28 +96,32 @@ module.exports.getRelatedById = (id) => {
 };
 
 module.exports.add = (book) => {
-  // console.log(book);
-  let categories;
-  if (book.categories) {
-    categories = book.categories.map((category) => {
-      return {name: category};
-    });
-    delete book.categories;
-  }
+  return new Promise(async (resolve, reject) => {
+    await db.Book.create(book)
+      .then(async (response) => {
+        const bookId = response.dataValues.id;
 
-  return new Promise((resolve, reject) => {
-    db.Book.create(book)
-      .then((response) => {
-        // console.log(response.dataValues.id);
+        for (let category of book.categories) {
+          let categoryId;
 
-        // if (categories) {
-        //   categories.forEach((category) => {
-        //     db.sequelize.query('');
-        //   });
-        // }
+          await db.Category.findAll({
+            attributes: ['id'],
+            where: {
+              name: category
+            }
+          })
+            .then((response) => {
+              categoryId = response[0].dataValues.id;
+            });
 
-        const data = `Successfully added ${response.dataValues.title} by ${response.dataValues.author} with id:${response.dataValues.id}`;
-        resolve(data);
+          await db.Book_Category.create({
+            'book_id': bookId,
+            'category_id': categoryId
+          });
+
+        }
+
+        resolve(JSON.stringify(response));
       })
       .catch((err) => {
         console.error(err);
@@ -124,24 +132,53 @@ module.exports.add = (book) => {
 };
 
 module.exports.update = (id, book) => {
-  if (!id) {
-    id = book.id;
-  }
-
+  
   return new Promise((resolve, reject) => {
+    if (!id) {
+      reject('please provide a book id');
+    } else {
+      id = Number(id);
+    }
     db.Book.update(book, {
       where: {
         id: id
       }
     })
-      .then((response) => {
+      .then(async (response) => {
+        if (book.categories) {
+
+          db.Book_Category.destroy({
+            where: {
+              'book_id': id
+            }
+          }).then(async () => {
+            for (let category of book.categories) {
+              let categoryId;
+              await db.Category.findAll({
+                where: {
+                  name: category
+                }
+              })
+                .then((response) => {
+                  categoryId = response[0].dataValues.id;
+                });
+              await db.Book_Category.create({
+                'book_id': id,
+                'category_id': categoryId
+              });
+            }
+          });
+
+        }
+
         if (response[0] === 0) {
           throw `no record with id:${book.id} found`;
         }
         resolve(`Updated ${response.length} record`);
       })
       .catch((err) => {
-        reject(err);
+        console.log(err)
+        reject(JSON.stringify(err));
       });
   });
 
