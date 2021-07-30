@@ -177,7 +177,7 @@ module.exports.update = (id, book) => {
         resolve(`Updated ${response.length} record`);
       })
       .catch((err) => {
-        console.log(err)
+        console.log(err);
         reject(JSON.stringify(err));
       });
   });
