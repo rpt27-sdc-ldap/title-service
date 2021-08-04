@@ -5,15 +5,23 @@ const Book = require('../db/models/book.js');
 const bodyParser = require('body-parser');
 
 app.use(cors());
-app.use(express.static('public'));
 app.use(express.json());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
+app.use('/files', express.static('public'));
 
 app.get('/api/book/:id', (req, res) => {
   Book.getById(req.params.id)
     .then((result) => {
-      res.send(result);
+      const book = result[0];
+
+      book.dataValues['audioUrl'] = book.dataValues.audio_sample_url;
+      book.dataValues['imageUrl'] = book.dataValues.image_url;
+
+      delete book.dataValues.audio_sample_url;
+      delete book.dataValues.image_url;
+      
+      res.send(book);
     })
     .catch((err) => {
       res.status(404);

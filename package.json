@@ -15,6 +15,7 @@
     ]
   },
   "scripts": {
+    "stress": "k6 run k6.js",
     "react-dev": "webpack --mode development --watch",
     "react-prod": "webpack --mode production",
     "server-dev": "nodemon ./server/start.js",

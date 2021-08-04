@@ -6,6 +6,7 @@ class Image extends React.Component {
   }
 
   render() {
+    console.log(this.props)
     return (
       <div className='image'>
         <img height='100%' width='100%' src={this.props.url}></img>
