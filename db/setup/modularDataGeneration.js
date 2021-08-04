@@ -242,7 +242,7 @@ const getRandomBook = (id) => {
   book['narrator'] = params.narrator[getRandomArrayIdx(params.narrator)];
   book['image_url'] = process.env.IMAGE_PREFIX + params.imageUrl[getRandomArrayIdx(params.imageUrl)].Key;
   book['audio_sample_url'] = process.env.AUDIO_PREFIX + params.audioSampleUrl[getRandomArrayIdx(params.audioSampleUrl)].Key;
-  book['length'] = Math.floor(Math.random() * 1800000);
+  book['length'] = `${Math.floor(Math.random() * 15)}:${Math.floor(Math.random() * 60)}`;
   book['version'] = version;
   book['category1'] = params.categories[categoryIdx1];
   book['category2'] = params.categories[categoryIdx2];
