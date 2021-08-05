@@ -278,7 +278,7 @@ const seed = async (numBooks = 10000000, numParams = 10000, numImages = 1000) =>
 
     bookArray.push(book);
 
-    if (bookArray.length === 500000 || bookArray.length === numBooks) {
+    if (bookArray.length === 250000 || bookArray.length === numBooks) {
       const used = process.memoryUsage().heapUsed / 1024 / 1024;
       console.log(`Current memory usage - ${Math.round(used * 100) / 100} MB`);
       bookArray = bookArray.map((string) => {
