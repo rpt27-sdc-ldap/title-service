@@ -14,7 +14,7 @@ class App extends React.Component {
   getBook() {
     const query = new URLSearchParams(location.search);
     const id = query.get('bookId');
-    fetch(`http://127.0.0.1:2002/api/book/${id}`)
+    fetch(`/api/book/${id}`)
       .then((response) => {
         return response.json();
       })
