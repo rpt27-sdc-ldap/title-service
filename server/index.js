@@ -8,7 +8,7 @@ app.use(cors());
 app.use(express.json());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
-app.use('/files', express.static('public'));
+app.use('/', express.static('public'));
 
 app.get('/api/book/:id', (req, res) => {
   Book.getById(req.params.id)
