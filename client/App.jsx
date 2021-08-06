@@ -16,7 +16,7 @@ class App extends React.Component {
     const id = query.get('bookId');
     fetch(`http://127.0.0.1:2002/api/book/${id}`)
       .then((response) => {
-        return response.json()
+        return response.json();
       })
       .then(data => {
         console.log(data)

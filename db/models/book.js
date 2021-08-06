@@ -1,9 +1,6 @@
-const sequelize = require('sequelize');
 const { Op } = require('sequelize');
 const db = require('../db.js');
-const prepare = require('pg-prepare');
 const { Pool, Client } = require('pg');
-const pool = new Pool();
 
 module.exports.getById = (id) => {
   return new Promise((resolve, reject) => {
