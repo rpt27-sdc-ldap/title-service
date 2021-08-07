@@ -4,8 +4,8 @@ const cors = require('cors');
 const Book = require('../db/models/book.js');
 const bodyParser = require('body-parser');
 const path = require('path');
-const publicPath = path.join(__dirname, 'public');
-console.log(publicPath)
+const publicPath = path.join(__dirname, '../public');
+console.log('publicPath', publicPath);
 
 app.use(cors());
 app.use(express.json());
