@@ -18,5 +18,5 @@ const getRandomNumber = (num) => {
 };
 
 export default function main() {
-  http.get(`http://35.176.238.149:2002/api/book/${getRandomNumber(10000000)}`);
+  http.get(`http://ec2-18-170-171-179.eu-west-2.compute.amazonaws.com:2002/api/book/${getRandomNumber(10000000)}`);
 }
