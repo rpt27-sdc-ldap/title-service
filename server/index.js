@@ -4,12 +4,14 @@ const cors = require('cors');
 const Book = require('../db/models/book.js');
 const bodyParser = require('body-parser');
 const path = require('path');
+const publicPath = path.join(__dirname, 'public');
+console.log(publicPath)
 
 app.use(cors());
 app.use(express.json());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
-app.use('/', express.static(path.join(__dirname, 'public')));
+app.use('/', express.static(publicPath));
 
 app.get('/api/book/:id', (req, res) => {
   Book.getById(req.params.id)
