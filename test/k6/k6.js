@@ -4,7 +4,7 @@ export const options = {
   scenarios: {
     constant_request_rate: {
       executor: 'constant-arrival-rate',
-      rate: 300,
+      rate: 55,
       timeUnit: '1s',
       duration: '2m',
       preAllocatedVUs: 100,
@@ -18,5 +18,5 @@ const getRandomNumber = (num) => {
 };
 
 export default function main() {
-  http.get(`http://ec2-18-170-171-179.eu-west-2.compute.amazonaws.com:2002/api/book/${getRandomNumber(10000000)}`);
+  http.get('http://ec2-18-168-91-241.eu-west-2.compute.amazonaws.com:5500/');
 }
