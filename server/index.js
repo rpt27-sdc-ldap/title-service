@@ -16,8 +16,8 @@ const shouldCompress = (req, res) => {
 };
 
 app.use(compression({
-  filter: shouldCompress,
-  level: 7,
+  filter: (req, res) => (req.headers['x-no-compression'] ? false : compression.filter(req, res)),
+  level: 9,
 }));
 
 app.use(cors());
