@@ -17,7 +17,7 @@ app.use(cors());
 app.use(express.json());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
-app.use('/', expressStaticGzip(publicPath));
+app.use('/files', expressStaticGzip(publicPath));
 // app.use('/', express.static(publicPath));
 
 app.get('/api/book/:id', (req, res) => {
