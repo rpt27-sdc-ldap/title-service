@@ -1,11 +1,12 @@
-require('newrelic');
+const monitor = process.argv.some((value) => { return value === 'monitor'; });
+if (monitor) {
+  console.log('monitoring via newrelic');
+  require('newrelic');
+}
 const app = require('./index.js');
 const port = 2002;
-
 const cluster = require('cluster');
 const cpus = require('os').cpus;
-const process = require('process');
-
 const numCPUs = cpus().length;
 
 if (cluster.isMaster) {

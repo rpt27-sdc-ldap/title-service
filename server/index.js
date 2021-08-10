@@ -8,13 +8,6 @@ const publicPath = path.join(__dirname, '../public');
 const expressStaticGzip = require('express-static-gzip');
 const compression = require('compression');
 
-const shouldCompress = (req, res) => {
-  if (req.headers['x-no-compression']) {
-    return false;
-  }
-  return compression.filter(req, res);
-};
-
 app.use(compression({
   filter: (req, res) => (req.headers['x-no-compression'] ? false : compression.filter(req, res)),
   level: 9,

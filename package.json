@@ -18,7 +18,7 @@
     "stress": "k6 run test/k6/k6.js",
     "react-dev": "webpack --mode development --watch",
     "react-prod": "webpack --mode production",
-    "server-dev": "nodemon ./server/start.js",
+    "server-dev": "nodemon ./server/start.js monitor",
     "start": "node ./server/start.js",
     "seed-db": "node ./db/setup/run-seed.js",
     "seed-postgres": "node --max-old-space-size=512 ./db/setup/seedPostgres.js",
