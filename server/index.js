@@ -1,6 +1,5 @@
 require('dotenv').config();
-const memcachedIps = JSON.parse(process.env.MEMCACHED_IPS);
-console.log(memcachedIps)
+// const memcachedIps = JSON.parse(process.env.MEMCACHED_IPS); // Save for clustering hosts
 const express = require('express');
 const app = express();
 const cors = require('cors');
