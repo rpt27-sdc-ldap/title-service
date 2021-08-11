@@ -3,6 +3,7 @@ require('dotenv').config();
 
 const sequelize = new Sequelize('audible', process.env.PSQL_DB_USER, process.env.PSQL_DB_PASSWORD, {
   host: process.env.PSQL_DB_HOST,
+  port: process.env.PGPORT,
   dialect: 'postgres',
   protocol: 'postgres',
   logging: false

@@ -3,12 +3,22 @@ const app = express();
 const cors = require('cors');
 const Book = require('../db/models/book.js');
 const bodyParser = require('body-parser');
+const path = require('path');
+const publicPath = path.join(__dirname, '../public');
+const expressStaticGzip = require('express-static-gzip');
+const compression = require('compression');
+
+app.use(compression({
+  filter: (req, res) => (req.headers['x-no-compression'] ? false : compression.filter(req, res)),
+  level: 9,
+}));
 
 app.use(cors());
 app.use(express.json());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
-app.use('/files', express.static('public'));
+app.use('/files', expressStaticGzip(publicPath));
+// app.use('/', express.static(publicPath));
 
 app.get('/api/book/:id', (req, res) => {
   Book.getById(req.params.id)
