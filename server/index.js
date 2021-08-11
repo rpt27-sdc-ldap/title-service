@@ -11,7 +11,7 @@ const publicPath = path.join(__dirname, '../public');
 const expressStaticGzip = require('express-static-gzip');
 const compression = require('compression');
 const MemcachePlus = require('memcache-plus');
-const memcached = new MemcachePlus({hosts: memcachedIps});
+const memcached = new MemcachePlus('127.0.0.1:11211');
 
 app.use(compression({
   filter: (req, res) => (req.headers['x-no-compression'] ? false : compression.filter(req, res)),
