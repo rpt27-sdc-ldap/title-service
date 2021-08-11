@@ -1,3 +1,5 @@
+require('dotenv').config();
+const memcachedIps = JSON.parse(process.env.MEMCACHED_IPS);
 const express = require('express');
 const app = express();
 const cors = require('cors');
@@ -8,7 +10,7 @@ const publicPath = path.join(__dirname, '../public');
 const expressStaticGzip = require('express-static-gzip');
 const compression = require('compression');
 const MemcachePlus = require('memcache-plus');
-const memcached = new MemcachePlus('localhost:11211');
+const memcached = new MemcachePlus(memcachedIps);
 
 app.use(compression({
   filter: (req, res) => (req.headers['x-no-compression'] ? false : compression.filter(req, res)),
