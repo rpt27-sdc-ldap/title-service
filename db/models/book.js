@@ -4,6 +4,7 @@ const { Pool, Client } = require('pg');
 
 module.exports.getById = (id) => {
   return new Promise((resolve, reject) => {
+
     db.Book.findAll({
       where: {
         id
@@ -19,6 +20,7 @@ module.exports.getById = (id) => {
       .catch(err => {
         reject(err);
       });
+
   });
 };
 

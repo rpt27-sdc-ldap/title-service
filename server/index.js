@@ -1,3 +1,5 @@
+require('dotenv').config();
+// const memcachedIps = JSON.parse(process.env.MEMCACHED_IPS); // Save for clustering hosts
 const express = require('express');
 const app = express();
 const cors = require('cors');
@@ -7,6 +9,8 @@ const path = require('path');
 const publicPath = path.join(__dirname, '../public');
 const expressStaticGzip = require('express-static-gzip');
 const compression = require('compression');
+const MemcachePlus = require('memcache-plus');
+const memcached = new MemcachePlus();
 
 app.use(compression({
   filter: (req, res) => (req.headers['x-no-compression'] ? false : compression.filter(req, res)),
@@ -18,26 +22,39 @@ app.use(express.json());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
 app.use('/files', expressStaticGzip(publicPath));
-// app.use('/', express.static(publicPath));
 
-app.get('/api/book/:id', (req, res) => {
-  Book.getById(req.params.id)
-    .then((result) => {
-      const book = result[0];
+app.get('/api/book/:id', async (req, res) => {
+  const bookId = req.params.id;
 
-      book.dataValues['audioUrl'] = book.dataValues.audio_sample_url;
-      book.dataValues['imageUrl'] = book.dataValues.image_url;
-
-      delete book.dataValues.audio_sample_url;
-      delete book.dataValues.image_url;
+  let bookData = await memcached.get(bookId);
+  
+  if (bookData) {
+    res.send(bookData);
+  } else {
+    Book.getById(bookId)
+      .then((result) => {
+        const book = result[0];
       
-      res.send(book);
-    })
-    .catch((err) => {
-      res.status(404);
-      console.error('db err: ', err);
-      res.send(err);
-    });
+        book.dataValues['audioUrl'] = book.dataValues.audio_sample_url;
+        book.dataValues['imageUrl'] = book.dataValues.image_url;
+      
+        delete book.dataValues.audio_sample_url;
+        delete book.dataValues.image_url;
+        memcached.set(bookId, book, (err) => {
+          if (err) {
+            console.log(err);
+          }
+        });
+        res.send(book);
+      })
+      .catch((err) => {
+        res.status(404);
+        console.error('db err: ', err);
+        res.send(err);
+      });
+  }
+  
+
 });
 
 // Possibly remove this in future
